@@ -1,9 +1,12 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require_once(BASEPATH.'/libraries/PHPMailer/src/Exception.php');
+require_once(BASEPATH.'/libraries/PHPMailer/src/PHPMailer.php');
+
 class Auth extends Z_Controller
 {
-
-    protected $pa_Data		= array();
-    protected $pa_SubTask	= array();
 /*
 | ------------------------------------------------------------------------------------------------------------------------------------------
 | MAGIC FUNCTIONS
@@ -117,7 +120,7 @@ class Auth extends Z_Controller
                         'updated_at'  => $cdate
                     );
                     $insert = $this->MPlayer->insert_player($a_insert);
-dd($insert);
+
                     // REDIRECT to home
                     $location	= base_url();
 
@@ -322,6 +325,16 @@ dd($insert);
         setrawcookie('remember_token', '', $expires, $path);
 
         redirect(base_url());
+    }
+
+    function forgot_password()
+    {
+        
+
+        // ----------------------------------------------------------------------- //
+        // LOAD views and render
+        // ----------------------------------------------------------------------- //
+        $this->p_render('auth/forgot_password');
     }
 /*
 | ------------------------------------------------------------------------------------------------------------------------------------------
