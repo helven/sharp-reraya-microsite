@@ -23,19 +23,18 @@ class MPlayer extends Model
         $sql    = $select.$from.$where.$cond;
 
         // EXECUTE sql query
-        $Q      = $this->db->query($sql);
+        $Q          = $this->db->query($sql);
 
         if($Q->num_rows() > 0)
         {
             $a_data                 = $Q->result();
-            $a_rtn_data['a_data']   = $a_Data[0];
+            $a_rtn_data['a_data']   = $a_data;
             $a_rtn_data['status']   = TRUE;
         }
         else
         {
-            $a_data	= $Q->result();
             $a_rtn_data['status']   = FALSE;
-            $a_rtn_data['msg']	    = 'We\'re sorry, the user you\'re looking for cannot be found.';
+            $a_rtn_data['msg']      = 'We\'re sorry, the user you\'re looking for cannot be found.';
         }
         
         $Q->free_result();
@@ -69,13 +68,101 @@ class MPlayer extends Model
         }
         else
         {
-            $a_data	= $Q->result();
             $a_rtn_data['status']   = FALSE;
-            $a_rtn_data['msg']	    = 'Invalid Email or Password';
+            $a_rtn_data['msg']      = 'Invalid Email or Password';
         }
 
         $Q->free_result();
         
         return $a_rtn_data;
+    }
+
+    function check_player_exist($a_cond='')
+    {
+        // ----------------------------------------------------------------------- //
+        // BUILD sql query
+        // ----------------------------------------------------------------------- //
+        $select = " SELECT players.email";
+        $from   = " FROM players";
+        $where  = " WHERE 1 = 1";
+
+        if($a_cond == '')
+        {
+            return TRUE;
+        }
+
+        $cond   = set_condition($a_cond);
+        $sql    = $select.$from.$where.$cond;
+
+        // EXECUTE sql query
+        $Q  = $this->db->query($sql);
+
+        if($Q->num_rows() > 0)
+        {
+            $rtn    = TRUE;
+        }
+        else
+        {
+            $rtn    = FALSE;
+        }
+        
+        $Q->free_result();
+        
+        return $rtn;
+    }
+
+    function update_player($a_cond, $a_update=NULL)
+    {
+        if(!isset($a_update))
+        {
+            $a_rtn  = array(
+                'status'=> FALSE,
+                'msg'   => 'User failed to be updated.'
+            );
+            return $a_rtn;
+        }
+        $a_rtn  = array();
+        // ----------------------------------------------------------------------- //
+        // BUILD sql query
+        // ----------------------------------------------------------------------- //
+        $update = " UPDATE players SET ";
+        $update_value    = "";
+        foreach($a_update as $key => $value)
+        {
+            if($update_value != '')
+            {
+                $update_value   .= ',';
+            }
+            $update_value       .= "{$key} = '{$value}'";
+        }
+        $cond   = set_condition($a_cond);
+        $where  = " WHERE 1 = 1 {$cond}";
+        $sql    = $update.$update_value.$where;
+        // ----------------------------------------------------------------------- //
+        // SQL transaction
+        // ----------------------------------------------------------------------- //
+        // BEGIN mysql transaction
+        $this->db->trans_start();
+        // EXECUTE sql query
+        $Q	= $this->db->query($sql);
+        // END mysql transaction
+        $this->db->trans_complete();
+
+        if($this->db->affected_row())
+        {
+            $a_rtn  = array(
+                'status'    => TRUE,
+                'msg'       => 'User is successfully updated.'
+            );
+        }
+        else
+        {
+            $a_rtn  = array(
+                'status'    => FALSE,
+                'msg'       => 'Update user failed.',
+            );
+        }
+        
+        return $a_rtn;
     }
 }

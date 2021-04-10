@@ -77,6 +77,7 @@
         <div id="div_PageLoader"><img src="<?php echo base_url();?>media/images/page_loader.svg" /></div>
         <div class="scroll_wrapper scrollbar-macosx">
             <div id="div_Page-<?php echo $this->pageName;?>" class="site_container">
+                <?php print_a($_SESSION['ss_Public']);?>
                 <?php echo $this->pageContent;?>
                 <footer>
                     <div class="footer_left">

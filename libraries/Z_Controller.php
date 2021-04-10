@@ -84,7 +84,7 @@ class Z_Controller extends Controller
 
     function p_reset_cookie()
     {
-        $expires    = time() + (86400 * 30);
+        $expires    = time() + (86400 * 1);
         $path       = '/';
         $score  = str_shuffle('_xF[B_#E');
 
@@ -99,6 +99,6 @@ class Z_Controller extends Controller
         setrawcookie('miidlaz', floor(rand(1, 10) * 7), $expires, $path);
 
         setrawcookie('_leksxia_x2', $score, $expires, $path);
-        setrawcookie('store_game', 0, $expires, $path);exit;
+        setrawcookie('store_game', 0, $expires, $path);
     }
 }

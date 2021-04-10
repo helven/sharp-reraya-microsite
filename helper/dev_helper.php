@@ -26,6 +26,23 @@ function dd($a_array,$buffer=FALSE)
     exit;
 }
 
+function print_a($a_array,$buffer=FALSE)
+{
+    if($buffer)
+    {
+        ob_start();
+        echo '<pre>';
+        print_r($a_array);
+        echo '</pre>';
+        return ob_get_clean();
+    }
+    
+    echo '<pre>';
+    print_r($a_array);
+    echo '</pre>';
+    
+    return TRUE;
+}
 /**
  * Print Var dump
  *

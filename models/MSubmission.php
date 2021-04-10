@@ -33,7 +33,6 @@ class MSubmission extends Model
         }
         else
         {
-            $a_data = $Q->result();
             $a_rtn_data['status']   = FALSE;
             $a_rtn_data['msg']      = 'We\'re sorry, the submission you\'re looking for cannot be found.';
         }
@@ -64,8 +63,8 @@ class MSubmission extends Model
         // END mysql transaction
         $this->db->trans_complete();
 
-        if($this->db->affected_row()){
-
+        if($this->db->affected_row())
+        {
             $a_rtn  = array(
                 'status'        => TRUE,
                 'msg'           => 'Submission is successfully inserted.',
