@@ -23,7 +23,7 @@ function dd($a_array,$buffer=FALSE)
     print_r($a_array);
     echo '</pre>';
     
-    return TRUE;
+    exit;
 }
 
 /**

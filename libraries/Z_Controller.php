@@ -72,4 +72,13 @@ class Z_Controller extends Controller
         $this->pageContent  = $this->p_load_view($view);
         $this->p_load_view('theme_empty', TRUE);
     }
+
+    function p_load_model($model)
+    {
+        $model_file = BASEPATH.'/models/'.$model.EXT;
+        if(file_exists(BASEPATH.'/models/'.$model.EXT))
+        {
+            require_once($model_file);
+        }
+    }
 }

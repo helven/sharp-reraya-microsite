@@ -2,23 +2,23 @@
 if(strpos($config['base_url'], 'happybrday.baskinrobbins.com.my/staging')) // client staging
 {
 	$database['host']		= '127.0.0.1';
-	$database['password']	= '~vu1r4W5';
-	$database['user']		= 'welcometobrday';
-	$database['db_name']	= 'welcometobrday_staging';
+	$database['password']	= '';
+	$database['user']		= '';
+	$database['db_name']	= '';
 }
 elseif(strpos($config['base_url'], 'happybrday.baskinrobbins.com.my')) // live
 {
 	$database['host']		= '127.0.0.1';
-	$database['password']	= '~vu1r4W5';
-	$database['user']		= 'welcometobrday';
-	$database['db_name']	= 'welcometobrday';
+	$database['password']	= '';
+	$database['user']		= '';
+	$database['db_name']	= '';
 }
-elseif(strpos($config['base_url'], 'duck.senjitsu.com')) // staging
+elseif(strpos($config['base_url'], 'sharpgame.senjitsu.com')) // staging
 {
 	$database['host']		= '127.0.0.1';
 	$database['password']	= 'Q0dIwxJ4f';
-	$database['user']		= 'symphoni_oppo';
-	$database['db_name']	= 'symphoni_oppo';
+	$database['user']		= 'symphoni_sharp';
+	$database['db_name']	= 'symphoni_sharp';
 }
 else // localhost
 {

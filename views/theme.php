@@ -43,6 +43,7 @@
 		<![endif]-->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script src="<?php echo base_url();?>media/js/bootstrap/js/bootstrap.min.js"></script>
+		<script src="<?php echo base_url();?>media/js/generic.js"></script>
 		<script src="<?php echo base_url();?>media/js/validate.js"></script>
 		<script><!--
 			jQuery = jQuery.noConflict();
