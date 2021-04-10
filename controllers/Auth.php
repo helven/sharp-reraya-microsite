@@ -19,7 +19,7 @@ class Auth extends Z_Controller
         // ----------------------------------------------------------------------- //
         // INIT variable
         // ----------------------------------------------------------------------- //
-        $this->MPlayer	= new MPlayer();
+        $this->MPlayer  = new MPlayer();
     }
 
     function __destruct()
@@ -66,24 +66,79 @@ class Auth extends Z_Controller
                 $this->formErrorMsg	.= 'Please enter password.';
             }
 
+            if(!isset($_POST['txt_ConfPassword']) || $_POST['txt_ConfPassword'] == '')
+            {
+                $this->formError	= TRUE;
+                $this->formErrorMsg	.= ($this->formErrorMsg != '')?'<br />':'';
+                $this->formErrorMsg	.= 'Please enter confirm password.';
+            }
+
+            if($_POST['txt_Password'] != $_POST['txt_ConfPassword'])
+            {
+                $this->formError	= TRUE;
+                $this->formErrorMsg	.= ($this->formErrorMsg != '')?'<br />':'';
+                $this->formErrorMsg	.= 'Password and confirm password does not match.';
+            }
+
             if(!$this->formError)
             {
-                // SAVE
+                
+                // CLEAN $_POST
+                sec_clean_all_post($this->db->conn);
 
-                // REDIRECT to home
-                $location	= base_url();
+                // CHECK player
+                $a_cond = array(
+                    'table'		=> 'players',
+                    'field'		=> 'email',
+                    'value'		=> $_POST['txt_Email'],
+                    'compare'=> '='
+                );
+                $player_exist   = $this->MPlayer->check_player_exist($a_cond);
 
-                // STORE game
-                if($_COOKIE['store_game'] == 1)
+                if($player_exist)
                 {
-                    if($this->_store_game())
+                    $this->formError	= TRUE;
+                    $this->formErrorMsg	.= ($this->formErrorMsg != '')?'<br />':'';
+                    $this->formErrorMsg	.= 'Password and confirm password does not match.';
+                }
+                else
+                {
+                    // INSERT player
+                    $cdate  = date('Y-m-d H:i:s');
+                    $a_insert   = array(
+                        'status'        => 1,
+                        'name'          => $_POST['txt_Name'],
+                        'email'         => $_POST['txt_Email'],
+                        'phone'         => $_POST['txt_Phone'],
+                        'password'      => '',
+                        'secret'        => encrypt_str($_POST['txt_Password']),
+                        'remember_token'=> '',
+                        'created_at'  => $cdate,
+                        'updated_at'  => $cdate
+                    );
+                    $insert = $this->MPlayer->insert_player($a_insert);
+dd($insert);
+                    // REDIRECT to home
+                    $location	= base_url();
+
+                    // STORE game
+                    if($_COOKIE['store_game'] == 1)
                     {
-                        $location	= base_url().'game';
+                        if($this->_store_game())
+                        {
+                            $location	= base_url().'game';
+                        }
                     }
                 }
             }
+
+            redirect($location);
         }
-        redirect($location);
+
+        // ----------------------------------------------------------------------- //
+        // LOAD views and render
+        // ----------------------------------------------------------------------- //
+        $this->p_render('auth/sign_up');
     }
 
     function login()

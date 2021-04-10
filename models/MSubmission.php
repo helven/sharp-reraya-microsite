@@ -75,7 +75,7 @@ class MSubmission extends Model
         {
             $a_rtn  = array(
                 'status'        => FALSE,
-                'msg'           => 'Submission is failed',
+                'msg'           => 'Submission insert failed.',
             );
         }
 

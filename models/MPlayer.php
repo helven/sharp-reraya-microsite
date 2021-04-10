@@ -111,6 +111,48 @@ class MPlayer extends Model
         return $rtn;
     }
 
+    function insert_player($a_insert)
+    {
+        // ----------------------------------------------------------------------- //
+        // INSERT submission to database
+        // ----------------------------------------------------------------------- //
+        $sql    = " INSERT INTO `players` SET
+                        status          = {$a_insert['status']},
+                        name            = '{$a_insert['name']}',
+                        email           = '{$a_insert['email']}',
+                        phone           = '{$a_insert['phone']}',
+                        password        = '{$a_insert['password']}',
+                        secret          = '{$a_insert['secret']}',
+                        remember_token  = '{$a_insert['remember_token']}',
+                        created_at      = '{$a_insert['created_at']}',
+                        updated_at      = '{$a_insert['updated_at']}'";
+        // BEGIN mysql transaction
+        $this->db->trans_start();
+        // EXECUTE sql query
+        $Q  = $this->db->query($sql);
+        $player_id  = $Q->insert_id();
+        // END mysql transaction
+        $this->db->trans_complete();
+
+        if($this->db->affected_row())
+        {
+            $a_rtn  = array(
+                'status'        => TRUE,
+                'msg'           => 'User is successfully inserted.',
+                'submission_id' => $player_id
+            );
+        }
+        else
+        {
+            $a_rtn  = array(
+                'status'        => FALSE,
+                'msg'           => 'User insert failed.',
+            );
+        }
+
+        return $a_rtn;
+    }
+
     function update_player($a_cond, $a_update=NULL)
     {
         if(!isset($a_update))
