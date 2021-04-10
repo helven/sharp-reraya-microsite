@@ -25,7 +25,7 @@ Class Game extends Z_Controller
 
     function ajax_store()
     {
-
+        $posted_score   = $_POST['score'];
 
         $is_hacking     = FALSE;
         $posted_score   = sec_db_clean($this->db->conn, $posted_score);
@@ -86,7 +86,19 @@ Class Game extends Z_Controller
             'updated_at'  => $cdate
         );
 
-        var_dump($this->MSubmission->insert_submission($a_insert));exit;
+        $insert = $this->MSubmission->insert_submission($a_insert);
+
+        if(!$insert)
+        {
+            $a_rtn  = array(
+                'status'        => FALSE,
+                'is_hacking'    => $is_hacking,
+                'msg'           => 'Store failed.'
+            );
+        }
+        
+        // RESET cookie
+        $this->p_reset_cookie();
 
         $a_rtn  = array(
             'status'        => TRUE,

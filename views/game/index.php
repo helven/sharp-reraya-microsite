@@ -4,13 +4,15 @@
             <iframe id="iframe_Game" src="" style="border:0;width:100%;"></iframe>
         </div>
     </div>
-    <h1><?php echo $_COOKIE['_leksxia_x2'];?></h1>
-    <h1><?php echo str_replace(array('_','x','F','B','E','#'), '', $_COOKIE['_leksxia_x2']);?></h1>
 
     <?php if(!check_auth()){ ?>
-    <div>
-        <a href="">Sign UP / Login</a>
-    </div>
+        <div>
+            <a href="<?php echo base_url();?>auth/login">Sign UP / Login</a>
+        </div>
+    <?php }else{ ?>
+        <div>
+            <a href="<?php echo base_url();?>auth/logout">Logout</a>
+        </div>
     <?php } ?>
 </div>
 <script>
@@ -39,27 +41,29 @@ jQuery(document).ready(function(){
         }
         
         <?php if(!check_auth()){ ?>
+            date = new Date();
+            date.setTime(date.getTime() + (1*24*60*60*1000));
+            expires = 'expires=' + date.toUTCString() + '; ';
+            path    = 'path=/; ';
             // show Sign Up / login popup
+            document.cookie = 'store_game=1;' + expires + path;
         <?php }else{ ?>
-            // Store score
-            
+            jQuery.ajax({
+                type        : 'POST',
+                url         : '<?php echo base_url();?>game/ajax-store',
+                dataType    : 'json',
+                data        : {score:event.data.score},
+                beforeSend  : function(){
+
+                },
+                error       : function(o_rtn){
+
+                },
+                success     : function(o_rtn){
+                    console.log(o_rtn);
+                }
+            });
         <?php } ?>
-
-        jQuery.ajax({
-            type        : 'POST',
-            url         : '<?php echo base_url();?>game/ajax-store',
-            dataType    : 'json',
-            data        : {score:event.data.score},
-            beforeSend  : function(){
-
-            },
-            error       : function(o_rtn){
-
-            },
-            success     : function(o_rtn){
-                console.log(o_rtn);
-            }
-        });
     });
 
     jQuery('#iframe_Game').attr('src', '<?php echo base_url();?>game/iframe-game');

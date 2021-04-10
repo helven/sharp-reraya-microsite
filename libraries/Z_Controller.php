@@ -81,4 +81,24 @@ class Z_Controller extends Controller
             require_once($model_file);
         }
     }
+
+    function p_reset_cookie()
+    {
+        $expires    = time() + (86400 * 30);
+        $path       = '/';
+        $score  = str_shuffle('_xF[B_#E');
+
+        // fake cookies
+        setrawcookie('_m_h5_tk', str_shuffle(md5(floor(rand(1, 10) * 1257) * floor(rand(1, 10) * 10)).'=.%*&^@'.floor(rand(1, 10) * 7).floor(rand(1, 10) * 10)), $expires, $path);
+        setrawcookie('cto_axid', str_shuffle(md5(floor(rand(1, 10) * 2452) * floor(rand(1, 10) * 10)).'=.[}FE]'.floor(rand(1, 10) * 7).floor(rand(1, 10) * 10)), $expires, $path);
+        setrawcookie('xlly_s', str_shuffle('_xF[B_#E').str_shuffle(floor(rand(1, 10) * 20).floor(rand(1, 10) * 10).'=_%'), $expires, $path);
+        setrawcookie('everest_g_v2', floor(rand(1, 7) * 5) * floor(rand(1, 10) * 9), $expires, $path);
+        setrawcookie('ev_sync_bk', md5(floor(rand(1, 10) * 3547) * floor(rand(1, 10) * 10)), $expires, $path);
+        setrawcookie('_tb_token_', floor(rand(1, 6) * 2) , $expires, $path);
+        setrawcookie('lzd_click_id', floor(rand(1, 8) * 7), $expires, $path);
+        setrawcookie('miidlaz', floor(rand(1, 10) * 7), $expires, $path);
+
+        setrawcookie('_leksxia_x2', $score, $expires, $path);
+        setrawcookie('store_game', 0, $expires, $path);exit;
+    }
 }
