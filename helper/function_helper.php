@@ -15,5 +15,5 @@ function format_date($str='')
 	}
 
 
-	return date('Y-m-d H:i:s', $str);
+	return date('Y-m-d H:i:s', strtotime($str));
 }

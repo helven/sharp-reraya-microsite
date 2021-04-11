@@ -4,7 +4,9 @@
             <iframe id="iframe_Game" src="" style="border:0;width:100%;"></iframe>
         </div>
     </div>
+</div>
 
+<div id="div_SignUpPopup" style="display:none;">
     <?php if(!check_auth()){ ?>
         <div>
             <a href="<?php echo base_url();?>auth/login">Sign UP / Login</a>
@@ -15,6 +17,7 @@
         </div>
     <?php } ?>
 </div>
+
 <script>
 jQuery(document).ready(function(){
     set_game_size();
@@ -47,6 +50,10 @@ jQuery(document).ready(function(){
             path    = 'path=/; ';
             // show Sign Up / login popup
             document.cookie = 'store_game=1;' + expires + path;
+
+            jQuery(this).zboxOpen({
+                text: jQuery('#div_SignUpPopup').html()
+            });
         <?php }else{ ?>
             jQuery.ajax({
                 type        : 'POST',

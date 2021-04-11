@@ -124,7 +124,11 @@ Class Game extends Z_Controller
 
     function leaderboard()
     {
-        
+        $a_cond     = array();
+        $group_by   = " GROUP BY submissions.player_id";
+        $order      = " ORDER BY submissions.score DESC";
+        $a_limit    = array(0, 10);
+        $this->a_leaderboard  = $this->MSubmission->get_submission_list($a_cond, $group_by, $order, $a_limit);
 
         // ----------------------------------------------------------------------- //
         // LOAD views and render

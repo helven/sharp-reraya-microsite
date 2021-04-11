@@ -77,7 +77,16 @@
         <div id="div_PageLoader"><img src="<?php echo base_url();?>media/images/page_loader.svg" /></div>
         <div class="scroll_wrapper scrollbar-macosx">
             <div id="div_Page-<?php echo $this->pageName;?>" class="site_container">
-                <?php print_a($_SESSION['ss_Public']);?>
+                <?php if(!check_auth()){ ?>
+                    <a href="<?php echo base_url();?>auth/sign-up">Sign UP</a><br />
+                    <a href="<?php echo base_url();?>auth/login">Login</a><br />
+                <?php }else{ ?>
+                    <a href="<?php echo base_url();?>auth/logout">Logout</a><br />
+                <?php } ?>
+                <a href="<?php echo base_url();?>game">Game</a><br />
+                <a href="<?php echo base_url();?>game/leaderboard">Leaderboard</a><br />
+                <a href="<?php echo base_url();?>lucky-draw">Lucky Draw</a>
+
                 <?php echo $this->pageContent;?>
                 <footer>
                     <div class="footer_left">

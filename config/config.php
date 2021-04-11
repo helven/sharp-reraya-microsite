@@ -13,7 +13,7 @@ elseif(strpos($config['base_url'], 'happybrday.baskinrobbins.com.my'))
 {
     $config['active_group'] = 'live';
 }
-elseif(strpos($config['base_url'], 'reraya.senjitsu.com'))
+elseif(strpos($config['base_url'], 'sharpmicro.senjitsu.com'))
 {
     $config['active_group'] = 'staging';
 }
@@ -27,6 +27,7 @@ $config['live']['dir_base_url']     = 'https://'.((isset($config['live']['base_u
 $config['live']['base_url']         = 'https://'.((isset($config['live']['base_url']))?$config['live']['base_url']:'happybrday.baskinrobbins.com.my');
 $config['live']['media_url']        = $config['live']['base_url'].'/media';
 $config['live']['site_url']         = 'https://happybrday.baskinrobbins.com.my';
+$config['live']['storage_url']      = 'https://sharprstorage.senjitsu.com';
 $config['live']['mail_admin_email'] = 'marketing@sharp.com.my';
 $config['live']['mail_admin_name']  = 'Sharp Re-Raya';
 $config['live']['mail_mailtype']    = 'html';
@@ -35,8 +36,9 @@ $config['client_staging']['environment']        = 'staging';
 $config['client_staging']['dir_base_url']       = 'https://'.((isset($config['client_staging']['base_url']))?$config['client_staging']['base_url']:'happybrday.baskinrobbins.com.my/staging'); 
 $config['client_staging']['base_url']           = 'https://'.((isset($config['client_staging']['base_url']))?$config['client_staging']['base_url']:'happybrday.baskinrobbins.com.my/staging');
 $config['client_staging']['media_url']          = $config['client_staging']['base_url'].'/media';
-$config['client_staging']['site_url']           = 'happybrday.baskinrobbins.com.my/staging';
-$config['client_staging']['mail_admin_email']   = 'marketing@sharp.com.my';
+$config['client_staging']['site_url']           = $config['protocol'].'happybrday.baskinrobbins.com.my/staging';
+$config['client_staging']['storage_url']        = $config['protocol'].'sharprstorage.senjitsu.com';
+$config['client_staging']['mail_admin_email']   = $config['protocol'].'marketing@sharp.com.my';
 $config['client_staging']['mail_admin_name']    = 'Sharp';
 $config['client_staging']['mail_mailtype']      = 'html';
 
@@ -44,7 +46,8 @@ $config['staging']['environment']       = 'staging';
 $config['staging']['dir_base_url']      = $config['protocol'].((isset($config['staging']['base_url']))?$config['staging']['base_url']:'reraya.senjitsu.com'); 
 $config['staging']['base_url']          = $config['protocol'].((isset($config['staging']['base_url']))?$config['staging']['base_url']:'reraya.senjitsu.com');
 $config['staging']['media_url']         = $config['staging']['base_url'].'/media';
-$config['staging']['site_url']          = $config['protocol'].'reraya.senjitsu.com';
+$config['staging']['site_url']          = $config['protocol'].'sharpmicro.senjitsu.com';
+$config['staging']['storage_url']       = $config['protocol'].'sharprstorage.senjitsu.com';
 $config['staging']['mail_admin_email']  = 'marketing@sharp.com.my';
 $config['staging']['mail_admin_name']   = 'Sharp Re-Raya';
 $config['staging']['mail_mailtype']     = 'html';
@@ -53,13 +56,15 @@ $config['dev']['environment']       = 'dev';
 $config['dev']['base_url']          = str_replace('\\','', $_SERVER['SERVER_NAME'].dirname($_SERVER['SCRIPT_NAME']));
 $config['dev']['base_url']          = 'http://'.((isset($config['dev']['base_url']))?$config['dev']['base_url']:'sharp-reraya-microsite.test');
 $config['dev']['media_url']         = $config['dev']['base_url'].'/media';
-$config['dev']['site_url']          = 'http://sharp_reraya-microsite.test';
+$config['dev']['site_url']          = 'http://sharp-reraya-microsite.test';
+$config['dev']['storage_url']       = 'http://sharp-reraya-storage.test';
 $config['dev']['mail_admin_email']  = 'marketing@sharp.com.my';
 $config['dev']['mail_admin_name']   = 'Sharp';
 $config['dev']['mail_mailtype']     = 'html';
 $config = $config[$config['active_group']];
 
-$config['uploads_url']  = $config['base_url'].'/media/upload';
+$config['row_per_page'] = 10;
+
 
 $config['title']    = 'Sharp Re-Raya';
 $config['og_title'] = 'Sharp Re-Raya';

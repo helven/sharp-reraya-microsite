@@ -41,7 +41,6 @@ if ( ! function_exists('set_limit'))
 {
 	function set_limit($a_Limit)
 	{
-		$CI =& get_instance();
 		$limit	= '';
 		if($a_Limit == 'ALL' || $a_Limit[1] == -1)
 		{
@@ -49,11 +48,11 @@ if ( ! function_exists('set_limit'))
 		}
 		elseif(!isset($a_Limit))
 		{
-			$limit	= "	LIMIT 0,{$CI->config->item('row_per_page')}";
+			$limit	= "	LIMIT 0,{$config['row_per_page']}";
 		}
 		else
 		{
-			$limit	= '	LIMIT '.((isset($a_Limit[0]) && $a_Limit[0] != '')?$a_Limit[0]:0).','.((isset($a_Limit[1]) && $a_Limit[1] != '')?$a_Limit[1]:$CI->config->item('row_per_page'));
+			$limit	= '	LIMIT '.((isset($a_Limit[0]) && $a_Limit[0] != '')?$a_Limit[0]:0).','.((isset($a_Limit[1]) && $a_Limit[1] != '')?$a_Limit[1]:$config['row_per_page']);
 		}
 		
 		return $limit;
@@ -64,7 +63,6 @@ if ( ! function_exists('range_limit'))
 {
 	function range_limit($s_Index, $e_Index)
 	{
-		$CI =& get_instance();
 		return "	LIMIT {$s_Index},{$e_Index}";
 	}
 }
@@ -83,7 +81,7 @@ if ( ! function_exists('set_condition'))
 {
 	function set_condition($a_Cond)
 	{
-		if(count($a_Cond) <= 0 || $a_Cond == '')
+		if($a_Cond == '' || count($a_Cond) <= 0)
 		{
 			return '';
 		}

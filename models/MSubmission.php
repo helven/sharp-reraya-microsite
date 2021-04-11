@@ -6,6 +6,56 @@ class MSubmission extends Model
         parent::__construct();
     }
 
+    function get_submission_list($a_cond='', $order='', $group_by='', $a_limit='ALL')
+    {
+        $a_rtn_data = array();
+        $a_Data = array();
+        // ----------------------------------------------------------------------- //
+        // BUILD sql query
+        // ----------------------------------------------------------------------- //
+        $select = " SELECT
+                        submissions.*, 
+                        attr_status.value AS status_value,
+                        players.name AS player_name,
+                        players.email AS player_email";
+        $from   = " FROM submissions
+                        LEFT JOIN attr_status ON submissions.status = attr_status.id
+                        LEFT JOIN players ON submissions.player_id = players.id";
+        $where  = " WHERE 1 = 1";
+        $cond   = set_condition($a_cond);
+        // SET default order
+		if($order == '')
+		{
+			$order	= "	ORDER BY
+							z_submission.submission_id ASC";
+		}
+        $limit		= set_limit($a_limit);
+        if(!isset($a_limit) || $a_limit == 'ALL')
+        {
+            $a_limit[0] = 0;
+        }
+        $sql    = $select.$from.$where.$cond.$group_by.$limit;
+
+        // EXECUTE sql query
+        $Q      = $this->db->query($sql);
+
+        if($Q->num_rows() > 0)
+        {
+            $a_data                 = $Q->result_array();
+            $a_rtn_data['a_data']   = $a_data;
+            $a_rtn_data['status']   = TRUE;
+        }
+        else
+        {
+            $a_rtn_data['status']   = FALSE;
+            $a_rtn_data['msg']      = 'We\'re sorry, the submission you\'re looking for cannot be found.';
+        }
+        
+        $Q->free_result();
+        
+        return $a_rtn_data;
+    }
+
     function get_submission($a_cond='', $mode='FULL')
     {
         $a_rtn_data = array();
