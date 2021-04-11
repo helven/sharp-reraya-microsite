@@ -13,12 +13,12 @@ elseif(strpos($config['base_url'], 'happybrday.baskinrobbins.com.my')) // live
 	$database['user']		= '';
 	$database['db_name']	= '';
 }
-elseif(strpos($config['base_url'], 'sharpgame.senjitsu.com')) // staging
+elseif(strpos($config['base_url'], 'sharpmicro.senjitsu.com')) // staging
 {
 	$database['host']		= '127.0.0.1';
-	$database['password']	= 'Q0dIwxJ4f';
-	$database['user']		= 'symphoni_sharp';
-	$database['db_name']	= 'symphoni_sharp';
+	$database['password']	= 'zLSh2ms2s7';
+	$database['user']		= 'symphoni_sharpreraya';
+	$database['db_name']	= 'symphoni_sharpreraya';
 }
 else // localhost
 {

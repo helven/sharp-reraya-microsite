@@ -45,64 +45,63 @@ class Auth extends Z_Controller
         if(isset($_SESSION['ss_Public']))
         {
             // REDIRECT to dashboard
-            $location	= base_url();
+            $location   = base_url();
             redirect($location);
         }
 
         if(isset($_POST['hdd_Action']))
         {
-            $this->formError	= FALSE;
-            $this->formErrorMsg	= '';
+            $this->formError    = FALSE;
+            $this->formErrorMsg = '';
 
-            $_POST['txt_Email']	= trim($_POST['txt_Email']);
+            $_POST['txt_Email'] = trim($_POST['txt_Email']);
             if(!isset($_POST['txt_Email']) || $_POST['txt_Email'] == '')
             {
-                $this->formError	= TRUE;
-                $this->formErrorMsg	.= ($this->formErrorMsg != '')?'<br />':'';
-                $this->formErrorMsg	.= 'Please enter name.';
+                $this->formError    = TRUE;
+                $this->formErrorMsg .= ($this->formErrorMsg != '')?'<br />':'';
+                $this->formErrorMsg .= 'Please enter name.';
             }
 
             if(!isset($_POST['txt_Password']) || $_POST['txt_Password'] == '')
             {
-                $this->formError	= TRUE;
-                $this->formErrorMsg	.= ($this->formErrorMsg != '')?'<br />':'';
-                $this->formErrorMsg	.= 'Please enter password.';
+                $this->formError    = TRUE;
+                $this->formErrorMsg .= ($this->formErrorMsg != '')?'<br />':'';
+                $this->formErrorMsg .= 'Please enter password.';
             }
 
             if(!isset($_POST['txt_ConfPassword']) || $_POST['txt_ConfPassword'] == '')
             {
-                $this->formError	= TRUE;
-                $this->formErrorMsg	.= ($this->formErrorMsg != '')?'<br />':'';
-                $this->formErrorMsg	.= 'Please enter confirm password.';
+                $this->formError    = TRUE;
+                $this->formErrorMsg .= ($this->formErrorMsg != '')?'<br />':'';
+                $this->formErrorMsg .= 'Please enter confirm password.';
             }
 
             if($_POST['txt_Password'] != $_POST['txt_ConfPassword'])
             {
-                $this->formError	= TRUE;
-                $this->formErrorMsg	.= ($this->formErrorMsg != '')?'<br />':'';
-                $this->formErrorMsg	.= 'Password and confirm password does not match.';
+                $this->formError    = TRUE;
+                $this->formErrorMsg .= ($this->formErrorMsg != '')?'<br />':'';
+                $this->formErrorMsg .= 'Password and confirm password does not match.';
             }
 
             if(!$this->formError)
             {
-                
                 // CLEAN $_POST
                 sec_clean_all_post($this->db->conn);
 
                 // CHECK player
                 $a_cond = array(
-                    'table'		=> 'players',
-                    'field'		=> 'email',
-                    'value'		=> $_POST['txt_Email'],
+                    'table'     => 'players',
+                    'field'     => 'email',
+                    'value'     => $_POST['txt_Email'],
                     'compare'=> '='
                 );
                 $player_exist   = $this->MPlayer->check_player_exist($a_cond);
 
                 if($player_exist)
                 {
-                    $this->formError	= TRUE;
-                    $this->formErrorMsg	.= ($this->formErrorMsg != '')?'<br />':'';
-                    $this->formErrorMsg	.= 'Password and confirm password does not match.';
+                    $this->formError    = TRUE;
+                    $this->formErrorMsg .= ($this->formErrorMsg != '')?'<br />':'';
+                    $this->formErrorMsg .= 'Password and confirm password does not match.';
                 }
                 else
                 {
@@ -121,15 +120,41 @@ class Auth extends Z_Controller
                     );
                     $insert = $this->MPlayer->insert_player($a_insert);
 
-                    // REDIRECT to home
-                    $location	= base_url();
-
-                    // STORE game
-                    if($_COOKIE['store_game'] == 1)
+                    if($insert['status'])
                     {
-                        if($this->_store_game())
+                        // AUTO login after Sign Up
+                        $a_cond= array(
+                            'table' => 'players',
+                            'field'     => 'id',
+                            'value'     => $insert['player_id'],
+                            'compare'=> '='
+                        );
+                        $a_user = $this->MPlayer->get_player($a_cond);
+        
+                        if($a_user['status'])
                         {
-                            $location	= base_url().'game';
+                            unset($a_user['a_data']['password']);
+                            unset($a_user['a_data']['secret']);
+        
+                            $_SESSION['ss_Public']  = $a_user['a_data'];
+        
+                            $token      = encrypt_str($a_user['a_data']['email'].'|'.date('Y-m-d H:i:s'));
+                            $expires    = time() + (86400 * 30);
+                            $path       = '/';
+                            setrawcookie('c_user', '', $expires, $path);
+                            setrawcookie('remember_token', '', $expires, $path);
+
+                            // REDIRECT to home
+                            $location   = base_url();
+        
+                            // STORE game
+                            if($_COOKIE['store_game'] == 1)
+                            {
+                                if($this->_store_game())
+                                {
+                                    $location   = base_url().'game';
+                                }
+                            }
                         }
                     }
                 }
@@ -150,7 +175,7 @@ class Auth extends Z_Controller
         if(isset($_SESSION['ss_Public']))
         {
             // REDIRECT to dashboard
-            $location	= base_url();
+            $location   = base_url();
             redirect($location);
         }
 
@@ -171,18 +196,18 @@ class Auth extends Z_Controller
             else
             {
                 $a_cond= array(
-                    'relation'	=> 'AND',
-                    'items'		=> array(
+                    'relation'  => 'AND',
+                    'items'     => array(
                         array(
-                            'table'		=> 'players',
-                            'field'		=> 'email',
-                            'value'		=> $_COOKIE['c_user'],
+                            'table'     => 'players',
+                            'field'     => 'email',
+                            'value'     => $_COOKIE['c_user'],
                             'compare'=> '='
                         ),
                         array(
-                            'table'		=> 'players',
-                            'field'		=> 'remember_token',
-                            'value'		=> decrypt_str($_COOKIE['remember_token']),
+                            'table'     => 'players',
+                            'field'     => 'remember_token',
+                            'value'     => decrypt_str($_COOKIE['remember_token']),
                             'compare'=> '='
                         )
                     )
@@ -194,7 +219,7 @@ class Auth extends Z_Controller
                     unset($a_user['a_data']['password']);
                     unset($a_user['a_data']['secret']);
 
-                    $_SESSION['ss_Public']	= $a_user['a_data'];
+                    $_SESSION['ss_Public']  = $a_user['a_data'];
 
                     $token      = encrypt_str($a_user['a_data']['email'].'|'.date('Y-m-d H:i:s'));
                     $expires    = time() + (86400 * 30);
@@ -203,14 +228,14 @@ class Auth extends Z_Controller
                     setrawcookie('remember_token', encrypt_str($token), $expires, $path);
 
                     // REDIRECT to home
-                    $location	= base_url();
+                    $location   = base_url();
 
                     // STORE game
                     if($_COOKIE['store_game'] == 1)
                     {
                         if($this->_store_game())
                         {
-                            $location	= base_url().'game';
+                            $location   = base_url().'game';
                         }
                     }
 
@@ -221,22 +246,22 @@ class Auth extends Z_Controller
 
         if(isset($_POST['hdd_Action']))
         {
-            $this->formError	= FALSE;
-            $this->formErrorMsg	= '';
+            $this->formError    = FALSE;
+            $this->formErrorMsg = '';
 
-            $_POST['txt_Email']	= trim($_POST['txt_Email']);
+            $_POST['txt_Email'] = trim($_POST['txt_Email']);
             if(!isset($_POST['txt_Email']) || $_POST['txt_Email'] == '')
             {
-                $this->formError	= TRUE;
-                $this->formErrorMsg	.= ($this->formErrorMsg != '')?'<br />':'';
-                $this->formErrorMsg	.= 'Please enter name.';
+                $this->formError    = TRUE;
+                $this->formErrorMsg .= ($this->formErrorMsg != '')?'<br />':'';
+                $this->formErrorMsg .= 'Please enter name.';
             }
 
             if(!isset($_POST['txt_Password']) || $_POST['txt_Password'] == '')
             {
-                $this->formError	= TRUE;
-                $this->formErrorMsg	.= ($this->formErrorMsg != '')?'<br />':'';
-                $this->formErrorMsg	.= 'Please enter password.';
+                $this->formError    = TRUE;
+                $this->formErrorMsg .= ($this->formErrorMsg != '')?'<br />':'';
+                $this->formErrorMsg .= 'Please enter password.';
             }
 
             if(!$this->formError)
@@ -254,10 +279,10 @@ class Auth extends Z_Controller
                 {
                     $token      = encrypt_str($_POST['txt_Email'].'|'.date('Y-m-d H:i:s'));
 
-                    $a_cond	= array(
-                        'table'		=> 'players',
-                        'field'		=> 'email',
-                        'value'		=> $_POST['txt_Email'],
+                    $a_cond = array(
+                        'table'     => 'players',
+                        'field'     => 'email',
+                        'value'     => $_POST['txt_Email'],
                         'compare'=> '='
                     );
                     $a_update   = array(
@@ -280,17 +305,17 @@ class Auth extends Z_Controller
                     unset($a_login['a_data']['password']);
                     unset($a_login['a_data']['secret']);
 
-                    $_SESSION['ss_Public']	= $a_login['a_data'];
+                    $_SESSION['ss_Public']  = $a_login['a_data'];
 
                     // REDIRECT to home
-                    $location	= base_url();
+                    $location   = base_url();
 
                     // STORE game
                     if($_COOKIE['store_game'] == 1)
                     {
                         if($this->_store_game())
                         {
-                            $location	= base_url().'game';
+                            $location   = base_url().'game';
                         }
                     }
 
@@ -299,8 +324,8 @@ class Auth extends Z_Controller
                 else
                 {
                     // FAILED
-                    $_SESSION['ss_Msgbox']['msg']		= $a_login['msg'];
-                    $_SESSION['ss_Msgbox']['msgType']	= 'error';
+                    $_SESSION['ss_Msgbox']['msg']       = $a_login['msg'];
+                    $_SESSION['ss_Msgbox']['msgType']   = 'error';
                 }
             }
         }
@@ -344,7 +369,7 @@ class Auth extends Z_Controller
     private function _store_game()
     {
         $this->p_load_model('MSubmission');
-        $this->MSubmission	= new MSubmission();
+        $this->MSubmission  = new MSubmission();
 
         $score   = str_replace(array('_','x','F','B','E','#'), '', $_COOKIE['_leksxia_x2']);
         if($score != '')
@@ -361,7 +386,7 @@ class Auth extends Z_Controller
             );
 
             $insert = $this->MSubmission->insert_submission($a_insert);
-            $location	= base_url().'game';
+            $location   = base_url().'game';
 
             // RESET cookie
             $this->p_reset_cookie();

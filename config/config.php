@@ -43,8 +43,8 @@ $config['client_staging']['mail_admin_name']    = 'Sharp';
 $config['client_staging']['mail_mailtype']      = 'html';
 
 $config['staging']['environment']       = 'staging';
-$config['staging']['dir_base_url']      = $config['protocol'].((isset($config['staging']['base_url']))?$config['staging']['base_url']:'reraya.senjitsu.com'); 
-$config['staging']['base_url']          = $config['protocol'].((isset($config['staging']['base_url']))?$config['staging']['base_url']:'reraya.senjitsu.com');
+$config['staging']['dir_base_url']      = $config['protocol'].((isset($config['staging']['base_url']))?$config['staging']['base_url']:'sharpmicro.senjitsu.com'); 
+$config['staging']['base_url']          = $config['protocol'].((isset($config['staging']['base_url']))?$config['staging']['base_url']:'sharpmicro.senjitsu.com');
 $config['staging']['media_url']         = $config['staging']['base_url'].'/media';
 $config['staging']['site_url']          = $config['protocol'].'sharpmicro.senjitsu.com';
 $config['staging']['storage_url']       = $config['protocol'].'sharprstorage.senjitsu.com';

@@ -7,3 +7,4 @@ Password: <input type="password" name="txt_Password" /><br />
 <br />
 <input type="submit" value="Submit" />
 </form>
+<a href="<?php echo base_url();?>auth/sign-up">Sign Up</a>

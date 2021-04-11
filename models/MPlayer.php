@@ -134,12 +134,12 @@ class MPlayer extends Model
         // END mysql transaction
         $this->db->trans_complete();
 
-        if($this->db->affected_row())
+        if($this->db->affected_row() > 0)
         {
             $a_rtn  = array(
                 'status'        => TRUE,
                 'msg'           => 'User is successfully inserted.',
-                'submission_id' => $player_id
+                'player_id'     => $player_id
             );
         }
         else
@@ -190,7 +190,7 @@ class MPlayer extends Model
         // END mysql transaction
         $this->db->trans_complete();
 
-        if($this->db->affected_row())
+        if($this->db->affected_row() > 0)
         {
             $a_rtn  = array(
                 'status'    => TRUE,

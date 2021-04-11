@@ -24,12 +24,12 @@ class MSubmission extends Model
         $where  = " WHERE 1 = 1";
         $cond   = set_condition($a_cond);
         // SET default order
-		if($order == '')
-		{
-			$order	= "	ORDER BY
-							z_submission.submission_id ASC";
-		}
-        $limit		= set_limit($a_limit);
+        if($order == '')
+        {
+            $order	= "	ORDER BY
+                            z_submission.submission_id ASC";
+        }
+        $limit      = set_limit($a_limit);
         if(!isset($a_limit) || $a_limit == 'ALL')
         {
             $a_limit[0] = 0;
@@ -113,7 +113,7 @@ class MSubmission extends Model
         // END mysql transaction
         $this->db->trans_complete();
 
-        if($this->db->affected_row())
+        if($this->db->affected_row() > 0)
         {
             $a_rtn  = array(
                 'status'        => TRUE,

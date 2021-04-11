@@ -86,7 +86,7 @@
                 <a href="<?php echo base_url();?>game">Game</a><br />
                 <a href="<?php echo base_url();?>game/leaderboard">Leaderboard</a><br />
                 <a href="<?php echo base_url();?>lucky-draw">Lucky Draw</a>
-
+                <hr />
                 <?php echo $this->pageContent;?>
                 <footer>
                     <div class="footer_left">
