@@ -82,6 +82,15 @@ class Z_Controller extends Controller
         }
     }
 
+    function p_load_helper($helper)
+    {
+        $helper_file = BASEPATH.'/helper/'.$helper.EXT;
+        if(file_exists(BASEPATH.'/helper/'.$helper.EXT))
+        {
+            require_once($helper_file);
+        }
+    }
+
     function p_reset_cookie()
     {
         $expires    = time() + (86400 * 1);

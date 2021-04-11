@@ -9,7 +9,7 @@ class MSubmission extends Model
     function get_submission_list($a_cond='', $order='', $group_by='', $a_limit='ALL')
     {
         $a_rtn_data = array();
-        $a_Data = array();
+        $a_data = array();
         // ----------------------------------------------------------------------- //
         // BUILD sql query
         // ----------------------------------------------------------------------- //
@@ -59,7 +59,7 @@ class MSubmission extends Model
     function get_submission($a_cond='', $mode='FULL')
     {
         $a_rtn_data = array();
-        $a_Data = array();
+        $a_data = array();
         // ----------------------------------------------------------------------- //
         // BUILD sql query
         // ----------------------------------------------------------------------- //
@@ -78,13 +78,13 @@ class MSubmission extends Model
         if($Q->num_rows() > 0)
         {
             $a_data                 = $Q->result();
-            $a_rtn_data['a_data']   = $a_Data[0];
+            $a_rtn_data['a_data']   = $a_data[0];
             $a_rtn_data['status']   = TRUE;
         }
         else
         {
             $a_rtn_data['status']   = FALSE;
-            $a_rtn_data['msg']      = 'We\'re sorry, the submission you\'re looking for cannot be found.';
+            $a_rtn_data['msg']      = 'We\'re sorry, the Submission you\'re looking for cannot be found.';
         }
         
         $Q->free_result();

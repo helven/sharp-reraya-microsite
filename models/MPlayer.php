@@ -9,7 +9,7 @@ class MPlayer extends Model
     function get_player($a_cond='', $mode='FULL')
     {
         $a_rtn_data = array();
-        $a_Data = array();
+        $a_data = array();
         // ----------------------------------------------------------------------- //
         // BUILD sql query
         // ----------------------------------------------------------------------- //
@@ -34,7 +34,7 @@ class MPlayer extends Model
         else
         {
             $a_rtn_data['status']   = FALSE;
-            $a_rtn_data['msg']      = 'We\'re sorry, the user you\'re looking for cannot be found.';
+            $a_rtn_data['msg']      = 'We\'re sorry, the User you\'re looking for cannot be found.';
         }
         
         $Q->free_result();

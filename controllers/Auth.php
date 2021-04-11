@@ -42,7 +42,7 @@ class Auth extends Z_Controller
     function sign_up()
     {
         // CHECK user login status
-        if(isset($_SESSION['ss_Public']))
+        if(check_auth())
         {
             // REDIRECT to dashboard
             $location   = base_url();
@@ -59,7 +59,7 @@ class Auth extends Z_Controller
             {
                 $this->formError    = TRUE;
                 $this->formErrorMsg .= ($this->formErrorMsg != '')?'<br />':'';
-                $this->formErrorMsg .= 'Please enter name.';
+                $this->formErrorMsg .= 'Please enter email.';
             }
 
             if(!isset($_POST['txt_Password']) || $_POST['txt_Password'] == '')
@@ -83,84 +83,90 @@ class Auth extends Z_Controller
                 $this->formErrorMsg .= 'Password and confirm password does not match.';
             }
 
+            // CLEAN $_POST
+            sec_clean_all_post($this->db->conn);
+
+            // CLEAN $_POST
+            sec_clean_all_post($this->db->conn);
+
+            // CHECK player
+            $a_cond = array(
+                'table'     => 'players',
+                'field'     => 'email',
+                'value'     => $_POST['txt_Email'],
+                'compare'=> '='
+            );
+            $player_exist   = $this->MPlayer->check_player_exist($a_cond);
+
+            if($player_exist)
+            {
+                $this->formError    = TRUE;
+                $this->formErrorMsg .= ($this->formErrorMsg != '')?'<br />':'';
+                $this->formErrorMsg .= 'Password and confirm password does not match.';
+            }
+
             if(!$this->formError)
             {
-                // CLEAN $_POST
-                sec_clean_all_post($this->db->conn);
-
-                // CHECK player
-                $a_cond = array(
-                    'table'     => 'players',
-                    'field'     => 'email',
-                    'value'     => $_POST['txt_Email'],
-                    'compare'=> '='
+                // INSERT player
+                $cdate  = date('Y-m-d H:i:s');
+                $a_insert   = array(
+                    'status'        => 1,
+                    'name'          => $_POST['txt_Name'],
+                    'email'         => $_POST['txt_Email'],
+                    'phone'         => $_POST['txt_Phone'],
+                    'password'      => '',
+                    'secret'        => encrypt_str($_POST['txt_Password']),
+                    'remember_token'=> '',
+                    'created_at'  => $cdate,
+                    'updated_at'  => $cdate
                 );
-                $player_exist   = $this->MPlayer->check_player_exist($a_cond);
+                $insert = $this->MPlayer->insert_player($a_insert);
 
-                if($player_exist)
+                if($insert['status'])
                 {
-                    $this->formError    = TRUE;
-                    $this->formErrorMsg .= ($this->formErrorMsg != '')?'<br />':'';
-                    $this->formErrorMsg .= 'Password and confirm password does not match.';
-                }
-                else
-                {
-                    // INSERT player
-                    $cdate  = date('Y-m-d H:i:s');
-                    $a_insert   = array(
-                        'status'        => 1,
-                        'name'          => $_POST['txt_Name'],
-                        'email'         => $_POST['txt_Email'],
-                        'phone'         => $_POST['txt_Phone'],
-                        'password'      => '',
-                        'secret'        => encrypt_str($_POST['txt_Password']),
-                        'remember_token'=> '',
-                        'created_at'  => $cdate,
-                        'updated_at'  => $cdate
+                    // AUTO login after Sign Up
+                    $a_cond= array(
+                        'table' => 'players',
+                        'field'     => 'id',
+                        'value'     => $insert['player_id'],
+                        'compare'=> '='
                     );
-                    $insert = $this->MPlayer->insert_player($a_insert);
-
-                    if($insert['status'])
+                    $a_user = $this->MPlayer->get_player($a_cond);
+    
+                    if($a_user['status'])
                     {
-                        // AUTO login after Sign Up
-                        $a_cond= array(
-                            'table' => 'players',
-                            'field'     => 'id',
-                            'value'     => $insert['player_id'],
-                            'compare'=> '='
-                        );
-                        $a_user = $this->MPlayer->get_player($a_cond);
-        
-                        if($a_user['status'])
-                        {
-                            unset($a_user['a_data']['password']);
-                            unset($a_user['a_data']['secret']);
-        
-                            $_SESSION['ss_Public']  = $a_user['a_data'];
-        
-                            $token      = encrypt_str($a_user['a_data']['email'].'|'.date('Y-m-d H:i:s'));
-                            $expires    = time() + (86400 * 30);
-                            $path       = '/';
-                            setrawcookie('c_user', '', $expires, $path);
-                            setrawcookie('remember_token', '', $expires, $path);
+                        unset($a_user['a_data']['password']);
+                        unset($a_user['a_data']['secret']);
+    
+                        $_SESSION['ss_Public']  = $a_user['a_data'];
+    
+                        $token      = encrypt_str($a_user['a_data']['email'].'|'.date('Y-m-d H:i:s'));
+                        $expires    = time() + (86400 * 30);
+                        $path       = '/';
+                        setrawcookie('c_user', '', $expires, $path);
+                        setrawcookie('remember_token', '', $expires, $path);
 
-                            // REDIRECT to home
-                            $location   = base_url();
-        
-                            // STORE game
-                            if($_COOKIE['store_game'] == 1)
+                        // REDIRECT to home
+                        $location   = base_url();
+    
+                        // STORE game
+                        if($_COOKIE['store_game'] == 1)
+                        {
+                            if($this->_store_game())
                             {
-                                if($this->_store_game())
-                                {
-                                    $location   = base_url().'game';
-                                }
+                                $location   = base_url().'game';
                             }
                         }
                     }
+                    redirect($location);
+                }
+                else
+                {
+                    $this->formError    = TRUE;
+                    $this->formErrorMsg .= ($this->formErrorMsg != '')?'<br />':'';
+                    $this->formErrorMsg .= 'Failed sign up, please try again.';
                 }
             }
-
-            redirect($location);
         }
 
         // ----------------------------------------------------------------------- //
