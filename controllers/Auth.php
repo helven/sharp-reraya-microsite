@@ -86,9 +86,6 @@ class Auth extends Z_Controller
             // CLEAN $_POST
             sec_clean_all_post($this->db->conn);
 
-            // CLEAN $_POST
-            sec_clean_all_post($this->db->conn);
-
             // CHECK player
             $a_cond = array(
                 'table'     => 'players',

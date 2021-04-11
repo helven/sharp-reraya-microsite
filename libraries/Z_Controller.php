@@ -13,6 +13,8 @@ class Z_Controller extends Controller
     {
         parent::__construct();
 
+        $_SESSION['ss_Geo']['ip']   = $this->get_client_ip();
+
         $this->db = new Database();
         //$this->xls = new Excel();
         $this->o_MobileDetect   = new Mobile_Detect();
@@ -55,7 +57,20 @@ class Z_Controller extends Controller
 | PUBLIC function
 | ------------------------------------------------------------------------------------------------------------------------------------------
 */
+    function get_client_ip()
+    {
+        $ip	= '';
+        if ($_SERVER['REMOTE_ADDR'] != '127.0.0.1' && $config['environment'] != 'dev')
+        {
+            $ip	= $_SERVER['REMOTE_ADDR'];
+        }
+        else
+        {
+            $ip	= '121.121.16.77'; // 1Techpark ip
+        }
 
+        return $ip;
+    }
 /* 
 | ------------------------------------------------------------------------------------------------------------------------------------------
 | PROTECTED function
