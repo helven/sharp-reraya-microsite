@@ -10,13 +10,27 @@ if (!function_exists('sec_db_clean'))
 
 if (!function_exists('sec_clean_all_post'))
 {
-    function sec_clean_all_post($link, $str='', $escape=TRUE)
+    function sec_clean_all_post($link)
     {
         foreach($_POST as &$post)
         {
             if(!is_array($post))
             {
                 $post	= sec_db_clean($link, $post);
+            }
+        }
+    }
+}
+
+if (!function_exists('sec_clean_all_get'))
+{
+    function sec_clean_all_get($link)
+    {
+        foreach($_GET as &$get)
+        {
+            if(!is_array($get))
+            {
+                $get	= sec_db_clean($link, $get);
             }
         }
     }

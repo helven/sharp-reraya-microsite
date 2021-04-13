@@ -1,3 +1,4 @@
+<h1>Leaderboard</h1>
 <?php $ctr = 0;?>
 <?php if($this->a_leaderboard['status']){ ?>
     <?php foreach($this->a_leaderboard['a_data'] as $a_submission){ ?>

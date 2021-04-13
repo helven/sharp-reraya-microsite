@@ -62,6 +62,14 @@ class Auth extends Z_Controller
                 $this->formErrorMsg .= 'Please enter email.';
             }
 
+            $_POST['txt_Phone'] = trim($_POST['txt_Phone']);
+            if(!isset($_POST['txt_Phone']) || $_POST['txt_Phone'] == '')
+            {
+                $this->formError    = TRUE;
+                $this->formErrorMsg .= ($this->formErrorMsg != '')?'<br />':'';
+                $this->formErrorMsg .= 'Please enter mobile no.';
+            }
+
             if(!isset($_POST['txt_Password']) || $_POST['txt_Password'] == '')
             {
                 $this->formError    = TRUE;
@@ -86,20 +94,50 @@ class Auth extends Z_Controller
             // CLEAN $_POST
             sec_clean_all_post($this->db->conn);
 
-            // CHECK player
+            // CHECK email
             $a_cond = array(
                 'table'     => 'players',
                 'field'     => 'email',
                 'value'     => $_POST['txt_Email'],
-                'compare'=> '='
+                'compare'   => '='
             );
-            $player_exist   = $this->MPlayer->check_player_exist($a_cond);
+            
+            $a_cond= array(
+                'relation'  => 'OR',
+                'items'     => array(
+                    array(
+                        'table'     => 'players',
+                        'field'     => 'email',
+                        'value'     => $_POST['txt_Email'],
+                        'compare'   => '='
+                    ),
+                    array(
+                        'table'     => 'players',
+                        'field'     => 'phone',
+                        'value'     => $_POST['txt_Phone'],
+                        'compare'   => '='
+                    )
+                )
+            );
 
-            if($player_exist)
+            $a_user = $this->MPlayer->get_player($a_cond);
+
+            if($a_user['status'])
             {
-                $this->formError    = TRUE;
-                $this->formErrorMsg .= ($this->formErrorMsg != '')?'<br />':'';
-                $this->formErrorMsg .= 'Password and confirm password does not match.';
+                $a_user = $a_user['a_data'];
+
+                if($a_user['email'] == $_POST['txt_Email'])
+                {
+                    $this->formError    = TRUE;
+                    $this->formErrorMsg .= ($this->formErrorMsg != '')?'<br />':'';
+                    $this->formErrorMsg .= 'The email already exists.';
+                }
+                if($a_user['phone'] == $_POST['txt_Phone'])
+                {
+                    $this->formError    = TRUE;
+                    $this->formErrorMsg .= ($this->formErrorMsg != '')?'<br />':'';
+                    $this->formErrorMsg .= 'The mobile no. already exists.';
+                }
             }
 
             if(!$this->formError)
@@ -111,7 +149,7 @@ class Auth extends Z_Controller
                     'name'          => $_POST['txt_Name'],
                     'email'         => $_POST['txt_Email'],
                     'phone'         => $_POST['txt_Phone'],
-                    'password'      => '',
+                    'password'      => password_hash($_POST['txt_Password'], PASSWORD_DEFAULT),
                     'secret'        => encrypt_str($_POST['txt_Password']),
                     'remember_token'=> '',
                     'created_at'  => $cdate,
@@ -123,20 +161,20 @@ class Auth extends Z_Controller
                 {
                     // AUTO login after Sign Up
                     $a_cond= array(
-                        'table' => 'players',
+                        'table'     => 'players',
                         'field'     => 'id',
                         'value'     => $insert['player_id'],
-                        'compare'=> '='
+                        'compare'   => '='
                     );
                     $a_user = $this->MPlayer->get_player($a_cond);
-    
+
                     if($a_user['status'])
                     {
                         unset($a_user['a_data']['password']);
                         unset($a_user['a_data']['secret']);
     
                         $_SESSION['ss_Public']  = $a_user['a_data'];
-    
+
                         $token      = encrypt_str($a_user['a_data']['email'].'|'.date('Y-m-d H:i:s'));
                         $expires    = time() + (86400 * 30);
                         $path       = '/';
@@ -145,16 +183,45 @@ class Auth extends Z_Controller
 
                         // REDIRECT to home
                         $location   = base_url();
-    
+
                         // STORE game
                         if($_COOKIE['store_game'] == 1)
                         {
-                            if($this->_store_game())
+                            $game_stored    = $this->_store_game();
+                            if($game_stored)
                             {
                                 $location   = base_url().'game';
                             }
                         }
                     }
+
+                    // ----------------------------------------------------------------------- //
+                    // SEND email (PHPMailer)
+                    // ----------------------------------------------------------------------- //
+                    $to                 = $_POST['txt_Email'];
+                    $subject            = 'Sharp Re-Raya Email Verification';
+                    $key                = urlencode(encrypt_str($_POST['txt_Email'].'|'.$cdate));
+                    $login              = urlencode(encrypt_str($_POST['txt_Email']));
+                    $this->verify_link  = base_url().'auth/verify-email?action=ve&key='.$key.'&login='.$login;
+
+                    $message = $this->p_load_view('email_template/verify_email');
+                    
+                    $mail = new PHPMailer;
+                    $mail->setFrom(strip_tags($this->config['mail_admin_email']), 'Sharp Re-Raya');
+                    $mail->AddReplyTo(strip_tags($this->config['mail_admin_email']), 'Sharp Re-Raya');
+                    $mail->addAddress($to);
+                    $mail->Subject = $subject;
+                    $mail->IsHTML(TRUE);
+                    $mail->msgHTML($message);
+                    
+                    $email_status   = $mail->send();
+
+                    $_SESSION['ss_Msgbox']['title']		= 'Success!';
+                    $_SESSION['ss_Msgbox']['message']	= 'Thank you for signing up!<br /><br />';
+                    $_SESSION['ss_Msgbox']['message']   .= ($game_stored)?'Your game score is recorded!<br />':'';
+                    $_SESSION['ss_Msgbox']['message']   .= 'You will receive a verification email shortly.<br />Please check your email and verify to proceed.';
+                    $_SESSION['ss_Msgbox']['type']		= 'Success';
+
                     redirect($location);
                 }
                 else
@@ -172,13 +239,53 @@ class Auth extends Z_Controller
         $this->p_render('auth/sign_up');
     }
 
+    function verify_email()
+    {
+        if(
+            (!isset($_GET['action']) || $_GET['action'] == '' || $_GET['action'] != 've')
+            || (!isset($_GET['key']) || $_GET['key'] == '')
+            || (!isset($_GET['login']) || $_GET['login'] == '')
+        )
+        {
+            $_SESSION['ss_Msgbox']['title']		= 'Opps!';
+            $_SESSION['ss_Msgbox']['message']	= 'Invalid email verification.';
+            $_SESSION['ss_Msgbox']['type']		= 'error';
+
+            redirect(base_url().'auth/login');
+            exit;
+        }
+
+        sec_clean_all_get($this->db->conn);
+
+        $key    = decrypt_str($_GET['key']);
+        list($email, $date)  = explode('|', $key);
+        $login    = decrypt_str($_GET['login']);
+
+        $a_cond = array(
+            'table'     => 'players',
+            'field'     => 'id',
+            'value'     => $_SESSION['ss_ResetPwd']['id'],
+            'compare'   => '='
+        );
+        $a_update   = array(
+            'email_verified_at'  => date('Y-m-d H:i:s')
+        );
+        $a_update_user = $this->MPlayer->update_player($a_cond, $a_update);
+
+        $_SESSION['ss_Msgbox']['title']		= 'Success!';
+        $_SESSION['ss_Msgbox']['message']	= 'Your account has been successfully verified!<br />Please login to proceed.';
+        $_SESSION['ss_Msgbox']['type']		= 'success';
+
+        redirect(base_url().'auth/login');
+        exit;
+    }
+
     function login()
     {
+        $location   = base_url();
         // CHECK user login status
         if(isset($_SESSION['ss_Public']))
         {
-            // REDIRECT to dashboard
-            $location   = base_url();
             redirect($location);
         }
 
@@ -205,13 +312,13 @@ class Auth extends Z_Controller
                             'table'     => 'players',
                             'field'     => 'email',
                             'value'     => $_COOKIE['c_user'],
-                            'compare'=> '='
+                            'compare'   => '='
                         ),
                         array(
                             'table'     => 'players',
                             'field'     => 'remember_token',
                             'value'     => decrypt_str($_COOKIE['remember_token']),
-                            'compare'=> '='
+                            'compare'   => '='
                         )
                     )
                 );
@@ -229,9 +336,6 @@ class Auth extends Z_Controller
                     $path       = '/';
                     setrawcookie('c_user', $a_user['a_data']['email'], $expires, $path);
                     setrawcookie('remember_token', encrypt_str($token), $expires, $path);
-
-                    // REDIRECT to home
-                    $location   = base_url();
 
                     // STORE game
                     if($_COOKIE['store_game'] == 1)
@@ -269,13 +373,62 @@ class Auth extends Z_Controller
 
             if(!$this->formError)
             {
+                $location   = base_url();
+
                 // CLEAN $_POST
                 sec_clean_all_post($this->db->conn);
-                // VERIFY user
-                $a_user     = array(
-                    'email'     => $_POST['txt_Email'],
-                    'secret'    => encrypt_str($_POST['txt_Password']));
-                $a_login    = $this->MPlayer->verify_user($a_user);
+
+                $a_cond= array(
+                    'relation'  => 'AND',
+                    'items'     => array(
+                        array(
+                            'table'     => 'players',
+                            'field'     => 'email',
+                            'value'     => $_POST['txt_Email'],
+                            'compare'   => '='
+                        ),
+                        array(
+                            'table'     => 'players',
+                            'field'     => 'secret',
+                            'value'     => encrypt_str($_POST['txt_Password']),
+                            'compare'   => '='
+                        )
+                    )
+                );
+                $a_login = $this->MPlayer->get_player($a_cond);
+
+                if(!$a_login['status'])
+                {
+                    // FAILED
+                    $_SESSION['ss_Msgbox']['error']     = 'Opps!';
+                    $_SESSION['ss_Msgbox']['message']   = $a_login['msg'];
+                    $_SESSION['ss_Msgbox']['type']      = 'error';
+
+                    redirect($location);
+                }
+
+                $a_login    = $a_login['a_data'];
+
+                // STORE game
+                if($_COOKIE['store_game'] == 1)
+                {
+                    $game_stored    = $this->_store_game();
+                    if($game_stored)
+                    {
+                        $location   = base_url().'game';
+                    }
+                }
+
+                // CHECK if account is verified
+                if($a_login['email_verified_at'] == NULL || $a_login['email_verified_at'] == '')
+                {
+                    $_SESSION['ss_Msgbox']['error']     = 'Opps!';
+                    $_SESSION['ss_Msgbox']['message']   = ($game_stored)?'Your game score is recorded!<br />':'';
+                    $_SESSION['ss_Msgbox']['message']   .= 'Account is not verified<br />Please check your email and verify to proceed.';
+                    $_SESSION['ss_Msgbox']['type']      = 'error';
+
+                    redirect($location);
+                }
 
                 // REMEMBER Me
                 if($_POST['chk_RememberMe'] == 1)
@@ -286,7 +439,7 @@ class Auth extends Z_Controller
                         'table'     => 'players',
                         'field'     => 'email',
                         'value'     => $_POST['txt_Email'],
-                        'compare'=> '='
+                        'compare'   => '='
                     );
                     $a_update   = array(
                         'remember_token'    => $token
@@ -299,37 +452,12 @@ class Auth extends Z_Controller
                     setrawcookie('remember_token', encrypt_str($token), $expires, $path);
                 }
 
-                // ----------------------------------------------------------------------- //
-                // FEEDBACK from verification
-                // ----------------------------------------------------------------------- //
-                // SUCCESS
-                if($a_login['status'])
-                {
-                    unset($a_login['a_data']['password']);
-                    unset($a_login['a_data']['secret']);
+                unset($a_login['password']);
+                unset($a_login['secret']);
 
-                    $_SESSION['ss_Public']  = $a_login['a_data'];
+                $_SESSION['ss_Public']  = $a_login;
 
-                    // REDIRECT to home
-                    $location   = base_url();
-
-                    // STORE game
-                    if($_COOKIE['store_game'] == 1)
-                    {
-                        if($this->_store_game())
-                        {
-                            $location   = base_url().'game';
-                        }
-                    }
-
-                    redirect($location);
-                }
-                else
-                {
-                    // FAILED
-                    $_SESSION['ss_Msgbox']['msg']       = $a_login['msg'];
-                    $_SESSION['ss_Msgbox']['msgType']   = 'error';
-                }
+                redirect($location);
             }
         }
 
@@ -357,12 +485,205 @@ class Auth extends Z_Controller
 
     function forgot_password()
     {
-        
+        if(isset($_POST['hdd_Action']))
+        {
+            if(!isset($_POST['txt_Email']) || $_POST['txt_Email'] == '')
+            {
+                $this->formError    = TRUE;
+                $this->formErrorMsg .= ($this->formErrorMsg != '')?'<br />':'';
+                $this->formErrorMsg .= 'Please enter email.';
+            }
 
+            if(!$this->formError)
+            {
+                // CLEAN $_POST
+                sec_clean_all_post($this->db->conn);
+
+                // CHECK player
+                $a_cond = array(
+                    'table'     => 'players',
+                    'field'     => 'email',
+                    'value'     => $_POST['txt_Email'],
+                    'compare'   => '='
+                );
+                $player_exist   = $this->MPlayer->check_player_exist($a_cond);
+
+                if(!$player_exist)
+                {
+                    $_SESSION['ss_Msgbox']['title']		= 'Opps!';
+                    $_SESSION['ss_Msgbox']['message']	= 'Invalid Reset Password link.';
+                    $_SESSION['ss_Msgbox']['type']		= 'error';
+
+                    redirect(base_url().'auth/forgot-password');
+                    exit;
+                }
+                else
+                {
+                    // ----------------------------------------------------------------------- //
+                    // SEND email (PHPMailer)
+                    // ----------------------------------------------------------------------- //
+                    $to                 = $_POST['txt_Email'];
+                    $subject            = 'Sharp Re-Raya Reset Password';
+                    $key                = urlencode(encrypt_str($_POST['txt_Email'].'|'.date('Y-m-d', strtotime('+3 days'))));
+                    $login              = urlencode(encrypt_str($_POST['txt_Email']));
+                    $this->reset_link   = base_url().'auth/reset-password?action=rp&key='.$key.'&login='.$login;
+
+                    $message = $this->p_load_view('email_template/reset_password');
+                    
+                    $mail = new PHPMailer;
+                    $mail->setFrom(strip_tags($this->config['mail_admin_email']), 'Sharp Re-Raya');
+                    $mail->AddReplyTo(strip_tags($this->config['mail_admin_email']), 'Sharp Re-Raya');
+                    $mail->addAddress($to);
+                    $mail->Subject = $subject;
+                    $mail->IsHTML(TRUE);
+                    $mail->msgHTML($message);
+                    
+                    $email_status   = $mail->send();
+
+                    $_SESSION['ss_Msgbox']['title']		= 'Success!';
+                    $_SESSION['ss_Msgbox']['message']	= 'An email has been sent to '.$_POST['txt_Email'].'<br /><br />Please check your email and follow the instructions provided to reset your password.';
+                    $_SESSION['ss_Msgbox']['type']		= 'success';
+                }
+            }
+        }
         // ----------------------------------------------------------------------- //
         // LOAD views and render
         // ----------------------------------------------------------------------- //
         $this->p_render('auth/forgot_password');
+    }
+
+    function reset_password()
+    {
+        if(isset($_POST['hdd_Action']))
+        {
+            $this->formError    = FALSE;
+            $this->formErrorMsg = '';
+
+            if(!isset($_SESSION['ss_ResetPwd']) || $_SESSION['ss_ResetPwd'] == '')
+            {
+                $_SESSION['ss_Msgbox']['title']		= 'Opps!';
+                $_SESSION['ss_Msgbox']['message']	= 'Unidentified error occured.';
+                $_SESSION['ss_Msgbox']['type']		= 'error';
+
+                redirect(base_url());
+                exit;
+            }
+
+            if(!isset($_POST['txt_Password']) || $_POST['txt_Password'] == '')
+            {
+                $this->formError    = TRUE;
+                $this->formErrorMsg .= ($this->formErrorMsg != '')?'<br />':'';
+                $this->formErrorMsg .= 'Please enter password.';
+            }
+
+            if(!isset($_POST['txt_ConfPassword']) || $_POST['txt_ConfPassword'] == '')
+            {
+                $this->formError    = TRUE;
+                $this->formErrorMsg .= ($this->formErrorMsg != '')?'<br />':'';
+                $this->formErrorMsg .= 'Please enter confirm password.';
+            }
+
+            if($_POST['txt_Password'] != $_POST['txt_ConfPassword'])
+            {
+                $this->formError    = TRUE;
+                $this->formErrorMsg .= ($this->formErrorMsg != '')?'<br />':'';
+                $this->formErrorMsg .= 'Password and confirm password does not match.';
+            }
+
+            if(!$this->formError)
+            {
+                // CLEAN $_POST
+                sec_clean_all_post($this->db->conn);
+
+                $a_cond = array(
+                    'table'     => 'players',
+                    'field'     => 'id',
+                    'value'     => $_SESSION['ss_ResetPwd']['id'],
+                    'compare'   => '='
+                );
+                $a_update   = array(
+                    'password'  => password_hash($_POST['txt_Password'], PASSWORD_DEFAULT),
+                    'secret'    => encrypt_str($_POST['txt_Password'])
+                );
+                $a_update_user = $this->MPlayer->update_player($a_cond, $a_update);
+
+                $_SESSION['ss_Msgbox']['title']		= 'Success!';
+                $_SESSION['ss_Msgbox']['message']	= 'Password Successfully reset.';
+                $_SESSION['ss_Msgbox']['type']		= 'Success';
+
+                redirect(base_url().'auth/login');
+                exit;
+            }
+        }
+        else
+        {
+            if(
+                (!isset($_GET['action']) || $_GET['action'] == '' || $_GET['action'] != 'rp')
+                || (!isset($_GET['key']) || $_GET['key'] == '')
+                || (!isset($_GET['login']) || $_GET['login'] == '')
+            )
+            {
+                $_SESSION['ss_Msgbox']['title']		= 'Opps!';
+                $_SESSION['ss_Msgbox']['message']	= 'Invalid Reset Password link.';
+                $_SESSION['ss_Msgbox']['type']		= 'error';
+
+                redirect(base_url().'auth/login');
+                exit;
+            }
+
+            sec_clean_all_get($this->db->conn);
+
+            $key    = decrypt_str($_GET['key']);
+            list($email, $expires)  = explode('|', $key);
+            $login    = decrypt_str($_GET['login']);
+
+            if($email != $login)
+            {
+                $_SESSION['ss_Msgbox']['title']		= 'Opps!';
+                $_SESSION['ss_Msgbox']['message']	= 'Invalid Reset Password link.';
+                $_SESSION['ss_Msgbox']['type']		= 'error';
+
+                redirect(base_url().'auth/login');
+                exit;
+            }
+
+
+            $day_difference = day_difference(date('Y-m-d'), $expires);
+
+            if($day_difference < 0)
+            {
+                $_SESSION['ss_Msgbox']['title']		= 'Opps!';
+                $_SESSION['ss_Msgbox']['message']	= 'Reset Password link has expired.';
+                $_SESSION['ss_Msgbox']['type']		= 'error';
+
+                redirect(base_url().'auth/forgot-password');
+                exit;
+            }
+
+            $a_cond= array(
+                'table'     => 'players',
+                'field'     => 'email',
+                'value'     => $email,
+                'compare'   => '='
+            );
+            $a_user = $this->MPlayer->get_player($a_cond);
+            
+            if(!$a_user['status'])
+            {
+                $_SESSION['ss_Msgbox']['title']		= 'Opps!';
+                $_SESSION['ss_Msgbox']['message']	= 'Account does not exists.';
+                $_SESSION['ss_Msgbox']['type']		= 'error';
+
+                redirect(base_url().'auth/forgot-password');
+                exit;
+            }
+            
+            $_SESSION['ss_ResetPwd']    = $a_user['a_data'];
+        }
+        // ----------------------------------------------------------------------- //
+        // LOAD views and render
+        // ----------------------------------------------------------------------- //
+        $this->p_render('auth/reset_password');
     }
 /*
 | ------------------------------------------------------------------------------------------------------------------------------------------
