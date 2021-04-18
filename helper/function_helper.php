@@ -473,6 +473,6 @@ if( ! function_exists('clean_phone_no'))
     {
         $str   = str_replace(array('+6', ' ', '-', '_', '(', ')'), '', $str);
 
-        return str;
+        return $str;
     }
 }
