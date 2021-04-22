@@ -1,0 +1,100 @@
+@font-face {
+    font-family: 'gilroyregular';
+    src: url('../font/gilroy-regular-webfont.woff2') format('woff2'),
+        url('../font/gilroy-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'gilroysemibold';
+    src: url('../font/gilroy-semibold-webfont.woff2') format('woff2'),
+        url('../font/gilroy-semibold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'gilroybold';
+    src: url('../font/gilroy-bold-webfont.woff2') format('woff2'),
+        url('../font/gilroy-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+* {
+    font-family: 'gilroyregular', 'Arial', sans-serif;
+    font-size: 1em;
+    color: #000000;
+}
+
+h1,
+h2 {
+    font-family: 'gilroysemibold';
+}
+
+h3 {
+    font-family: 'gilroyregular';
+}
+
+
+h2 {
+    font-size: 1.67em;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.9em;
+}
+
+h1 {
+    font-size: 2.5em;
+}
+
+
+
+
+
+
+@media (max-width: 1680px) {
+    * {
+        font-size: 26px;
+    }
+}
+
+@media (max-width: 1440px) {
+    * {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 1366px) {
+    * {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 1280px) {
+    * {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 1152px) {
+    * {
+        font-size: 17px;
+    }
+}
+
+@media (max-width: 1024px) {
+    * {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 1023px) {
+    h2 {
+        font-size: 1.4em;
+    }
+}

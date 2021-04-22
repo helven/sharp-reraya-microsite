@@ -22,30 +22,11 @@
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <meta http-equiv="content-style-type" content="text/css" />
         
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>media/js/bootstrap/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="<?php echo base_url();?>media/css/general.css" type="text/css" media="screen, projection" />
-        <link rel="stylesheet" href="<?php echo base_url();?>media/css/default.css" type="text/css" media="screen, projection" />
-        <link rel="stylesheet" href="<?php echo base_url();?>media/js/scrollbar/jquery.scrollbar.css" type="text/css" media="screen, projection" />
-        <link rel="stylesheet" href="<?php echo base_url();?>media/js/zbox/css/jQuery.zbox.css" type="text/css" media="screen, projection" />
-        <link rel="stylesheet" href="<?php echo base_url();?>media/css/<?php echo $this->platform;?>.css" type="text/css" media="screen, projection" />
-        <!--[if IE]>
-        <style type="text/css">
-            .clearfix {
-                zoom: 1; /* triggers hasLayout */
-            }
-        </style>
-        <![endif]-->
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="<?php echo base_url();?>media/js/bootstrap/js/bootstrap.min.js"></script>
         <script src="<?php echo base_url();?>media/js/generic.js"></script>
         <script src="<?php echo base_url();?>media/js/validate.js"></script>
-        <script><!--
+        <script>//<!--
             jQuery = jQuery.noConflict();
             var addthis_config = {
                 data_track_clickback: false
@@ -74,7 +55,6 @@
         </style>
     </head>
     <body id="body_<?php echo ucfirst($this->platform);?>" class="page_fadein page_fadeout">
-        <div id="div_PageLoader"><img src="<?php echo base_url();?>media/images/page_loader.svg" /></div>
         <div class="scroll_wrapper scrollbar-macosx">
             <div id="div_Page-<?php echo $this->pageName;?>" class="site_container">
                 <?php echo $this->pageContent;?>
@@ -82,7 +62,7 @@
         </div>
         <script type="text/javascript" src="<?php echo base_url();?>media/js/zbox/js/jQuery.zbox.js"></script>
         <script type="text/javascript" src="<?php echo base_url();?>media/js/scrollbar/jquery.scrollbar.min.js"></script>
-        <script><!--
+        <script>//<!--
         jQuery(document).ready(function(){
             
         });

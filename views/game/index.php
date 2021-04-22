@@ -1,22 +1,36 @@
-﻿<div class="container">
-    <div class="row">
-        <div class="col-12 p-0">
-            <iframe id="iframe_Game" src="" style="border:0;width:100%;"></iframe>
-        </div>
+<div style="width: 40%" class="pop-up ta-c va-m">
+    <p>Nice shot !</p>
+    <p style="padding: 1em">To check if you stand a chance to win awesome prizes,<br>
+        create a Cocoro Life account</p>
+    <div class="centered" style="width: 50%">
+        <a href="sign-up.html"> <button>SIGN UP</button></a>
     </div>
 </div>
 
-<div id="div_SignUpPopup" style="display:none;">
-    <?php if(!check_auth()){ ?>
-        <div>
-            <a href="<?php echo base_url();?>auth/login">Sign UP / Login</a>
+<section class="sc-1 ">
+    <div class="container mini-game">
+        <div style="width: 80%" class="centered">
+            <iframe id="iframe_Game" src="" style="border:0;width:100%;margin:1em 0;"></iframe>
+            <div class="ta-l">
+                <h2 style="width: 13em;">Play this easy minigame to win
+                    more amazing prizes this Raya
+                    with SHARP!</h2>
+                <div class="minigame-img">
+                    <img class="fullwidth" src="images/how-to-play.png" alt="">
+                </div>
+                <div>
+                    <ol style="padding: 0">
+                        <li>Shoot a ketupat to gain points</li>
+                        <li>Points are lost if products or red pelitas are shot</li>
+                        <li>Take too long to shoot the next ketupat and it's game over</li>
+                        <li>On mobile devices, rotate your screen for the
+                            best experience</li>
+                    </ol>
+                </div>
+            </div>
         </div>
-    <?php }else{ ?>
-        <div>
-            <a href="<?php echo base_url();?>auth/logout">Logout</a>
-        </div>
-    <?php } ?>
-</div>
+    </div>
+</section>
 
 <script>
 jQuery(document).ready(function(){
@@ -51,9 +65,8 @@ jQuery(document).ready(function(){
             // show Sign Up / login popup
             document.cookie = 'store_game=1;' + expires + path;
 
-            jQuery(this).zboxOpen({
-                text: jQuery('#div_SignUpPopup').html()
-            });
+            jQuery(".pop-up").css("display", "block");
+            jQuery(".overlay").css("opacity", "0.5");
         <?php }else{ ?>
             jQuery.ajax({
                 type        : 'POST',
