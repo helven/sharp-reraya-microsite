@@ -3,15 +3,15 @@
             [0, true, false, false, false, false, false, false, false, false],
             [1, true, false, false, false, false, false, false, false, false],
             [2, true, false, false, false, false, false, false, false, false],
-            [3, true, false, false, false, false, false, false, false, false],
+            [3, false, true, true, true, true, true, true, true, false],
             [4, false, true, true, true, true, true, true, true, true],
-            [5, false, true, true, true, true, true, true, true, false],
+            [5, true, false, false, false, false, false, false, false, false],
             [6, true, false, false, false, false, false, false, false, false]
         ],
         [
-            ["t0", 5, false, [], 0, 0, null, [
+            ["t0", 3, false, [], 0, 0, null, [
                     ["Default", 0, false, 1, 0, false, 3542393951694915, [
-                        ["../media/game/images/btnmenu-sheet0.png", 11774, 0, 0, 110, 110, 1, 0.5, 0.5, [],
+                        ["../media/game/images/btnmenu-sheet0.png", 8364, 0, 0, 110, 110, 1, 0.5, 0.5, [],
                             [], 0
                         ],
                         ["../media/game/images/btnmenu-sheet1.png", 7887, 0, 0, 110, 110, 1, 0.5, 0.5, [],
@@ -21,23 +21,23 @@
                 ],
                 [], false, false, 3299601170435198, [], null
             ],
-            ["t1", 5, false, [], 0, 0, null, [
+            ["t1", 3, false, [], 0, 0, null, [
                     ["MusicON", 5, false, 1, 0, false, 9619042206571097, [
-                        ["../media/game/images/btnmusic-sheet0.png", 11029, 0, 0, 110, 110, 1, 0.5, 0.5, [],
+                        ["../media/game/images/btnmusic-sheet0.png", 8227, 0, 0, 110, 110, 1, 0.5, 0.5, [],
                             [], 0
                         ]
                     ]],
                     ["MusicOFF", 5, false, 1, 0, false, 9929902425475106, [
-                        ["../media/game/images/btnmusic-sheet1.png", 12508, 0, 0, 110, 110, 1, 0.5, 0.5, [],
+                        ["../media/game/images/btnmusic-sheet1.png", 10779, 0, 0, 110, 110, 1, 0.5, 0.5, [],
                             [], 0
                         ]
                     ]]
                 ],
                 [], false, false, 9646628255266154, [], null
             ],
-            ["t2", 5, false, [], 0, 0, null, [
+            ["t2", 3, false, [], 0, 0, null, [
                     ["Default", 0, false, 1, 0, false, 8119102382330997, [
-                        ["../media/game/images/btnplay-sheet0.png", 35907, 0, 0, 300, 300, 1, 0.5, 0.5, [],
+                        ["../media/game/images/btnplay-sheet0.png", 24450, 0, 0, 300, 300, 1, 0.5, 0.5, [],
                             [], 0
                         ],
                         ["../media/game/images/btnplay-sheet1.png", 23988, 0, 0, 300, 300, 1, 0.5, 0.5, [],
@@ -47,9 +47,9 @@
                 ],
                 [], false, false, 5316567393187423, [], null
             ],
-            ["t3", 5, false, [], 0, 0, null, [
+            ["t3", 3, false, [], 0, 0, null, [
                     ["Default", 0, false, 1, 0, false, 7425509760993616, [
-                        ["../media/game/images/btnrestart-sheet0.png", 11745, 0, 0, 110, 110, 1, 0.5, 0.5, [],
+                        ["../media/game/images/btnrestart-sheet0.png", 8345, 0, 0, 110, 110, 1, 0.5, 0.5, [],
                             [], 0
                         ],
                         ["../media/game/images/btnrestart-sheet1.png", 7931, 0, 0, 110, 110, 1, 0.5, 0.5, [],
@@ -59,30 +59,30 @@
                 ],
                 [], false, false, 7279992618571643, [], null
             ],
-            ["t4", 5, false, [], 0, 0, null, [
+            ["t4", 3, false, [], 0, 0, null, [
                     ["Default", 5, false, 1, 0, false, 5304017814927498, [
-                        ["../media/game/images/btnreturn-sheet0.png", 10241, 0, 0, 110, 110, 1, 0.5, 0.5, [],
+                        ["../media/game/images/btnreturn-sheet0.png", 7556, 0, 0, 110, 110, 1, 0.5, 0.5, [],
                             [], 0
                         ]
                     ]]
                 ],
                 [], false, false, 2509932120139382, [], null
             ],
-            ["t5", 5, false, [], 0, 0, null, [
+            ["t5", 3, false, [], 0, 0, null, [
                     ["SoundON", 5, false, 1, 0, false, 2298555843452549, [
-                        ["../media/game/images/btnsound-sheet0.png", 11979, 0, 0, 110, 110, 1, 0.5, 0.5, [],
+                        ["../media/game/images/btnsound-sheet0.png", 8537, 0, 0, 110, 110, 1, 0.5, 0.5, [],
                             [], 0
                         ]
                     ]],
                     ["SoundOFF", 5, false, 1, 0, false, 7511668879003382, [
-                        ["../media/game/images/btnsound-sheet1.png", 13104, 0, 0, 110, 110, 1, 0.5, 0.5, [],
+                        ["../media/game/images/btnsound-sheet1.png", 11260, 0, 0, 110, 110, 1, 0.5, 0.5, [],
                             [], 0
                         ]
                     ]]
                 ],
                 [], false, false, 236444748083455, [], null
             ],
-            ["t6", 5, false, [], 0, 0, null, [
+            ["t6", 3, false, [], 0, 0, null, [
                     ["Default", 0, false, 1, 0, false, 2923116395705254, [
                         ["../media/game/images/cursor-sheet0.png", 4378, 75, 1, 28, 40, 1, 0.3571428656578064, 0.02500000037252903, [],
                             [], 0
@@ -94,7 +94,7 @@
                 ],
                 [], false, false, 493201377246635, [], null
             ],
-            ["t7", 5, false, [], 0, 0, null, [
+            ["t7", 3, false, [], 0, 0, null, [
                     ["Default", 0, false, 1, 0, false, 1766147429691876, [
                         ["../media/game/images/cursorhover-sheet0.png", 5181, 75, 1, 28, 40, 1, 0.3571428656578064, 0.02500000037252903, [],
                             [], 0
@@ -106,7 +106,7 @@
                 ],
                 [], false, false, 9276547155778238, [], null
             ],
-            ["t8", 5, false, [], 1, 1, null, [
+            ["t8", 3, false, [], 1, 1, null, [
                     ["Default", 5, false, 1, 0, false, 9982328057177836, [
                         ["../media/game/images/sunlight-sheet0.png", 99968, 0, 0, 662, 662, 1, 0.5, 0.5, [],
                             [], 0
@@ -119,23 +119,23 @@
                     ["exposure", "Exposure"]
                 ], null
             ],
-            ["t9", 5, false, [], 0, 0, null, [
+            ["t9", 3, false, [], 0, 0, null, [
                     ["FullscreenON", 5, false, 1, 0, false, 497245855563842, [
-                        ["../media/game/images/btnfullscreen-sheet0.png", 11040, 0, 0, 110, 110, 1, 0.5, 0.5, [],
+                        ["../media/game/images/btnfullscreen-sheet0.png", 8086, 0, 0, 110, 110, 1, 0.5, 0.5, [],
                             [], 0
                         ]
                     ]],
                     ["FullscreenOFF", 5, false, 1, 0, false, 6525280525817383, [
-                        ["../media/game/images/btnfullscreen-sheet1.png", 11134, 0, 0, 110, 110, 1, 0.5, 0.5, [],
+                        ["../media/game/images/btnfullscreen-sheet1.png", 8089, 0, 0, 110, 110, 1, 0.5, 0.5, [],
                             [], 0
                         ]
                     ]]
                 ],
                 [], false, false, 5993151613532956, [], null
             ],
-            ["t10", 5, false, [], 1, 0, null, [
+            ["t10", 3, false, [], 1, 0, null, [
                     ["Default", 5, false, 1, 0, false, 2560054488550319, [
-                        ["../media/game/images/gameover-sheet0.png", 123107, 0, 0, 1024, 240, 1, 0.5, 0.5, [],
+                        ["../media/game/images/gameover-sheet0.png", 51216, 0, 0, 1024, 240, 1, 0.5, 0.5, [],
                             [], 0
                         ]
                     ]]
@@ -144,7 +144,7 @@
                     ["Sine", 8, 6298484086070272]
                 ], false, false, 1538672327121913, [], null
             ],
-            ["t11", 5, false, [], 1, 0, null, [
+            ["t11", 3, false, [], 1, 0, null, [
                     ["Default", 0, false, 1, 0, false, 5676668549391493, [
                         ["../media/game/images/score-sheet0.png", 5086, 1, 1, 58, 64, 1, 0.5, 0.5, [],
                             [], 0
@@ -158,18 +158,18 @@
                     ["Fade", 9, 3962915955730394]
                 ], false, false, 772093882415052, [], null
             ],
-            ["t12", 5, false, [], 0, 0, null, [
+            ["t12", 3, false, [], 0, 0, null, [
                     ["Default", 5, false, 1, 0, false, 2325016722271286, [
-                        ["../media/game/images/background-sheet0.png", 758100, 0, 0, 1920, 1080, 1, 0.5, 0.5, [],
+                        ["../media/game/images/background-sheet0.png", 302091, 0, 0, 1920, 1080, 1, 0.5, 0.5, [],
                             [], 0
                         ]
                     ]]
                 ],
                 [], false, false, 3992375054181664, [], null
             ],
-            ["t13", 5, false, [], 1, 0, null, [
+            ["t13", 3, false, [], 1, 0, null, [
                     ["Default", 5, false, 1, 0, false, 7614132442052016, [
-                        ["../media/game/images/gamelogo-sheet0.png", 229243, 0, 0, 1024, 577, 1, 0.5, 0.5008665323257446, [],
+                        ["../media/game/images/gamelogo-sheet0.png", 350487, 0, 0, 1024, 577, 1, 0.5, 0.5008665323257446, [],
                             [], 0
                         ]
                     ]]
@@ -178,12 +178,12 @@
                     ["Sine", 8, 9632970994519199]
                 ], false, false, 6209805277162756, [], null
             ],
-            ["t14", 5, false, [], 0, 0, null, [
+            ["t14", 3, false, [], 0, 0, null, [
                     ["Default", 0, false, 1, 0, false, 408866815655302, [
-                        ["../media/game/images/eggsmenu-sheet1.png", 66007, 0, 0, 302, 400, 1, 0.5, 0.5, [],
+                        ["../media/game/images/eggsmenu-sheet1.png", 39929, 0, 0, 302, 400, 1, 0.5, 0.5024999976158142, [],
                             [], 0
                         ],
-                        ["../media/game/images/eggsmenu-sheet0.png", 67383, 0, 0, 400, 351, 1, 0.5, 0.5014244914054871, [],
+                        ["../media/game/images/eggsmenu-sheet0.png", 20813, 0, 0, 400, 351, 1, 0.5, 0.5014244914054871, [],
                             [], 0
                         ]
                     ]]
@@ -194,8 +194,8 @@
             ["t16", 1, false, [], 0, 0, null, null, [], false, false, 9964248079545776, [], null, []],
             ["t17", 2, false, [], 0, 0, null, null, [], false, false, 6317912906987195, [], null, []],
             ["t18", 6, false, [], 0, 0, null, null, [], false, false, 8668376113493913, [], null, [1]],
-            ["t19", 3, false, [], 0, 0, null, null, [], false, false, 5981584057185597, [], null, []],
-            ["t20", 5, false, [], 1, 0, null, [
+            ["t19", 5, false, [], 0, 0, null, null, [], false, false, 5981584057185597, [], null, []],
+            ["t20", 3, false, [], 1, 0, null, [
                     ["Default", 5, false, 1, 0, false, 5788255025965929, [
                         ["../media/game/images/loading-sheet0.png", 3143, 0, 0, 64, 64, 1, 0.5, 0.5, [],
                             [], 0
@@ -206,7 +206,7 @@
                     ["Rotate", 7, 4620102198397069]
                 ], false, true, 2676417297694161, [], null
             ],
-            ["t21", 5, false, [], 0, 0, null, [
+            ["t21", 3, false, [], 0, 0, null, [
                     ["Default", 4, true, 1, 0, false, 742502991552054, [
                         ["../media/game/images/loadingtext-sheet0.png", 33756, 1, 1, 256, 64, 1, 0.5, 0.5, [],
                             [], 0
@@ -224,7 +224,7 @@
                 ],
                 [], false, true, 7847977728128828, [], null
             ],
-            ["t22", 5, false, [], 0, 0, null, [
+            ["t22", 3, false, [], 0, 0, null, [
                     ["Default", 5, false, 1, 0, false, 6167351536657195, [
                         ["../media/game/images/gameicon-sheet0.png", 86936, 0, 0, 256, 256, 1, 0.5, 0.5, [],
                             [], 0
@@ -233,7 +233,7 @@
                 ],
                 [], false, true, 6433264442465359, [], null
             ],
-            ["t23", 5, false, [3375560990031553], 0, 0, null, [
+            ["t23", 3, false, [3375560990031553], 0, 0, null, [
                     ["Default", 5, false, 1, 0, false, 4264753009545808, [
                         ["../media/game/images/spawnpoint-sheet0.png", 93, 0, 0, 32, 32, 1, 0.5, 0.5, [],
                             [], 1
@@ -242,287 +242,290 @@
                 ],
                 [], false, false, 7019460932850714, [], null
             ],
-            ["t24", 5, false, [1284034227375367], 0, 0, null, [
+            ["t24", 3, false, [1284034227375367], 0, 0, null, [
                     ["Duck_1", 5, true, 1, 0, false, 9354496281375255, [
-                        ["../media/game/images/duck-sheet0.png", 293124, 1, 1, 128, 128, 1, 0.5, 1, [],
-                            [0, -0.7636719942092896, 0.234375, -0.8242189884185791, 0.46875, -0.5429689884185791, 0.3935549855232239, -0.08789098262786865, 0.2753909826278687, 0, -0.2851560115814209, 0, -0.4414061903953552, -0.1855469942092896, -0.4912109375, -0.4160159826278687], 0
+                        ["../media/game/images/duck-sheet0.png", 428343, 1, 1, 128, 128, 1, 0.5, 1, [],
+                            [-0.27734375, -0.77734375, 0, -0.984375, 0.2890625, -0.7890625, 0.4921875, -0.5, 0.2734375, -0.2265625, 0, -0.0078125, -0.31640625, -0.18359375, -0.4921875, -0.5], 0
                         ]
                     ]],
                     ["Duck_1_Die", 24, false, 1, 0, false, 3278583419255132, [
-                        ["../media/game/images/duck-sheet0.png", 293124, 131, 1, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet0.png", 428343, 131, 1, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet0.png", 293124, 261, 1, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet0.png", 428343, 261, 1, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet0.png", 293124, 391, 1, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet0.png", 428343, 391, 1, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet0.png", 293124, 521, 1, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet0.png", 428343, 521, 1, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet0.png", 293124, 651, 1, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet0.png", 428343, 651, 1, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet0.png", 293124, 781, 1, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet0.png", 428343, 781, 1, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet0.png", 293124, 1, 131, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet0.png", 428343, 1, 131, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet0.png", 293124, 131, 131, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet0.png", 428343, 131, 131, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet0.png", 293124, 261, 131, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet0.png", 428343, 261, 131, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet0.png", 293124, 391, 131, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet0.png", 428343, 391, 131, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet0.png", 293124, 521, 131, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet0.png", 428343, 521, 131, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet0.png", 293124, 651, 131, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet0.png", 428343, 651, 131, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet0.png", 293124, 781, 131, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet0.png", 428343, 781, 131, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ]
                     ]],
                     ["Duck_2", 5, true, 1, 0, false, 6573570007790477, [
-                        ["../media/game/images/duck-sheet0.png", 293124, 1, 261, 128, 128, 1, 0.5, 1, [],
-                            [-0.05664101243019104, -0.8457030057907105, 0.2431640028953552, -0.8154299855232239, 0.4736329913139343, -0.546875, 0.3955079913139343, -0.1044920086860657, 0.2758790254592896, 0, -0.2509769797325134, 0, -0.4023436903953552, -0.1269530057907105, -0.4804686903953552, -0.40625], 0
+                        ["../media/game/images/duck-sheet0.png", 428343, 1, 261, 128, 128, 1, 0.5, 1, [],
+                            [-0.27734375, -0.77734375, 0, -0.984375, 0.2890625, -0.7890625, 0.4921875, -0.5, 0.2734375, -0.2265625, 0, -0.0078125, -0.31640625, -0.18359375, -0.4921875, -0.5], 0
                         ]
                     ]],
                     ["Duck_2_Die", 24, false, 1, 0, false, 8470480039887788, [
-                        ["../media/game/images/duck-sheet0.png", 293124, 131, 261, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet0.png", 428343, 131, 261, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet0.png", 293124, 261, 261, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet0.png", 428343, 261, 261, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet0.png", 293124, 391, 261, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet0.png", 428343, 391, 261, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet0.png", 293124, 521, 261, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet0.png", 428343, 521, 261, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet0.png", 293124, 651, 261, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet0.png", 428343, 651, 261, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet0.png", 293124, 781, 261, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet0.png", 428343, 781, 261, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet0.png", 293124, 1, 391, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet0.png", 428343, 1, 391, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet0.png", 293124, 131, 391, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet0.png", 428343, 131, 391, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet0.png", 293124, 261, 391, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet0.png", 428343, 261, 391, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet0.png", 293124, 391, 391, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet0.png", 428343, 391, 391, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet0.png", 293124, 521, 391, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet0.png", 428343, 521, 391, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet0.png", 293124, 651, 131, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet0.png", 428343, 651, 391, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet0.png", 293124, 781, 131, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet0.png", 428343, 781, 131, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ]
                     ]],
                     ["Duck_3", 5, true, 1, 0, false, 2829016110365113, [
-                        ["../media/game/images/duck-sheet0.png", 293124, 651, 391, 128, 128, 1, 0.5, 1, [],
-                            [-0.4833984076976776, -0.4091799855232239, -0.1699219942092896, -0.7851560115814209, 0.2714840173721314, -0.8886719942092896, 0.4697269797325134, -0.5488280057907105, 0.3955079913139343, -0.08691400289535523, 0.2890629768371582, 0, -0.3007810115814209, 0, -0.4580078125, -0.2285159826278687], 0
+                        ["../media/game/images/duck-sheet0.png", 428343, 781, 391, 128, 128, 1, 0.5, 1, [],
+                            [-0.27734375, -0.77734375, 0, -0.984375, 0.2890625, -0.7890625, 0.4921875, -0.5, 0.2734375, -0.2265625, 0, -0.0078125, -0.31640625, -0.18359375, -0.4921875, -0.5], 0
                         ]
                     ]],
                     ["Duck_3_Die", 24, false, 1, 0, false, 2872766183751277, [
-                        ["../media/game/images/duck-sheet0.png", 293124, 781, 391, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet0.png", 428343, 1, 521, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet0.png", 293124, 1, 521, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet0.png", 428343, 131, 521, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet0.png", 293124, 131, 521, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet0.png", 428343, 261, 521, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet0.png", 293124, 261, 521, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet0.png", 428343, 391, 521, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet0.png", 293124, 391, 521, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet0.png", 428343, 521, 521, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet0.png", 293124, 521, 521, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet0.png", 428343, 651, 521, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet0.png", 293124, 651, 521, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet0.png", 428343, 781, 521, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet0.png", 293124, 781, 521, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet0.png", 428343, 1, 651, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet0.png", 293124, 1, 651, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet0.png", 428343, 131, 651, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet0.png", 293124, 131, 651, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet0.png", 428343, 261, 651, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet0.png", 293124, 261, 651, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet0.png", 428343, 391, 651, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet0.png", 293124, 391, 651, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet0.png", 428343, 521, 651, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet0.png", 293124, 781, 131, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet0.png", 428343, 781, 131, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ]
                     ]],
                     ["Duck_4", 5, true, 1, 0, false, 1722445933547021, [
-                        ["../media/game/images/duck-sheet0.png", 293124, 521, 651, 128, 128, 1, 0.5, 1, [],
-                            [-0.4833984076976776, -0.4169920086860657, -0.0742189884185791, -0.8349609971046448, 0.3701170086860657, -0.9267578125, 0.4716799855232239, -0.5410159826278687, 0.3955079913139343, -0.1044920086860657, 0.2851560115814209, 0, -0.2792969942092896, 0, -0.4511719048023224, -0.203125], 0
+                        ["../media/game/images/duck-sheet0.png", 428343, 651, 651, 128, 128, 1, 0.5, 1, [],
+                            [-0.27734375, -0.77734375, 0, -0.984375, 0.2890625, -0.7890625, 0.4921875, -0.5, 0.2734375, -0.2265625, 0, -0.0078125, -0.31640625, -0.18359375, -0.4921875, -0.5], 0
                         ]
                     ]],
                     ["Duck_4_Die", 24, false, 1, 0, false, 3364737293283928, [
-                        ["../media/game/images/duck-sheet0.png", 293124, 651, 651, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet0.png", 428343, 781, 651, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet0.png", 293124, 781, 651, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet0.png", 428343, 1, 781, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet0.png", 293124, 1, 781, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet0.png", 428343, 131, 781, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet0.png", 293124, 131, 781, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet0.png", 428343, 261, 781, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet0.png", 293124, 261, 781, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet0.png", 428343, 391, 781, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet0.png", 293124, 391, 781, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet0.png", 428343, 521, 781, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet0.png", 293124, 521, 781, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet0.png", 428343, 651, 781, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet0.png", 293124, 651, 781, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet0.png", 428343, 781, 781, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet0.png", 293124, 781, 781, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet1.png", 127578, 1, 1, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet1.png", 140595, 1, 1, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet1.png", 127578, 131, 1, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet1.png", 140595, 131, 1, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet1.png", 127578, 261, 1, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet1.png", 140595, 261, 1, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet1.png", 127578, 391, 1, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet0.png", 293124, 781, 131, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet0.png", 428343, 781, 131, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ]
                     ]],
                     ["Duck_5", 5, true, 1, 0, false, 9698440590305392, [
-                        ["../media/game/images/duck-sheet1.png", 140595, 391, 1, 128, 128, 1, 0.5, 1, [],
-                            [0.01757800579071045, -0.8242189884185791, 0.1757810115814209, -0.8183590173721314, 0.4716799855232239, -0.5429689884185791, 0.3955079913139343, -0.1044920086860657, 0.2895510196685791, 0, -0.296875, 0, -0.4570311903953552, -0.2207030057907105, -0.4824219048023224, -0.4433590173721314], 0
+                        ["../media/game/images/duck-sheet1.png", 127578, 521, 1, 128, 128, 1, 0.5, 1, [],
+                            [-0.14453125, -0.64453125, 0, -0.96484375, 0.1484375, -0.6484375, 0.27734375, -0.5, 0.3671875, -0.1328125, 0, 0, -0.3671875, -0.1328125, -0.28515625, -0.5], 0
                         ]
                     ]],
                     ["Duck_5_Die", 24, false, 1, 0, false, 5700944897789257, [
-                        ["../media/game/images/duck-sheet1.png", 140595, 521, 1, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet1.png", 127578, 651, 1, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet1.png", 140595, 651, 1, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet1.png", 127578, 781, 1, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet1.png", 140595, 781, 1, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet1.png", 127578, 1, 131, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet1.png", 140595, 1, 131, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet1.png", 127578, 131, 131, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet1.png", 140595, 131, 131, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet1.png", 127578, 261, 131, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet1.png", 140595, 261, 131, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet1.png", 127578, 391, 131, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet1.png", 140595, 391, 131, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet1.png", 127578, 521, 131, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet1.png", 140595, 521, 131, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet1.png", 127578, 651, 131, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet1.png", 140595, 651, 131, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet1.png", 127578, 781, 131, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet1.png", 140595, 781, 131, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet1.png", 127578, 1, 261, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet1.png", 140595, 1, 261, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet1.png", 127578, 131, 261, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet1.png", 140595, 131, 261, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet1.png", 127578, 261, 261, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet0.png", 293124, 781, 131, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet0.png", 428343, 781, 131, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ]
                     ]],
                     ["Duck_6", 5, true, 1, 0, false, 9971798578961331, [
-                        ["../media/game/images/duck-sheet1.png", 140595, 261, 261, 128, 128, 1, 0.5, 1, [],
-                            [0.02148401737213135, -0.8232420086860657, 0.4130859971046448, -0.7783200144767761, 0.4716799855232239, -0.5429689884185791, 0.3955079913139343, -0.1044920086860657, 0.2680659890174866, 0, -0.2792969942092896, 0, -0.453125, -0.2246090173721314, -0.4628905951976776, -0.4472659826278687], 0
+                        ["../media/game/images/duck-sheet1.png", 127578, 391, 261, 128, 128, 1, 0.5, 1, [],
+                            [-0.14453125, -0.64453125, 0, -0.96484375, 0.1484375, -0.6484375, 0.27734375, -0.5, 0.3671875, -0.1328125, 0, 0, -0.3671875, -0.1328125, -0.28515625, -0.5], 0
                         ]
                     ]],
                     ["Duck_6_Die", 24, false, 1, 0, false, 8899720221820894, [
-                        ["../media/game/images/duck-sheet1.png", 140595, 391, 261, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet1.png", 127578, 521, 261, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet1.png", 140595, 521, 261, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet1.png", 127578, 651, 261, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet1.png", 140595, 651, 261, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet1.png", 127578, 781, 261, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet1.png", 140595, 781, 261, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet1.png", 127578, 1, 391, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet1.png", 140595, 1, 391, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet1.png", 127578, 131, 391, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet1.png", 140595, 131, 391, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet1.png", 127578, 261, 391, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet1.png", 140595, 261, 391, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet1.png", 127578, 391, 391, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet1.png", 140595, 391, 391, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet1.png", 127578, 391, 391, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet1.png", 140595, 521, 391, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet1.png", 127578, 521, 391, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet1.png", 140595, 651, 391, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet1.png", 127578, 651, 391, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet1.png", 140595, 781, 391, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet1.png", 127578, 781, 391, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet1.png", 140595, 1, 521, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet1.png", 127578, 1, 521, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ],
-                        ["../media/game/images/duck-sheet0.png", 293124, 781, 131, 128, 128, 1, 0.5, 1, [],
+                        ["../media/game/images/duck-sheet1.png", 127578, 131, 521, 128, 128, 1, 0.5, 1, [],
+                            [], 0
+                        ],
+                        ["../media/game/images/duck-sheet0.png", 428343, 781, 131, 128, 128, 1, 0.5, 1, [],
                             [], 0
                         ]
                     ]]
                 ],
                 [], false, false, 3518950033281788, [], null
             ],
-            ["t25", 5, false, [], 0, 0, null, [
+            ["t25", 3, false, [], 0, 0, null, [
                     ["Default", 0, false, 1, 0, false, 1499787361098278, [
                         ["../media/game/images/bullet_hole-sheet0.png", 6513, 69, 1, 32, 30, 1, 0.5, 0.5, [],
                             [], 0
@@ -546,7 +549,7 @@
                 ],
                 [], false, false, 9509876062804694, [], null
             ],
-            ["t26", 5, false, [], 0, 0, null, [
+            ["t26", 3, false, [], 0, 0, null, [
                     ["Default", 5, false, 1, 0, false, 1714130822644211, [
                         ["../media/game/images/collision-sheet0.png", 93, 0, 0, 32, 32, 1, 0.5, 0.5, [],
                             [], 1
@@ -555,19 +558,19 @@
                 ],
                 [], false, false, 4884473139314285, [], null
             ],
-            ["t27", 5, false, [], 1, 0, null, [
+            ["t27", 3, false, [], 1, 0, null, [
                     ["Default", 0, false, 1, 0, false, 5175868583647864, [
-                        ["../media/game/images/eggs-sheet1.png", 14556, 0, 0, 97, 128, 1, 0.5051546096801758, 1, [],
-                            [], 0
+                        ["../media/game/images/eggs-sheet0.png", 20226, 1, 1, 128, 128, 1, 0.5078125, 1, [],
+                            [-0.3671875, -0.859375, -0.0078125, -0.984375, 0.328125, -0.8359375, 0.25, -0.2421875, -0.0078125, -0.0234375, -0.3046875, -0.203125], 0
                         ],
-                        ["../media/game/images/eggs-sheet0.png", 38993, 1, 131, 128, 112, 1, 0.5078125, 1, [],
-                            [], 0
+                        ["../media/game/images/eggs-sheet1.png", 5527, 0, 0, 128, 128, 1, 0.5078125, 1, [],
+                            [-0.34375, -0.8359375, -0.0078125, -0.98828125, -0.06640625, -0.44140625, -0.1015625, -0.5, 0.34375, -0.1484375, -0.0078125, 0, -0.34375, -0.1640625, -0.4765625, -0.5], 0
                         ],
-                        ["../media/game/images/eggs-sheet0.png", 38993, 1, 1, 123, 128, 1, 0.5040650367736816, 1, [],
-                            [], 0
+                        ["../media/game/images/eggs-sheet2.png", 10260, 0, 0, 128, 128, 1, 0.5078125, 1, [],
+                            [-0.34375, -0.8359375, -0.0078125, -0.953125, 0.328125, -0.8359375, 0.4921875, -0.5, 0.34375, -0.1484375, -0.0078125, -0.0234375, -0.359375, -0.1484375, -0.5078125, -0.5], 0
                         ],
-                        ["../media/game/images/eggs-sheet0.png", 38993, 126, 1, 113, 128, 1, 0.5044247508049011, 1, [],
-                            [], 0
+                        ["../media/game/images/eggs-sheet0.png", 20226, 131, 1, 97, 128, 1, 0.5051546096801758, 1, [],
+                            [-0.1546391546726227, -0.734375, -0.01030924916267395, -0.796875, 0.1443299055099487, -0.734375, 0.2268041372299194, -0.5, 0.2268041372299194, -0.203125, -0.01030924916267395, 0, -0.2371133863925934, -0.203125, -0.2474226653575897, -0.5], 0
                         ]
                     ]]
                 ],
@@ -575,7 +578,7 @@
                     ["Sine", 8, 1160649666456383]
                 ], false, false, 377644667262467, [], null
             ],
-            ["t28", 5, false, [], 0, 0, null, [
+            ["t28", 3, false, [], 0, 0, null, [
                     ["Detonation", 14, false, 1, 0, false, 82465585264363, [
                         ["../media/game/images/explosion-sheet0.png", 155583, 183, 126, 136, 121, 1, 0.5, 1, [],
                             [], 0
@@ -602,30 +605,30 @@
                 ],
                 [], false, false, 6427010632872536, [], null
             ],
-            ["t29", 4, false, [], 0, 0, ["../media/game/images/lastscorefont.png", 189258, 0], null, [], false, false, 8017967388110113, [], null],
-            ["t30", 4, false, [], 0, 0, ["../media/game/images/lastscorefont.png", 189258, 0], null, [], false, false, 4950876878223394, [], null],
-            ["t31", 4, false, [], 0, 0, ["../media/game/images/lastscorefont.png", 189258, 0], null, [], false, false, 4105270734692883, [], null],
-            ["t32", 4, false, [], 0, 0, ["../media/game/images/lastscorefont.png", 189258, 0], null, [], false, false, 2228849329748515, [], null],
-            ["t33", 4, false, [], 0, 0, ["../media/game/images/lastscorefont.png", 189258, 0], null, [], false, false, 3627325337045995, [], null],
-            ["t34", 5, false, [], 0, 0, null, [
+            ["t29", 4, false, [], 0, 0, ["../media/game/images/lastscorefont.png", 156997, 0], null, [], false, false, 8017967388110113, [], null],
+            ["t30", 4, false, [], 0, 0, ["../media/game/images/lastscorefont.png", 156997, 0], null, [], false, false, 4950876878223394, [], null],
+            ["t31", 4, false, [], 0, 0, ["../media/game/images/lastscorefont.png", 156997, 0], null, [], false, false, 4105270734692883, [], null],
+            ["t32", 4, false, [], 0, 0, ["../media/game/images/lastscorefont.png", 156997, 0], null, [], false, false, 2228849329748515, [], null],
+            ["t33", 4, false, [], 0, 0, ["../media/game/images/lastscorefont.png", 156997, 0], null, [], false, false, 3627325337045995, [], null],
+            ["t34", 3, false, [], 0, 0, null, [
                     ["Default", 5, false, 1, 0, false, 8947280910150615, [
-                        ["../media/game/images/curtainback-sheet0.png", 236772, 0, 0, 1920, 540, 1, 0.5, 0, [],
+                        ["../media/game/images/curtainback-sheet0.png", 80468, 0, 0, 1920, 540, 1, 0.5, 0, [],
                             [], 0
                         ]
                     ]]
                 ],
                 [], false, false, 7252448334436677, [], null
             ],
-            ["t35", 5, false, [], 0, 0, null, [
+            ["t35", 3, false, [], 0, 0, null, [
                     ["Default", 5, false, 1, 0, false, 9955806295396506, [
-                        ["../media/game/images/curtaintop-sheet0.png", 233639, 0, 0, 1920, 540, 1, 0.5, 1, [],
+                        ["../media/game/images/curtaintop-sheet0.png", 78406, 0, 0, 1920, 540, 1, 0.5, 1, [],
                             [], 0
                         ]
                     ]]
                 ],
                 [], false, false, 4762051256373802, [], null
             ],
-            ["t36", 5, true, [], 1, 0, null, null, [
+            ["t36", 3, true, [], 1, 0, null, null, [
                 ["Sine", 8, 1255044948123786]
             ], false, false, 2159222911975116, [], null]
         ],
@@ -680,7 +683,7 @@
                                 [64, 64, "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,:;?!-+=~&$%()\\/{}[]<>^*▲▼|", "LAST SCORE:0", 1, 0, 1, 1, 4, 0, -24, 0]
                             ],
                             [
-                                [1560, 655, 0, 302, 400, 0, 0, 1, 0.5, 0.5, 0, 0, []], 14, 60, [],
+                                [1560, 655, 0, 302, 400, 0, 0, 1, 0.5, 0.5024999976158142, 0, 0, []], 14, 60, [],
                                 [],
                                 [0, "Default", 0, 1]
                             ],
@@ -881,56 +884,56 @@
                                 [1, "Default", 0, 1]
                             ],
                             [
-                                [330, 303, 0, 97, 128, 0, 0, 1, 0.5051546096801758, 1, 0, 0, []], 27, 31, [],
+                                [330, 303, 0, 128, 128, 0, 0, 1, 0.5078125, 1, 0, 0, []], 27, 31, [],
                                 [
                                     [1, 2, 0, 2, 0, 0, 0, 10, 0]
                                 ],
                                 [0, "Default", 0, 1]
                             ],
                             [
-                                [560, 576, 0, 128, 112, 0, 0, 1, 0.5078125, 1, 0, 0, []], 27, 32, [],
+                                [560, 576, 0, 128, 128, 0, 0, 1, 0.5078125, 1, 0, 0, []], 27, 32, [],
                                 [
                                     [1, 2, 0, 2, 0, 0, 0, 10, 0]
                                 ],
                                 [0, "Default", 1, 1]
                             ],
                             [
-                                [1590, 855, 0, 97, 128, 0, 0, 1, 0.5051546096801758, 1, 0, 0, []], 27, 51, [],
+                                [1590, 855, 0, 128, 128, 0, 0, 1, 0.5078125, 1, 0, 0, []], 27, 51, [],
                                 [
                                     [1, 2, 0, 2, 0, 0, 0, 10, 0]
                                 ],
                                 [0, "Default", 0, 1]
                             ],
                             [
-                                [1590, 308, 0, 123, 128, 0, 0, 1, 0.5040650367736816, 1, 0, 0, []], 27, 52, [],
+                                [1590, 308, 0, 128, 128, 0, 0, 1, 0.5078125, 1, 0, 0, []], 27, 52, [],
                                 [
                                     [1, 2, 0, 2, 0, 0, 0, 10, 0]
                                 ],
                                 [0, "Default", 2, 1]
                             ],
                             [
-                                [330, 856, 0, 113, 128, 0, 0, 1, 0.5044247508049011, 1, 0, 0, []], 27, 53, [],
+                                [330, 856, 0, 97, 128, 0, 0, 1, 0.5051546096801758, 1, 0, 0, []], 27, 53, [],
                                 [
                                     [1, 2, 0, 2, 0, 0, 0, 10, 0]
                                 ],
                                 [0, "Default", 3, 1]
                             ],
                             [
-                                [960, 861, 0, 123, 128, 0, 0, 1, 0.5040650367736816, 1, 0, 0, []], 27, 54, [],
+                                [960, 861, 0, 128, 128, 0, 0, 1, 0.5078125, 1, 0, 0, []], 27, 54, [],
                                 [
                                     [1, 2, 0, 2, 0, 0, 0, 10, 0]
                                 ],
                                 [0, "Default", 2, 1]
                             ],
                             [
-                                [960, 308, 0, 123, 128, 0, 0, 1, 0.5040650367736816, 1, 0, 0, []], 27, 55, [],
+                                [960, 308, 0, 128, 128, 0, 0, 1, 0.5078125, 1, 0, 0, []], 27, 55, [],
                                 [
                                     [1, 2, 0, 2, 0, 0, 0, 10, 0]
                                 ],
                                 [0, "Default", 2, 1]
                             ],
                             [
-                                [1360, 576, 0, 113, 128, 0, 0, 1, 0.5044247508049011, 1, 0, 0, []], 27, 56, [],
+                                [1360, 576, 0, 97, 128, 0, 0, 1, 0.5051546096801758, 1, 0, 0, []], 27, 56, [],
                                 [
                                     [1, 2, 0, 2, 0, 0, 0, 10, 0]
                                 ],
@@ -3109,6 +3112,6 @@
             ["eggs.ogg", 43725],
             ["shot.m4a", 6645],
             ["shot.ogg", 8497]
-        ], "../media/game/media/", false, 1920, 1080, 4, true, true, true, "1.0.0", true, true, 3, 2, 77, false, true, 1, true, "Duck Shooter", 0, []
+        ], "../media/game/media/", false, 1920, 1080, 4, true, true, true, "1.0.0", true, true, 3, 2, 77, false, true, 1, true, "Sharp Shooter", 0, []
     ]
 }
