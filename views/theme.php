@@ -76,14 +76,21 @@
                         <a href="">Shop Now</a>
                     </li>
                     <div class="divider-item"></div>
-                    <li class="main-nav-item">
-                        <a href="<?php echo base_url();?>auth/sign-up">Sign-Up</a>
-                    </li>
-                    <div class="divider-item"></div>
-                    <li class="main-nav-item">
-                        <a href="<?php echo base_url();?>auth/login">Login</a>
-                    </li>
-                    <div class="divider-item"></div>
+                    <?php if(!check_auth()){ ?>
+                        <li class="main-nav-item">
+                            <a href="<?php echo base_url();?>auth/sign-up">Sign-Up</a>
+                        </li>
+                        <div class="divider-item"></div>
+                        <li class="main-nav-item">
+                            <a href="<?php echo base_url();?>auth/login">Login</a>
+                        </li>
+                        <div class="divider-item"></div>
+                    <?php }else{ ?>
+                        <li class="main-nav-item">
+                            <a href="<?php echo base_url();?>auth/logout">Logout</a>
+                        </li>
+                        <div class="divider-item"></div>
+                    <?php } ?>
                 </ul>
             </nav>
             <div>
@@ -95,7 +102,15 @@
         <div id="burger-menu">
             <i style="font-size: 2em" class="fa fa-bars"></i>
         </div>
-        <div class="overlay"></div>
+
+        <div id="div_MsgboxOverlay" class="overlay"></div>
+        <div id="div_Msgbox" class="pop-up ta-c va-m">
+            <p class="title"><?php echo $_SESSION['ss_Msgbox']['title'];?></p>
+            <p class="message"><?php echo $_SESSION['ss_Msgbox']['message'];?></p>
+            <div class="centered" style="width: 50%">
+                <a href="javascript:void(0);" class="button"><button >CLOSE</button></a>
+            </div>
+        </div>
 
         <?php echo $this->pageContent;?>
 
@@ -140,6 +155,39 @@
         jQuery(window).on('unload', function(){
             jQuery('body').addClass('page_fadeout');
         });
+
+        function msgbox(title='', message='', callback)
+        {
+            jQuery('#div_Msgbox .title').html(title);
+            jQuery('#div_Msgbox .message').html(message);
+
+            jQuery('#div_Msgbox').show();
+            jQuery('#div_MsgboxOverlay').show();
+            jQuery('#div_MsgboxOverlay').css('opacity', 0.5);
+
+            if(typeof callback != 'undefined'){
+                if(typeof callback == 'function'){
+                    callback();
+                }
+            }
+        }
+        msgbox_callback = function(){
+            jQuery('#div_Msgbox .button button').text('CLOSE');
+            jQuery('#div_Msgbox .button').unbind('click').click(function(){
+                jQuery('#div_Msgbox').hide();
+                jQuery('#div_MsgboxOverlay').hide();
+                jQuery('#div_MsgboxOverlay').css('opacity', 0);
+            });
+        }
+
+        <?php if(isset($_SESSION['ss_Msgbox']) && $_SESSION['ss_Msgbox'] != ''){ ?>
+            msgbox('<?php echo $_SESSION['ss_Msgbox']['title'];?>', '<?php echo addslashes($_SESSION['ss_Msgbox']['message']);?>', msgbox_callback);
+            <?php $_SESSION['ss_Msgbox'] = '';unset($_SESSION['ss_Msgbox']);?>
+        <?php } ?>
+
+        <?php if($this->formError){ ?>
+            msgbox('Opps!', '<?php echo addslashes($this->formErrorMsg);?>', msgbox_callback);
+        <?php } ?>
         //-->
         </script>
     </body>

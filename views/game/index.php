@@ -65,8 +65,12 @@ jQuery(document).ready(function(){
             // show Sign Up / login popup
             document.cookie = 'store_game=1;' + expires + path;
 
-            jQuery(".pop-up").css("display", "block");
-            jQuery(".overlay").css("opacity", "0.5");
+            msgbox('Nice shot !', 'To check if you stand a chance to win awesome prizes,<br>create a Cocoro Life account', function(){
+                jQuery('#div_Msgbox .button button').text('SIGN UP');
+                jQuery('#div_Msgbox .button').unbind('click').click(function(){
+                    window.location = '<?php echo base_url();?>auth/sign-up'
+                });
+            });
         <?php }else{ ?>
             jQuery.ajax({
                 type        : 'POST',

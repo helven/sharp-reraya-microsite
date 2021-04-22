@@ -46,6 +46,14 @@ class Auth extends Z_Controller
         {
             // REDIRECT to dashboard
             $location   = base_url();
+
+            if(isset($_SESSION['ss_LoginRedirect']) && $_SESSION['ss_LoginRedirect'] != '')
+            {
+                $location   = $_SESSION['ss_LoginRedirect'];
+            }
+
+            $_SESSION['ss_LoginRedirect']   = '';
+            unset($_SESSION['ss_LoginRedirect']);
             redirect($location);
         }
 
@@ -184,6 +192,11 @@ class Auth extends Z_Controller
                         // REDIRECT to home
                         $location   = base_url();
 
+                        if(isset($_SESSION['ss_LoginRedirect']) && $_SESSION['ss_LoginRedirect'] != '')
+                        {
+                            $location   = $_SESSION['ss_LoginRedirect'];
+                        }
+
                         // STORE game
                         if($_COOKIE['store_game'] == 1)
                         {
@@ -222,6 +235,8 @@ class Auth extends Z_Controller
                     $_SESSION['ss_Msgbox']['message']   .= 'You will receive a verification email shortly.<br />Please check your email and verify to proceed.';
                     $_SESSION['ss_Msgbox']['type']		= 'Success';
 
+                    $_SESSION['ss_LoginRedirect']   = '';
+                    unset($_SESSION['ss_LoginRedirect']);
                     redirect($location);
                 }
                 else
@@ -283,9 +298,18 @@ class Auth extends Z_Controller
     function login()
     {
         $location   = base_url();
+
+        if(isset($_SESSION['ss_LoginRedirect']) && $_SESSION['ss_LoginRedirect'] != '')
+        {
+            $location   = $_SESSION['ss_LoginRedirect'];
+        }
+
         // CHECK user login status
         if(isset($_SESSION['ss_Public']))
         {
+            $_SESSION['ss_LoginRedirect']   = '';
+            unset($_SESSION['ss_LoginRedirect']);
+            
             redirect($location);
         }
 
@@ -346,6 +370,14 @@ class Auth extends Z_Controller
                         }
                     }
 
+                    if(isset($_SESSION['ss_LoginRedirect']) && $_SESSION['ss_LoginRedirect'] != '')
+                    {
+                        $location   = $_SESSION['ss_LoginRedirect'];
+                    }
+
+                    $_SESSION['ss_LoginRedirect']   = '';
+                    unset($_SESSION['ss_LoginRedirect']);
+
                     redirect($location);
                 }
             }
@@ -361,7 +393,7 @@ class Auth extends Z_Controller
             {
                 $this->formError    = TRUE;
                 $this->formErrorMsg .= ($this->formErrorMsg != '')?'<br />':'';
-                $this->formErrorMsg .= 'Please enter name.';
+                $this->formErrorMsg .= 'Please enter email.';
             }
 
             if(!isset($_POST['txt_Password']) || $_POST['txt_Password'] == '')
@@ -373,7 +405,7 @@ class Auth extends Z_Controller
 
             if(!$this->formError)
             {
-                $location   = base_url();
+                $location   = base_url().'auth/login';
 
                 // CLEAN $_POST
                 sec_clean_all_post($this->db->conn);
@@ -400,14 +432,15 @@ class Auth extends Z_Controller
                 if(!$a_login['status'])
                 {
                     // FAILED
-                    $_SESSION['ss_Msgbox']['error']     = 'Opps!';
+                    $_SESSION['ss_Msgbox']['title']     = 'Opps!';
                     $_SESSION['ss_Msgbox']['message']   = $a_login['msg'];
                     $_SESSION['ss_Msgbox']['type']      = 'error';
 
-                    redirect($location);
+                    redirect(base_url().'auth/login');
                 }
 
                 $a_login    = $a_login['a_data'];
+                $_SESSION['ss_Public']  = $a_login;
 
                 // STORE game
                 if($_COOKIE['store_game'] == 1)
@@ -415,6 +448,10 @@ class Auth extends Z_Controller
                     $game_stored    = $this->_store_game();
                     if($game_stored)
                     {
+                        $_SESSION['ss_Msgbox']['title']     = 'Yay!';
+                        $_SESSION['ss_Msgbox']['message']   = 'Your game score is recorded!<br />';
+                        $_SESSION['ss_Msgbox']['type']      = 'success';
+
                         $location   = base_url().'game';
                     }
                 }
@@ -422,7 +459,8 @@ class Auth extends Z_Controller
                 // CHECK if account is verified
                 if($a_login['email_verified_at'] == NULL || $a_login['email_verified_at'] == '')
                 {
-                    $_SESSION['ss_Msgbox']['error']     = 'Opps!';
+                    unset($_SESSION['ss_Public']);
+                    $_SESSION['ss_Msgbox']['title']     = 'Opps!';
                     $_SESSION['ss_Msgbox']['message']   = ($game_stored)?'Your game score is recorded!<br />':'';
                     $_SESSION['ss_Msgbox']['message']   .= 'Account is not verified<br />Please check your email and verify to proceed.';
                     $_SESSION['ss_Msgbox']['type']      = 'error';
@@ -457,6 +495,14 @@ class Auth extends Z_Controller
 
                 $_SESSION['ss_Public']  = $a_login;
 
+                if(isset($_SESSION['ss_LoginRedirect']) && $_SESSION['ss_LoginRedirect'] != '')
+                {
+                    $location   = $_SESSION['ss_LoginRedirect'];
+                }
+
+                $_SESSION['ss_LoginRedirect']   = '';
+                unset($_SESSION['ss_LoginRedirect']);
+
                 redirect($location);
             }
         }
@@ -479,6 +525,8 @@ class Auth extends Z_Controller
         $path       = '/';
         setrawcookie('c_user', '', $expires, $path);
         setrawcookie('remember_token', '', $expires, $path);
+
+        $this->p_render('auth/logout');
 
         redirect(base_url());
     }

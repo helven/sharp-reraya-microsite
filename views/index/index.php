@@ -47,7 +47,7 @@
 
     #s1 {
         min-height: 100vh;
-        background: url("media/images/landing/s1-bg.jpg");
+        background: url("<?php echo base_url();?>media/images/landing/s1-bg.jpg");
         background-size: cover;
         background-position: center center;
     }
@@ -57,11 +57,11 @@
     }
 
     #s1 .kv {
-        background: url("media/images/landing/s1-kv.png") no-repeat center 8em;
+        background: url("<?php echo base_url();?>media/images/landing/s1-kv.png") no-repeat center 8em;
     }
 
     #s1 .bar {
-        background: url("media/images/landing/s1-bar.png") repeat-x bottom;
+        background: url("<?php echo base_url();?>media/images/landing/s1-bar.png") repeat-x bottom;
         text-align: right;
     }
 
@@ -127,23 +127,23 @@
     }
 
     #s4 {
-        background: url("media/images/landing/s4-bg.jpg") top right no-repeat #67e2a9;
+        background: url("<?php echo base_url();?>media/images/landing/s4-bg.jpg") top right no-repeat #67e2a9;
         background-size: 100%;
         height: 649px;
     }
 
     #s4>div {
-        background: url("media/images/landing/s4-bg-left.png") no-repeat left top;
+        background: url("<?php echo base_url();?>media/images/landing/s4-bg-left.png") no-repeat left top;
     }
 
     #s4>div>div {
-        background: url("media/images/landing/s4-bg-right.png") no-repeat right top;
+        background: url("<?php echo base_url();?>media/images/landing/s4-bg-right.png") no-repeat right top;
         display: table;
         width: 100%;
     }
 
     #s4>div>div>div {
-        background: url("media/images/landing/s4-bg-tv.png") no-repeat right center;
+        background: url("<?php echo base_url();?>media/images/landing/s4-bg-tv.png") no-repeat right center;
         background-size: 44%;
         height: 649px;
         display: table-cell;
@@ -156,25 +156,25 @@
     }
 
     #s5 {
-        background: url("media/images/landing/s5-bg.jpg") top right no-repeat #67e2a9;
+        background: url("<?php echo base_url();?>media/images/landing/s5-bg.jpg") top right no-repeat #67e2a9;
         background-size: 100%;
         min-height: 100vh;
         font-size: 1.3em;
     }
 
     #s5>div {
-        background: url("media/images/landing/s5-bg-left.png") no-repeat left top;
+        background: url("<?php echo base_url();?>media/images/landing/s5-bg-left.png") no-repeat left top;
     }
 
     #s5>div>div {
-        background: url("media/images/landing/s5-bg-right.png") no-repeat right top;
+        background: url("<?php echo base_url();?>media/images/landing/s5-bg-right.png") no-repeat right top;
         display: table;
         width: 100%;
         min-height: 100vh;
     }
 
     #s5>div>div>div {
-        background: url("media/images/landing/s5-bg-tv.png") no-repeat right center;
+        background: url("<?php echo base_url();?>media/images/landing/s5-bg-tv.png") no-repeat right center;
         background-size: 62%;
         display: table-cell;
         vertical-align: middle;
@@ -186,23 +186,23 @@
     }
 
     #s6 {
-        background: url("media/images/landing/s6-bg.jpg") top left no-repeat #f1a729;
+        background: url("<?php echo base_url();?>media/images/landing/s6-bg.jpg") top left no-repeat #f1a729;
         height: 540px;
     }
 
     #s6>div {
-        background: url("media/images/landing/s6-bg-left.png") no-repeat left top;
+        background: url("<?php echo base_url();?>media/images/landing/s6-bg-left.png") no-repeat left top;
     }
 
     #s6>div>div {
-        background: url("media/images/landing/s6-bg-right.png") no-repeat right top;
+        background: url("<?php echo base_url();?>media/images/landing/s6-bg-right.png") no-repeat right top;
         display: table;
         width: 100%;
         height: 540px;
     }
 
     #s6>div>div>div {
-        background: url("media/images/landing/s6-bg-tv.png") no-repeat 20% bottom;
+        background: url("<?php echo base_url();?>media/images/landing/s6-bg-tv.png") no-repeat 20% bottom;
         display: table-cell;
         vertical-align: middle;
         padding-left: 52%;
@@ -278,7 +278,7 @@
 
     @media (max-width: 1200px) {
         #s5>div>div>div {
-            background: url(media/images/landing/s5-bg-tv.png) no-repeat 110% 0em;
+            background: url(<?php echo base_url();?>media/images/landing/s5-bg-tv.png) no-repeat 110% 0em;
             background-size: 26em;
         }
 
@@ -322,7 +322,7 @@
         }
 
         #s5>div>div>div {
-            background: url(media/images/landing/s5-bg-tv.png) no-repeat center 8em;
+            background: url(<?php echo base_url();?>media/images/landing/s5-bg-tv.png) no-repeat center 8em;
             background-size: 26em;
             padding-right: 8%;
             padding-top: 4em;
@@ -556,25 +556,25 @@
 <main>
     <section id="s1" class="table fullwidth">
         <div class="kv va-b">
-            <div class="bar"> <img class="date" src="media/images/landing/s1-date.png" alt="" />
+            <div class="bar"> <img class="date" src="<?php echo base_url();?>media/images/landing/s1-date.png" alt="" />
                 <div class="table fullwidth">
-                    <div class="masthead"><img src="media/images/landing/s1-masthead.png" alt="" /></div>
+                    <div class="masthead"><img src="<?php echo base_url();?>media/images/landing/s1-masthead.png" alt="" /></div>
                     <div>
                         <div class="icons table fullwidth">
-                            <div><img src="media/images/landing/s1-icon-1.png" alt="" />
+                            <div><img src="<?php echo base_url();?>media/images/landing/s1-icon-1.png" alt="" />
                                 <h2>FREE GIFTS</h2>
                                 <p>Win free merchandise with every purchase!</p>
                             </div>
-                            <div><img src="media/images/landing/s1-icon-2.png" alt="" />
+                            <div><img src="<?php echo base_url();?>media/images/landing/s1-icon-2.png" alt="" />
                                 <h2>LUCKY DRAW</h2>
                                 <p>Join our lucky draw for more wins!</p>
                                 <small>(with minimum purchase of RM350)</small>
                             </div>
-                            <div><img src="media/images/landing/s1-icon-3.png" alt="" />
+                            <div><img src="<?php echo base_url();?>media/images/landing/s1-icon-3.png" alt="" />
                                 <h2>PLAY &amp; WIN</h2>
                                 <p>Play our minigame and score Cocoro premiums!</p>
                             </div>
-                            <div><img src="media/images/landing/s1-icon-4.png" alt="" />
+                            <div><img src="<?php echo base_url();?>media/images/landing/s1-icon-4.png" alt="" />
                                 <h2>MORE REWARDS</h2>
                                 <p>Win prizes from weekly Facebook contests!</p>
                             </div>
@@ -585,17 +585,17 @@
         </div>
     </section>
     <section id="s3" class="table fullwidth">
-        <div><img style="max-width: 994px; display: inline-block" src="media/images/landing/s3-screenshot.jpg" alt="" /></div>
-        <div><img class="ss" src="media/images/landing/s3-logo.png" alt="" />
+        <div><img style="max-width: 994px; display: inline-block" src="<?php echo base_url();?>media/images/landing/s3-screenshot.jpg" alt="" /></div>
+        <div><img class="ss" src="<?php echo base_url();?>media/images/landing/s3-logo.png" alt="" />
             <p>Play this easy minigame to win more amazing
                 prizes this Raya with SHARP!</p>
-            <div><a class="cta" href="#" target="_blank">READY, AIM, PLAY!</a></div>
+            <div><a class="cta" href="<?php echo base_url();?>game">READY, AIM, PLAY!</a></div>
         </div>
     </section>
     <section id="s4">
         <div>
             <div>
-                <div><img class="fb" src="media/images/landing/s4-header.png" alt="" />
+                <div><img class="fb" src="<?php echo base_url();?>media/images/landing/s4-header.png" alt="" />
                     <div style="padding-left: 1.2%"><a class="cta" href="#" target="_blank">CHECK IT OUT!</a></div>
                 </div>
             </div>
@@ -604,7 +604,7 @@
     <section id="s5">
         <div>
             <div>
-                <div><img class="fb" src="media/images/landing/s5-header.png" alt="" />
+                <div><img class="fb" src="<?php echo base_url();?>media/images/landing/s5-header.png" alt="" />
                     <div style="padding-left: 1%;">
                         <div style="max-width:29em;">
                             <h1>Ready to celebrate?</h1>
@@ -615,7 +615,7 @@
                                 <li>Submit your proof of purchase on the SHARP website.</li>
                                 <li>Stand a chance to be one of 20 lucky winners every 2 weeks</li>
                             </ol>
-                            <div><a class="cta" href="#" target="_blank">REDEEM NOW</a></div>
+                            <div><a class="cta" href="<?php echo base_url();?>lucky-draw">REDEEM NOW</a></div>
                             <p><small>*Terms and conditions apply. For gift with purchase only.</small></p>
                         </div>
                     </div>
@@ -626,7 +626,7 @@
     <section id="s6">
         <div>
             <div>
-                <div><img class="fb" src="media/images/landing/s6-header.png" alt="" />
+                <div><img class="fb" src="<?php echo base_url();?>media/images/landing/s6-header.png" alt="" />
                     <div style="padding-left: 1.3%"><a class="cta" href="#" target="_blank">CLICK HERE</a></div>
                 </div>
             </div>
@@ -652,6 +652,6 @@
             <div>Terengganu</div>
         </div>
         <p style="color: #ff0000">OR VISIT OUR ONLINE OFFICIAL STORES</p>
-        <img style="margin-left: auto; margin-right: auto; width: 100%; max-width: 55em" src="media/images/landing/s7-logos.png" alt="" />
+        <img style="margin-left: auto; margin-right: auto; width: 100%; max-width: 55em" src="<?php echo base_url();?>media/images/landing/s7-logos.png" alt="" />
     </section>
 </main>
