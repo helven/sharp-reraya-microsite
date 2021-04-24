@@ -1,17 +1,17 @@
 <?php
-if(strpos($config['base_url'], 'happybrday.baskinrobbins.com.my/staging')) // client staging
+if(strpos($config['base_url'], 'cocorolife.my/SharpReRaya_stage')) // client staging
 {
 	$database['host']		= '127.0.0.1';
-	$database['password']	= '';
-	$database['user']		= '';
-	$database['db_name']	= '';
+	$database['password']	= 'HXn8p,Y)FkB8';
+	$database['user']		= 'sharpnet_reraya';
+	$database['db_name']	= 'sharpnet_reraya_stage';
 }
-elseif(strpos($config['base_url'], 'happybrday.baskinrobbins.com.my')) // live
+elseif(strpos($config['base_url'], 'cocorolife.my/SharpReRaya')) // live
 {
 	$database['host']		= '127.0.0.1';
-	$database['password']	= '';
-	$database['user']		= '';
-	$database['db_name']	= '';
+	$database['password']	= 'HXn8p,Y)FkB8';
+	$database['user']		= 'sharpnet_reraya';
+	$database['db_name']	= 'sharpnet_reraya';
 }
 elseif(strpos($config['base_url'], 'sharpmicro.senjitsu.com')) // staging
 {

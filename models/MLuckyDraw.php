@@ -57,6 +57,7 @@ class MLuckyDraw extends Model
                         dealer          = '{$a_insert['dealer']}',
                         invoice_no      = '{$a_insert['invoice_no']}',
                         invoice_amount  = {$a_insert['invoice_amount']},
+                        serial_no       = '{$a_insert['serial_no']}',
                         receipt         = '{$a_insert['receipt']}',
                         created_at      = '{$a_insert['created_at']}',
                         updated_at      = '{$a_insert['updated_at']}'";

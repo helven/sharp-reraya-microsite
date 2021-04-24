@@ -66,9 +66,11 @@ jQuery(document).ready(function(){
             document.cookie = 'store_game=1;' + expires + path;
 
             msgbox('Nice shot !', 'To check if you stand a chance to win awesome prizes,<br>create a Cocoro Life account', function(){
+                jQuery('#div_Msgbox')[0].style.width = '40%';
                 jQuery('#div_Msgbox .button button').text('SIGN UP');
                 jQuery('#div_Msgbox .button').unbind('click').click(function(){
-                    window.location = '<?php echo base_url();?>auth/sign-up'
+                    window.location = '<?php echo base_url();?>auth/sign-up';
+                    jQuery('#div_Msgbox')[0].style.width = '';
                 });
             });
         <?php }else{ ?>

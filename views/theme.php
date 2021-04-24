@@ -10,7 +10,7 @@
         <meta property="og:description" content="<?php echo $this->config['og_desc'];?>" />
         <meta property="og:url" content="<?php echo base_url();?>" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="<?php echo base_url();?>media/og_image.jpg" />
+        <meta property="og:image" content="<?php echo base_url();?>media/images/og_image.jpg" />
         <meta property="og:site_name" content="">
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -50,7 +50,7 @@
         <header class="main-header">
             <div>
                 <a href="index.html" class="main-header-brand">
-                    <img src="media/images/sharp-logo.png" alt="">
+                    <img src="<?php echo base_url();?>media/images/sharp-logo.png" alt="">
                 </a>
             </div>
             <nav class="main-nav">
@@ -94,8 +94,8 @@
                 </ul>
             </nav>
             <div>
-                <a href="index.html" class="main-header-brand">
-                    <img src="media/images/cocoro-logo.png" alt="">
+                <a href="<?php echo base_url();?>" class="main-header-brand">
+                    <img src="<?php echo base_url();?>media/images/cocoro-logo.png" alt="">
                 </a>
             </div>
         </header>

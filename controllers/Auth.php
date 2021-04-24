@@ -99,6 +99,20 @@ class Auth extends Z_Controller
                 $this->formErrorMsg .= 'Password and confirm password does not match.';
             }
 
+            if(!isset($_POST['chk_AgreeTnC']) || $_POST['chk_AgreeTnC'] == '')
+            {
+                $this->formError    = TRUE;
+                $this->formErrorMsg .= ($this->formErrorMsg != '')?'<br />':'';
+                $this->formErrorMsg .= 'Please agree Terms and Conditions.';
+            }
+
+            if(!isset($_POST['chk_AgreePrivacyPolicy']) || $_POST['chk_AgreePrivacyPolicy'] == '')
+            {
+                $this->formError    = TRUE;
+                $this->formErrorMsg .= ($this->formErrorMsg != '')?'<br />':'';
+                $this->formErrorMsg .= 'Please agree Privacy Policy.';
+            }
+
             // CLEAN $_POST
             sec_clean_all_post($this->db->conn);
 
@@ -168,43 +182,43 @@ class Auth extends Z_Controller
                 if($insert['status'])
                 {
                     // AUTO login after Sign Up
-                    $a_cond= array(
-                        'table'     => 'players',
-                        'field'     => 'id',
-                        'value'     => $insert['player_id'],
-                        'compare'   => '='
-                    );
-                    $a_user = $this->MPlayer->get_player($a_cond);
+                    // $a_cond= array(
+                    //     'table'     => 'players',
+                    //     'field'     => 'id',
+                    //     'value'     => $insert['player_id'],
+                    //     'compare'   => '='
+                    // );
+                    // $a_user = $this->MPlayer->get_player($a_cond);
 
-                    if($a_user['status'])
-                    {
-                        unset($a_user['a_data']['password']);
-                        unset($a_user['a_data']['secret']);
+                    // if($a_user['status'])
+                    // {
+                    //     unset($a_user['a_data']['password']);
+                    //     unset($a_user['a_data']['secret']);
     
-                        $_SESSION['ss_Public']  = $a_user['a_data'];
+                    //     $_SESSION['ss_Public']  = $a_user['a_data'];
 
-                        $token      = encrypt_str($a_user['a_data']['email'].'|'.date('Y-m-d H:i:s'));
-                        $expires    = time() + (86400 * 30);
-                        $path       = '/';
-                        setrawcookie('c_user', '', $expires, $path);
-                        setrawcookie('remember_token', '', $expires, $path);
+                    //     // $token      = encrypt_str($a_user['a_data']['email'].'|'.date('Y-m-d H:i:s'));
+                    //     // $expires    = time() + (86400 * 30);
+                    //     // $path       = '/';
+                    //     // setrawcookie('c_user', '', $expires, $path);
+                    //     // setrawcookie('remember_token', '', $expires, $path);
+                    // }
 
-                        // REDIRECT to home
-                        $location   = base_url();
+                    // REDIRECT to home
+                    $location   = base_url();
 
-                        if(isset($_SESSION['ss_LoginRedirect']) && $_SESSION['ss_LoginRedirect'] != '')
+                    if(isset($_SESSION['ss_LoginRedirect']) && $_SESSION['ss_LoginRedirect'] != '')
+                    {
+                        $location   = $_SESSION['ss_LoginRedirect'];
+                    }
+
+                    // STORE game
+                    if($_COOKIE['store_game'] == 1)
+                    {
+                        $game_stored    = $this->_store_game();
+                        if($game_stored)
                         {
-                            $location   = $_SESSION['ss_LoginRedirect'];
-                        }
-
-                        // STORE game
-                        if($_COOKIE['store_game'] == 1)
-                        {
-                            $game_stored    = $this->_store_game();
-                            if($game_stored)
-                            {
-                                $location   = base_url().'game';
-                            }
+                            $location   = base_url().'game';
                         }
                     }
 
@@ -228,11 +242,11 @@ class Auth extends Z_Controller
                     $mail->msgHTML($message);
                     
                     $email_status   = $mail->send();
-
+                    
                     $_SESSION['ss_Msgbox']['title']		= 'Success!';
                     $_SESSION['ss_Msgbox']['message']	= 'Thank you for signing up!<br /><br />';
                     $_SESSION['ss_Msgbox']['message']   .= ($game_stored)?'Your game score is recorded!<br />':'';
-                    $_SESSION['ss_Msgbox']['message']   .= 'You will receive a verification email shortly.<br />Please check your email and verify to proceed.';
+                    $_SESSION['ss_Msgbox']['message']   .= 'You will receive a verification email shortly. Please check your email and verify to proceed.';
                     $_SESSION['ss_Msgbox']['type']		= 'Success';
 
                     $_SESSION['ss_LoginRedirect']   = '';
@@ -276,10 +290,20 @@ class Auth extends Z_Controller
         list($email, $date)  = explode('|', $key);
         $login    = decrypt_str($_GET['login']);
 
+        if($email != $login)
+        {
+            $_SESSION['ss_Msgbox']['title']		= 'Opps!';
+            $_SESSION['ss_Msgbox']['message']	= 'Invalid email verification.';
+            $_SESSION['ss_Msgbox']['type']		= 'error';
+
+            redirect(base_url().'auth/login');
+            exit;
+        }
+        
         $a_cond = array(
             'table'     => 'players',
-            'field'     => 'id',
-            'value'     => $_SESSION['ss_ResetPwd']['id'],
+            'field'     => 'email',
+            'value'     => $login,
             'compare'   => '='
         );
         $a_update   = array(
@@ -366,7 +390,7 @@ class Auth extends Z_Controller
                     {
                         if($this->_store_game())
                         {
-                            $location   = base_url().'game';
+                            $location   = base_url().'game/leaderboard';
                         }
                     }
 
@@ -452,7 +476,7 @@ class Auth extends Z_Controller
                         $_SESSION['ss_Msgbox']['message']   = 'Your game score is recorded!<br />';
                         $_SESSION['ss_Msgbox']['type']      = 'success';
 
-                        $location   = base_url().'game';
+                        $location   = base_url().'game/leaderboard';
                     }
                 }
 
