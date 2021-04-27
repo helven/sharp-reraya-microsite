@@ -69,5 +69,5 @@ $config = $config[$config['active_group']];
 $config['row_per_page'] = 10;
 
 $config['title']    = 'Sharp Re-Raya';
-$config['og_title'] = 'Sharp Re-Raya';
-$config['og_desc']  = 'Sharp Re-Raya';
+$config['og_title'] = 'Play Sharp Shooter to win epic ReRaya prizes! ';
+$config['og_desc']  = 'Win amazing prizes for SHARP ReRaya with this fun game.';

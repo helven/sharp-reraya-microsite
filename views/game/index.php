@@ -1,37 +1,28 @@
-<div style="width: 40%" class="pop-up ta-c va-m">
-    <p>Nice shot !</p>
-    <p style="padding: 1em">To check if you stand a chance to win awesome prizes,<br>
-        create a Cocoro Life account</p>
-    <div class="centered" style="width: 50%">
-        <a href="sign-up.html"> <button>SIGN UP</button></a>
-    </div>
+<div class="pop-up ta-c va-m">
+  <p class="title">Nice Shot!</p>
+  <p class="message">Please <a style="color: #fff; text-decoration: underline!important" href="<?php echo base_url(); ?>auth/login">login</a> to save your score. If you do not have an account please <a style="color: #fff; text-decoration: underline!important" href="<?php echo base_url(); ?>auth/sign-up">sign-up</a>.</p>
+  	<div class="centered"> <a href="javascript:void(0);" class="button"><button>CLOSE</button></a></div>
 </div>
-
 <section class="sc-1 ">
-    <div class="container mini-game">
-        <div style="width: 80%" class="centered">
-            <iframe id="iframe_Game" src="" style="border:0;width:100%;margin:1em 0;"></iframe>
-            <div class="ta-l">
-                <h2 style="width: 13em;">Play this easy minigame to win
-                    more amazing prizes this Raya
-                    with SHARP!</h2>
-                <div class="minigame-img">
-                    <img class="fullwidth" src="images/how-to-play.png" alt="">
-                </div>
-                <div>
-                    <ol style="padding: 0">
-                        <li>Shoot a ketupat to gain points</li>
-                        <li>Points are lost if products or red pelitas are shot</li>
-                        <li>Take too long to shoot the next ketupat and it's game over</li>
-                        <li>On mobile devices, rotate your screen for the
-                            best experience</li>
-                    </ol>
-                </div>
-            </div>
+  <div class="container"> <img class="mh centered" src="<?php echo base_url();?>media/images/masthead.png" alt="">
+    <div class="mini-game centered">
+      <h1 style="margin-top: 0; margin-bottom: 2em;">Play this easy minigame to win more amazing prizes this Raya with SHARP!</h1>
+      <iframe id="iframe_Game" src="" style="border:0;width:100%;margin:1em 0;"></iframe>
+      <div class="htp table fullwidth ta-l">
+        <div class="minigame-img"> <img class="fullwidth" src="images/how-to-play.png" alt=""> </div>
+        <div>
+          <ol style="padding: 0">
+            <li>Shoot a ketupat to gain points</li>
+            <li>Points are lost if products or red pelitas are shot</li>
+            <li>Take too long to shoot the next ketupat and it's game over</li>
+            <li>On mobile devices, rotate your screen for the
+              best experience</li>
+          </ol>
         </div>
+      </div>
     </div>
+  </div>
 </section>
-
 <script>
 jQuery(document).ready(function(){
     set_game_size();
@@ -86,7 +77,7 @@ jQuery(document).ready(function(){
 
                 },
                 success     : function(o_rtn){
-                    console.log(o_rtn);
+                    window.location = '<?php echo base_url();?>game/leaderboard';
                 }
             });
         <?php } ?>

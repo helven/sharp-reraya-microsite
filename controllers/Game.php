@@ -124,6 +124,11 @@ Class Game extends Z_Controller
 
     function leaderboard()
     {
+        if(!check_auth())
+        {
+            redirect(base_url().'game');
+        }
+
         $a_cond     = array();
         $group_by   = " GROUP BY submissions.player_id";
         $order      = " ORDER BY submissions.score DESC";

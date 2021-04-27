@@ -53,6 +53,9 @@ class MLuckyDraw extends Model
         $sql    = " INSERT INTO `lucky_draws` SET
                         player_id       = {$a_insert['player_id']},
                         status          = {$a_insert['status']},
+                        is_winner       = {$a_insert['is_winner']},
+                        name            = '{$a_insert['name']}',
+                        phone           = '{$a_insert['phone']}',
                         purchase_date   = '{$a_insert['purchase_date']}',
                         dealer          = '{$a_insert['dealer']}',
                         invoice_no      = '{$a_insert['invoice_no']}',

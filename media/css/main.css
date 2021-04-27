@@ -1,403 +1,272 @@
+.icons small {
+	font-size: 0.75em;
+}
+
 .p1-sc1 {
-    background: url("../images/sc-1-bg.jpg");
-    width: 100%;
-    height: 100vh;
-    /*    padding: 10px;*/
+  background: url("../images/sc-1-bg.jpg");
+  width: 100%;
+  height: 100vh;
 }
-
 .sc-1 {
-    background: url("../images/shared-bg.jpg");
-    width: 100%;
-    background-size: cover;
-    background-position: center;
-    padding: 100px 0;
-    position: relative;
+  margin-top: 5.2em;
+  background: url("../images/shared-bg.jpg");
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  padding: 3em 1em 5em;
+  position: relative;
 }
-
+#body_Mobile .sc-1 {
+  margin-top: 4.2em;
+}
 form {
-    background: #fff;
-    width: 50%;
-    margin-top: -4em;
-    padding: 4em;
-
+  background: #fff;
+  max-width: 50em;
+  width: 100%;
+  margin-top: -6em;
+  padding: 6em 4em 4em;
 }
-
-.form-lucky {
-    background: #fff;
-    width: 90%;
-    margin-top: 0;
-    padding: 1em 2em;
-
-}
-
-.form-icon {
-    display: inline-block;
-    padding: 2em;
-    vertical-align: middle;
-}
-
-.container {
-    /*    max-width: 400px;*/
-    width: 100%;
-
-}
-
-
-.form h1 {
-    text-align: center;
-    color: #000000;
-    margin-bottom: 3em;
-    font-size: 1em;
-
-
-}
-
-.form-control {
-    position: relative;
-    margin-bottom: 2em;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-label[for=name],
-label[for=phone],
-label[for=email],
-label[for=password],
-label[for=date],
-label[for=dealer],
-label[for=receive-number],
-label[for=receipt],
-label[for=warranty] {
-    /*    font-weight: 700;*/
-    color: #000000;
-    display: inline-block;
-    margin-bottom: 0.25rem;
-    width: 8em;
-    vertical-align: middle;
-}
-
-label[for=checkbox] {
-    width: 100%;
-
-
-}
-
-label[for=upload] {}
-
-input[type=text],
-input[type=password],
-input[type=email],
-input[type=date],
-input[type=number] {
-    display: inline-block;
-    width: 50%;
-    border: none;
-    background-color: #efefef;
-    padding: 1rem;
-    border-radius: 5px;
-    transition: 0.25s ease all;
-
-}
-
-
-button {
-    background: #background: rgb(253, 0, 7);
-    background: linear-gradient(230deg, rgba(253, 0, 7, 1) 10%, rgba(227, 0, 120, 1) 100%);
-    color: #fff;
-    font-family: 'gilroybold';
-    font-size: 1.4em;
-    text-decoration: none;
-    padding: 0.5em 2em;
-    border-radius: 2em;
-    border: 1px solid #d2000c;
-    box-shadow: -10px 15px 20px 0px rgb(210 0 13 / 24%);
-    -webkit-box-shadow: -10px 15px 20px 0px rgb(210 0 13 / 24%);
-    -moz-box-shadow: -10px 15px 20px 0px rgba(210, 0, 13, 0.24);
-    /*    margin-top: 3em;*/
-    display: inline-block;
-
-
-}
-
-.sign-up img {
-    padding-top: 1em;
-}
-
-.overlay {
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    opacity: 0;
-    pointer-events: none;
-    background: #000000;
-    /*    background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 25%, rgba(0, 0, 0, 0.7973564425770308) 100%);*/
-    z-index: 1;
-    transition: all 0.5s ease;
-
-}
-
-.overlay.active {
-    transition: all 0.5s ease;
-    opacity: 0.5;
-    pointer-events: all;
-
-}
-
 .leaderboard {
-
-    width: 50%;
-    margin: auto;
+  max-width: 50em;
+  width: 100%;
+  margin-top: -6em;
+  margin-left: auto;
+  margin-right: auto;
 }
-
+@media (max-width: 540px) {
+  .leaderboard {
+    margin-top: -4.1em;
+  }
+}
+.leaderboard > h2 {
+  background: #fff;
+  padding-top: 3em;
+  padding-bottom: 0.5em;
+  margin-top: 2em;
+}
+.form-lucky {
+  background: #fff;
+  width: 90%;
+  margin-top: 0;
+  padding: 1em 2em;
+}
+.form-icon {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 46px;
+}
+.container {
+  width: 100%;
+}
+.form h1, .mini-game h1 {
+  text-align: center;
+  color: #000000;
+  margin-bottom: 3em;
+  font-size: 1em;
+}
+form > .form-control:last-child {
+  margin-bottom: 0;
+}
+.form-control {
+  position: relative;
+  margin-bottom: 1em;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.form-control > div {
+  vertical-align: middle;
+}
+.form-control > div:first-child {
+  width: 10em;
+  text-align: left;
+}
+.form-control > div:last-child input {
+  width: 100%;
+}
+label[for=name], label[for=phone], label[for=email], label[for=password], label[for=date], label[for=dealer], label[for=receive-number], label[for=receipt], label[for=warranty] {
+  color: #000000;
+  display: inline-block;
+  margin-bottom: 0.25rem;
+  vertical-align: middle;
+}
+label[for=checkbox] {
+  width: 100%;
+}
+label[for=upload] {}
+input[type=text], input[type=password], input[type=email], input[type=date], input[type=number], select, .custom-file-upload {
+  display: inline-block;
+  width: 100%;
+  border: none;
+  background-color: #efefef;
+  padding: 1rem;
+  border-radius: 5px;
+  transition: 0.25s ease all;
+}
+button, input[type=submit] {
+  background: rgb(253, 0, 7);
+  background: linear-gradient(230deg, rgba(253, 0, 7, 1) 10%, rgba(227, 0, 120, 1) 100%);
+  color: #fff;
+  font-family: 'gilroybold';
+  font-size: 1.4em;
+  text-decoration: none;
+  padding: 0.5em 2em;
+  border-radius: 2em;
+  border: 1px solid #d2000c;
+  box-shadow: -10px 15px 20px 0px rgb(210 0 13 / 24%);
+  -webkit-box-shadow: -10px 15px 20px 0px rgb(210 0 13 / 24%);
+  -moz-box-shadow: -10px 15px 20px 0px rgba(210, 0, 13, 0.24);
+  display: inline-block;
+  width: initial !important;
+}
+.sign-up img {}
+.overlay {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  opacity: 0;
+  pointer-events: none;
+  background: #000000;
+  z-index: 1;
+  transition: all 0.5s ease;
+}
+.overlay.active {
+  transition: all 0.5s ease;
+  opacity: 0.5;
+  pointer-events: all;
+}
 .rank {
-    background-color: #ff780f;
-    padding: 0.5em 0;
-    top: 0.5em;
-    width: 7%;
-    transform: skewX(20deg);
-    position: absolute;
-    left: 0;
-
-
+  background-color: #ff780f;
+  padding: 0.5em 0;
+  top: 0.5em;
+  width: 3em;
+  transform: skewX(20deg);
+  position: absolute;
+  left: 0;
 }
-
 .rank p {
-    transform: skewX(-20deg);
-    padding: 0;
-    margin: 0;
-
+  transform: skewX(-20deg);
+  padding: 0;
+  margin: 0;
 }
-
 .name {
-    background-color: #fff;
-    padding: 1em 0;
-    width: 89%;
-
+  background-color: #fff;
+  padding: 0 0.5em 0 4.2em;
 }
-
+@media (max-width: 540px) {
+  .name {
+    font-size: 0.8em;
+    padding-left: 5.25em;
+  }
+}
 .score {
-    background-color: #e1132d;
-    padding: 1em 0;
-    width: 7%;
-    color: white;
+  background-color: #e1132d;
+  padding: 1em 0;
+  width: 4.5em;
+  color: white;
 }
-
 .ld-margin {
-    margin: 0.4em 0;
+  margin: 0.4em 0;
 }
-
 .leaderboard * {
-    font-family: 'gilroysemibold';
+  font-family: 'gilroybold';
 }
-
 .leaderboard h2 {
-    font-size: 2em;
-    text-transform: uppercase;
-    color: #000000;
-    text-align: center;
-    margin: 0;
+  font-size: 2em;
+  text-transform: uppercase;
+  color: #000000;
+  text-align: center;
+  margin: 0;
 }
-
 .name.active {
-    background-color: #009c85;
+  background-color: #009c85;
 }
-
-
-
-/*
-.custom-date:after {
-    z-index: 1;
-    content: url('/images/calendar-icon.png');
-    font-size: 2rem;
-    background: none;
-    background: url('/images/calendar-icon.png') no-repeat;
-    background-size: 10%;
-    width: 50px;
-    height: 50px;
-    position: absolute;
-    top: -0.5em;
-    right: 0;
-
-}
-
-
-.calendar::-webkit-inner-spin-button,
-.calendar::-webkit-calendar-picker-indicator {
-    opacity: 0;
-    z-index: 2;
-    width: 10em;
-}
-*/
-
-
-
 input[type="file"] {
-    display: none;
+  display: none;
 }
-
-.custom-file-upload {
-    width: 20%;
-    padding: 0.5em 1em;
-    border-radius: 2em;
-    background-image: linear-gradient(to right, #ff0066, #ff0053, #ff003e, #ff0027, #ff0000);
-    transition: 0.25s ease all;
-    border: none;
-    color: white;
-    cursor: pointer;
-}
-
+.custom-file-upload {}
 .mini-game {
-    background: rgba(255, 255, 255, 0.6);
-    padding: 2em;
-    width: 70%;
-    margin: auto;
-
-
+  background: #fff;
+  max-width: 60em;
+  width: 100%;
+  margin-top: -6em;
+  padding: 6em 4em 4em;
 }
-
 .mini-game p {
-    padding-top: 1em;
-    /*    font-size: 1.5em;*/
-
+  padding-top: 1em;
 }
-
 .mini-game li {
-    padding: 0.5em 0;
+  padding: 0.5em 0;
 }
-
 .mini-game img {
-    padding: 1em 0;
+  padding: 1em 0;
 }
-
+.htp > div {
+  vertical-align: top;
+}
+.htp > div:last-child {
+  padding-left: 2em;
+}
 #form-keyin {
-    display: none;
+  display: none;
 }
-
-.active {
-    display: block;
-}
-
 .lucky-img {
-    width: 50%
+  width: 50%
 }
-
 .masthead {
-    width: 30%;
+  width: 30%;
 }
-
 .minigame-img {
-    width: 30%;
+  width: 30%;
 }
-
-
-#burger-menu {
-    display: none;
+#body_Mobile #burger-menu {
+  display: inline-block;
+  position: fixed;
+  left: 0.5em;
+  top: 1em;
+  padding: 0.3em;
+  z-index: 52;
+  color: #fff;
 }
-
-
-
-
-
-
-
-@media (max-width: 767px) {}
-
-@media(max-width: 735px) {
-    #burger-menu {
-        position: fixed;
-        display: inline-block;
-        left: 0.2em;
-        top: 0.2em;
-        border-radius: 2px;
-        padding: 0.3em;
-        z-index: 1;
-        color: #fff;
-    }
-
-    .sc-1 {
-        padding: 0.5em;
-    }
-
-    .lucky-img {
-        width: 100%;
-    }
-
-    .file-upload div {
-        width: 50%;
-    }
-
-    .form {
-        width: 90%;
-    }
-
-    .form h1 {
-        margin: 1.5em 0;
-    }
-
-    input[type=text],
-    input[type=password],
-    input[type=email],
-    input[type=number],
-    input[type=date] {
-        width: 100%;
-    }
-
-    button {
-        margin-top: 1em;
-        padding: 0.5em 1em;
-    }
-
-    .sign-up img {
-        width: 80%;
-    }
-
-    .form-icon {
-        width: 30% !important;
-        padding: 1em;
-        margin-top: 1em;
-    }
-
-    form {
-        padding: 1em;
-    }
-
-    .leaderboard {
-        width: 90%;
-    }
-
-
-    .pop-up-email,
-    .pop-up,
-    .pop-up-reset {
-        width: 90%;
-        padding: 1em;
-    }
-
-    .masthead {
-        width: 80%;
-    }
-
-    .mini-game {
-        padding: 0;
-        width: 90%;
-    }
-
-    .minigame-img {
-        width: 90%;
-    }
-
-    button {
-        font-size: 1.1em;
-    }
-
-    .custom-file-upload {
-        padding: 0.5em 0.3em;
-    }
-
-
-
-
-    @media (max-width: 722px) {}
-
-    @media (max-width: 520px) {}
+@media (max-width: 1200px) {
+  #body_Mobile #burger-menu {
+    top: 0.5em;
+  }
+}
+@media (max-width: 767px) {
+  .form-control > div:first-child, .form-control > div:last-child {
+    display: block;
+    width: 100%;
+  }
+  .ico {
+    display: none !important;
+  }
+}
+@media (max-width: 540px) {
+  #body_Mobile .sc-1 {
+    margin-top: 3.6em;
+  }
+  form, .mini-game {
+    padding: 6em 1em 4em;
+    margin-top: -4.1em;
+  }
+  .mh {
+    max-width: 19em;
+  }
+  .sc-1 {
+    padding-top: 2em;
+  }
+  .b.ta-l {
+    text-align: center;
+  }
+  .htp.table > div {
+    display: block;
+    width: 100%;
+  }
+}
+@media (max-width: 420px) {
+  .mh {
+    max-width: 16em;
+  }
+}

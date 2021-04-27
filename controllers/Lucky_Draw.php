@@ -1082,7 +1082,10 @@ Class Lucky_Draw extends Z_Controller
                     $cdate  = date('Y-m-d H:i:s');
                     $a_insert   = array(
                         'player_id'         => (check_auth()?$_SESSION['ss_Public']['id']:0),
-                        'status'            => 1,
+                        'status'            => 15,
+                        'is_winner'         => 0,
+                        'name'              => $_POST['txt_FullName'],
+                        'phone'             => $_POST['txt_Phone'],
                         'purchase_date'     => $_POST['txt_PuchaseDate'],
                         'dealer'            => $_POST['opt_Dealer'],
                         'invoice_no'        => $_POST['txt_InvoiceNo'],
