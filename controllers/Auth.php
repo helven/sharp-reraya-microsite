@@ -171,8 +171,8 @@ class Auth extends Z_Controller
                     'name'          => $_POST['txt_Name'],
                     'email'         => $_POST['txt_Email'],
                     'phone'         => $_POST['txt_Phone'],
-                    'password'      => password_hash($_POST['txt_Password'], PASSWORD_DEFAULT),
-                    'secret'        => encrypt_str($_POST['txt_Password']),
+                    'password'      => password_hash($_POST['txt_Password'], PASSWORD_DEFAULT), // Laravel password hashing
+                    'secret'        => encrypt_password($_POST['txt_Password']),
                     'remember_token'=> '',
                     'created_at'  => $cdate,
                     'updated_at'  => $cdate
@@ -447,7 +447,7 @@ class Auth extends Z_Controller
                         array(
                             'table'     => 'players',
                             'field'     => 'secret',
-                            'value'     => encrypt_str($_POST['txt_Password']),
+                            'value'     => encrypt_password($_POST['txt_Password']),
                             'compare'   => '='
                         )
                     )
@@ -676,7 +676,7 @@ class Auth extends Z_Controller
                 );
                 $a_update   = array(
                     'password'  => password_hash($_POST['txt_Password'], PASSWORD_DEFAULT),
-                    'secret'    => encrypt_str($_POST['txt_Password'])
+                    'secret'    => encrypt_password($_POST['txt_Password'])
                 );
                 $a_update_user = $this->MPlayer->update_player($a_cond, $a_update);
 

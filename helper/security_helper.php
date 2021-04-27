@@ -36,7 +36,6 @@ if (!function_exists('sec_clean_all_get'))
     }
 }
 
-
 if(!function_exists('encrypt_str'))
 {
     function encrypt_str($str, $secret='')
@@ -56,5 +55,19 @@ if(!function_exists('decrypt_str'))
         $decrypted  = openssl_decrypt($str, "AES-128-ECB", $key);
 
         return $decrypted;
+    }
+}
+
+if(!function_exists('encrypt_password'))
+{
+    function encrypt_password($str)
+    {
+        $key        = '';
+
+        $salt1      = hash('sha512', $key . $str);
+        $salt2      = hash('sha512', $str . $key);
+        $encrypted  = hash('sha512', $salt1 . $str . $salt2);
+
+        return $encrypted;
     }
 }
