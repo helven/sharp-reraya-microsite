@@ -167,7 +167,7 @@ class Auth extends Z_Controller
                 // INSERT player
                 $cdate  = date('Y-m-d H:i:s');
                 $a_insert   = array(
-                    'status'        => 1,
+                    'status'        => 2,
                     'name'          => $_POST['txt_Name'],
                     'email'         => $_POST['txt_Email'],
                     'phone'         => $_POST['txt_Phone'],
@@ -307,7 +307,8 @@ class Auth extends Z_Controller
             'compare'   => '='
         );
         $a_update   = array(
-            'email_verified_at'  => date('Y-m-d H:i:s')
+            'status'            => 1,
+            'email_verified_at' => date('Y-m-d H:i:s')
         );
         $a_update_user = $this->MPlayer->update_player($a_cond, $a_update);
 
@@ -481,7 +482,7 @@ class Auth extends Z_Controller
                 }
 
                 // CHECK if account is verified
-                if($a_login['email_verified_at'] == NULL || $a_login['email_verified_at'] == '')
+                if($a_login['status'] == 2)
                 {
                     unset($_SESSION['ss_Public']);
                     $_SESSION['ss_Msgbox']['title']     = 'Opps!';
