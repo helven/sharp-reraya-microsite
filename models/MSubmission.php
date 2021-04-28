@@ -6,7 +6,7 @@ class MSubmission extends Model
         parent::__construct();
     }
 
-    function get_submission_list($a_cond='', $order='', $group_by='', $a_limit='ALL')
+    function get_submission_list($a_cond='', $order='', $a_limit='ALL')
     {
         $a_rtn_data = array();
         $a_data = array();
@@ -34,7 +34,7 @@ class MSubmission extends Model
         {
             $a_limit[0] = 0;
         }
-        $sql    = $select.$from.$where.$cond.$group_by.$limit;
+        $sql    = $select.$from.$where.$cond.$order.$limit;
 
         // EXECUTE sql query
         $Q      = $this->db->query($sql);
@@ -53,6 +53,32 @@ class MSubmission extends Model
         
         $Q->free_result();
         
+        return $a_rtn_data;
+    }
+
+    function get_leaderboard_list($a_cond='', $order='', $a_limit='ALL')
+    {
+        $a_temp = $this->get_submission_list($a_cond, $order, $a_limit);
+        if(!$a_temp['status'])
+        {
+            $a_rtn_data['status']   = FALSE;
+            $a_rtn_data['msg']      = 'We\'re sorry, the submission you\'re looking for cannot be found.';
+        }
+
+        $a_temp = $a_temp['a_data'];
+        $a_leaderboard  = array();
+
+        foreach($a_temp as $a_submission)
+        {
+            if(!multi_array_search($a_leaderboard, 'player_id', $a_submission['player_id']))
+            {
+                array_push($a_leaderboard, $a_submission);
+            }
+        }
+
+        $a_rtn_data['a_data']   = $a_leaderboard;
+        $a_rtn_data['status']   = TRUE;
+
         return $a_rtn_data;
     }
 

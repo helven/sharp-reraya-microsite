@@ -129,12 +129,41 @@ Class Game extends Z_Controller
             redirect(base_url().'game');
         }
 
-        $a_cond     = array();
-        $group_by   = " GROUP BY submissions.player_id";
-        $order      = " ORDER BY submissions.score DESC";
-        $a_limit    = array(0, 10);
-        $this->a_leaderboard  = $this->MSubmission->get_submission_list($a_cond, $group_by, $order, $a_limit);
+        $a_leaderboard_round    = $this->config['leaderboard_round'];
 
+        $round  = 0;
+        foreach($a_leaderboard_round as $a_date)
+        {
+            list($start, $end) = $a_date;
+
+            $date   = date('Y-m-d');
+            if(strtotime($start) <= strtotime($date) && strtotime($end) >= strtotime($date))
+            {
+                break;
+            }
+            if($round < count($a_leaderboard_round) - 1)
+            {
+                $round++;
+            }
+        }
+
+        $a_cond     = array(
+            'table'     => 'submissions',
+            'field'     => 'created_at',
+            'value'     => "'{$start}' AND '{$end}'",
+            'compare'   => 'between'
+        );
+        #$group_by   = " GROUP BY submissions.player_id";
+        $order      = " ORDER BY submissions.score DESC";
+        $this->a_leaderboard  = $this->MSubmission->get_leaderboard_list($a_cond, $order);
+
+        if($this->a_leaderboard['status'])
+        {
+            if(count($this->a_leaderboard['a_data']) > 10)
+            {
+                $this->a_leaderboard['a_data']  = array_slice($this->a_leaderboard['a_data'], 0, 10);
+            }
+        }
         // ----------------------------------------------------------------------- //
         // LOAD views and render
         // ----------------------------------------------------------------------- //

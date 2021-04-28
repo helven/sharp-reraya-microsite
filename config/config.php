@@ -71,3 +71,28 @@ $config['row_per_page'] = 10;
 $config['title']    = 'Sharp Re-Raya';
 $config['og_title'] = 'Play Sharp Shooter to win epic ReRaya prizes! ';
 $config['og_desc']  = 'Win amazing prizes for SHARP ReRaya with this fun game.';
+
+$config['leaderboard_round']    = array(
+    array('2021-04-01', '2021-04-10'),
+    array('2021-04-11', '2021-04-17'),
+    array('2021-04-18', '2021-04-25'),
+    array('2021-04-26', '2021-04-30'),
+
+    array('2021-05-01', '2021-05-08'),
+    array('2021-05-09', '2021-05-15'),
+    array('2021-05-16', '2021-05-22'),
+    array('2021-05-23', '2021-05-30'),
+    // array('2021-05-30', '2021-06-05'),
+    // array('2021-06-06', '2021-06-12'),
+    // array('2021-06-13', '2021-06-19'),
+    // array('2021-06-20', '2021-06-26'),
+);
+$config['luckydraw_round']  = array(
+    array('2021-04-01', '2021-04-17'),
+    array('2021-04-18', '2021-04-30'),
+    
+    array('2021-05-01', '2021-05-15'),
+    array('2021-05-16', '2021-05-30'),
+    // array('2021-05-30', '2021-06-12'),
+    // array('2021-06-13', '2021-06-26'),
+);

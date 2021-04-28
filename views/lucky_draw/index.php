@@ -67,9 +67,9 @@
         <div>
 		  Upload your Invoice
         </div>
-        <div><label class="custom-file-upload">
-            <input type="file" name="file_Receipt" />
-            Choose File (PDF / JPG / PNG)</label></div>
+        <div><label id="lbl_Receipt" class="custom-file-upload">
+            <input type="file" id="file_Receipt" name="file_Receipt" />
+            <span>Choose File (PDF / JPG / PNG)</span></label></div>
       </div>
       <div class="form-control table fullwidth" style="margin-top: 2em;">
         <div class="empty">&nbsp;</div>
@@ -80,3 +80,19 @@
     </form>
   </div>
 </section>
+<script>
+jQuery(document).ready(function(){
+    jQuery('#file_Receipt').change(function(){
+        if(jQuery('#file_Receipt').val() != '')
+        {
+            filename = jQuery('#file_Receipt').val()
+            filename = filename.replace(/.*[\/\\]/, '');
+            jQuery('#lbl_Receipt span').text(filename);
+        }
+        else
+        {
+            jQuery('#lbl_Receipt span').text('Choose File (PDF / JPG / PNG)');
+        }
+    });
+})
+</script>

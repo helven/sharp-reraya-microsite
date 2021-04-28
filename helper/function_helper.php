@@ -476,3 +476,22 @@ if( ! function_exists('clean_phone_no'))
         return $str;
     }
 }
+
+if( ! function_exists('multi_array_search'))
+{
+    function multi_array_search($a, $key, $needle)
+    {
+        $a  = json_decode(json_encode($a), TRUE);
+        $ctr = 0;
+        foreach($a as $v)
+        {
+            if($v[$key] == $needle)
+            {
+                return $ctr;
+            }
+            $ctr++;
+        }
+
+        return FALSE;
+    }
+}

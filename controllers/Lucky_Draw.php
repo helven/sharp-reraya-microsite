@@ -962,13 +962,13 @@ Class Lucky_Draw extends Z_Controller
         $a_allowed_invoice_ext  = array('jpg', 'jpeg', 'bmp', 'png', 'gif', 'pdf');
 
         // CHECK user login status
-        /*if(!check_auth())
+        if(!check_auth())
         {
             // REDIRECT to dashboard
             $location   = base_url().'auth/login';
             $_SESSION['ss_LoginRedirect']   = base_url().'lucky-draw';
             redirect($location);
-        }*/
+        }
 
         if(isset($_POST['hdd_Action']))
         {
