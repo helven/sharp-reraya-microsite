@@ -19,7 +19,7 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <title><?php echo $this->config['title'];?></title>
+        <title><?php echo $this->config['title'];?> - <?php echo (isset($this->page_title) && $this->page_title != '')?$this->page_title:'';?></title>
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <meta http-equiv="content-style-type" content="text/css" />
         
@@ -74,15 +74,15 @@
 			<?php if (ucfirst($this->platform) == 'Desktop'): ?>
             <nav class="main-nav">
                 <ul class="main-nav-items">
-                    <li class="main-nav-item">
+                    <li class="main-nav-item <?php echo ($this->className == 'Index')?'active':'';?>">
                         <a href="<?php echo base_url();?>">Home</a>
                     </li>
                     <div class="divider-item"></div>
-                    <li class="main-nav-item">
+                    <li class="main-nav-item <?php echo ($this->className == 'Game')?'active':'';?>">
                         <a href="<?php echo base_url();?>game">Mini-Game</a>
                     </li>
                     <div class="divider-item"></div>
-                    <li class="main-nav-item">
+                    <li class="main-nav-item <?php echo ($this->className == 'Lucky_Draw')?'active':'';?>">
                         <a href="<?php echo base_url();?>lucky-draw">Lucky Draw</a>
                     </li>
                     <div class="divider-item"></div>
@@ -95,11 +95,11 @@
                     </li>
                     <div class="divider-item"></div>
                     <?php if(!check_auth()){ ?>
-                        <li class="main-nav-item">
+                        <li class="main-nav-item <?php echo ($this->className == 'Auth' && $this->methodName == 'sign_up')?'active':'';?>">
                             <a href="<?php echo base_url();?>auth/sign-up">Sign-Up</a>
                         </li>
                         <div class="divider-item"></div>
-                        <li class="main-nav-item">
+                        <li class="main-nav-item <?php echo ($this->className == 'Auth' && $this->methodName == 'login')?'active':'';?>">
                             <a href="<?php echo base_url();?>auth/login">Login</a>
                         </li>
                     <?php }else{ ?>
@@ -123,15 +123,15 @@
 		<div class="mobile-menu">
 			<nav class="main-nav">
                 <ul class="main-nav-items">
-                    <li class="main-nav-item">
+                    <li class="main-nav-item <?php echo ($this->className == 'Index')?'active':'';?>">
                         <a href="<?php echo base_url();?>">Home</a>
                     </li>
                     <div class="divider-item"></div>
-                    <li class="main-nav-item">
+                    <li class="main-nav-item <?php echo ($this->className == 'Game')?'active':'';?>">
                         <a href="<?php echo base_url();?>game">Mini-Game</a>
                     </li>
                     <div class="divider-item"></div>
-                    <li class="main-nav-item">
+                    <li class="main-nav-item <?php echo ($this->className == 'Lucky_Draw')?'active':'';?>">
                         <a href="<?php echo base_url();?>lucky-draw">Lucky Draw</a>
                     </li>
                     <div class="divider-item"></div>
@@ -144,11 +144,11 @@
                     </li>
                     <div class="divider-item"></div>
                     <?php if(!check_auth()){ ?>
-                        <li class="main-nav-item">
+                        <li class="main-nav-item <?php echo ($this->className == 'Auth' && $this->methodName == 'sign_up')?'active':'';?>">
                             <a href="<?php echo base_url();?>auth/sign-up">Sign-Up</a>
                         </li>
                         <div class="divider-item"></div>
-                        <li class="main-nav-item">
+                        <li class="main-nav-item <?php echo ($this->className == 'Auth' && $this->methodName == 'login')?'active':'';?>">
                             <a href="<?php echo base_url();?>auth/login">Login</a>
                         </li>
                     <?php }else{ ?>

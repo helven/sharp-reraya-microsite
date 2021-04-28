@@ -41,6 +41,8 @@ class Auth extends Z_Controller
 
     function sign_up()
     {
+        $this->page_title   = 'Sign Up';
+
         // CHECK user login status
         if(check_auth())
         {
@@ -270,6 +272,8 @@ class Auth extends Z_Controller
 
     function verify_email()
     {
+        $this->page_title   = 'Verify Email';
+
         if(
             (!isset($_GET['action']) || $_GET['action'] == '' || $_GET['action'] != 've')
             || (!isset($_GET['key']) || $_GET['key'] == '')
@@ -322,6 +326,8 @@ class Auth extends Z_Controller
 
     function login()
     {
+        $this->page_title   = 'Login';
+
         $location   = base_url();
 
         if(isset($_SESSION['ss_LoginRedirect']) && $_SESSION['ss_LoginRedirect'] != '')
@@ -558,6 +564,8 @@ class Auth extends Z_Controller
 
     function forgot_password()
     {
+        $this->page_title   = 'Forgot Password';
+
         if(isset($_POST['hdd_Action']))
         {
             if(!isset($_POST['txt_Email']) || $_POST['txt_Email'] == '')
@@ -627,6 +635,8 @@ class Auth extends Z_Controller
 
     function reset_password()
     {
+        $this->page_title   = 'Reset Password';
+
         if(isset($_POST['hdd_Action']))
         {
             $this->formError    = FALSE;

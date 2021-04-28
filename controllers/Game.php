@@ -25,6 +25,7 @@ Class Game extends Z_Controller
 */
     function index()
     {
+        $this->page_title   = 'Sharp Shooter';
         // ----------------------------------------------------------------------- //
         // LOAD views and render
         // ----------------------------------------------------------------------- //
@@ -124,6 +125,8 @@ Class Game extends Z_Controller
 
     function leaderboard()
     {
+        $this->page_title   = 'Leaderboard';
+        
         if(!check_auth())
         {
             redirect(base_url().'game');

@@ -959,6 +959,8 @@ Class Lucky_Draw extends Z_Controller
 */
     function index()
     {
+        $this->page_title   = 'Lucky Draw';
+        
         $a_allowed_invoice_ext  = array('jpg', 'jpeg', 'bmp', 'png', 'gif', 'pdf');
 
         // CHECK user login status
