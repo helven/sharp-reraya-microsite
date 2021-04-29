@@ -77,7 +77,9 @@ jQuery(document).ready(function(){
 
                 },
                 success     : function(o_rtn){
-                    window.location = '<?php echo base_url();?>game/leaderboard';
+                    setTimeout(function(){
+                        window.location = '<?php echo base_url();?>game/leaderboard';
+                    }, 2000);
                 }
             });
         <?php } ?>

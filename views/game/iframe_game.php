@@ -45,7 +45,7 @@
 <!-- The runtime script.  You can rename it, but don't forget to rename the reference here as well.
 This file will have been minified and obfuscated if you enabled "Minify script" during export. -->
 <script src="<?php echo base_url();?>media/js/md5.js"></script>
-<script src="<?php echo base_url();?>media/game/c2xabx.src.js"></script>
+<script src="<?php echo base_url();?>media/game/c2xabx.js"></script>
 <script src="<?php echo base_url();?>media/game/c2runtime.js"></script>
 
 <script>
