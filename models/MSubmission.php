@@ -70,7 +70,8 @@ class MSubmission extends Model
 
         foreach($a_temp as $a_submission)
         {
-            if(!multi_array_search($a_leaderboard, 'player_id', $a_submission['player_id']))
+            $exists = multi_array_search($a_leaderboard, 'player_id', $a_submission['player_id']);
+            if(!is_numeric($exists))
             {
                 array_push($a_leaderboard, $a_submission);
             }
