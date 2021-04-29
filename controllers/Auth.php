@@ -80,6 +80,14 @@ class Auth extends Z_Controller
                 $this->formErrorMsg .= 'Please enter mobile no.';
             }
 
+            $_POST['txt_Address'] = trim($_POST['txt_Address']);
+            if(!isset($_POST['txt_Address']) || $_POST['txt_Address'] == '')
+            {
+                $this->formError    = TRUE;
+                $this->formErrorMsg .= ($this->formErrorMsg != '')?'<br />':'';
+                $this->formErrorMsg .= 'Please enter address.';
+            }
+
             if(!isset($_POST['txt_Password']) || $_POST['txt_Password'] == '')
             {
                 $this->formError    = TRUE;
@@ -173,6 +181,7 @@ class Auth extends Z_Controller
                     'name'          => $_POST['txt_Name'],
                     'email'         => $_POST['txt_Email'],
                     'phone'         => $_POST['txt_Phone'],
+                    'address'       => $_POST['txt_Address'],
                     'password'      => password_hash($_POST['txt_Password'], PASSWORD_DEFAULT), // Laravel password hashing
                     'secret'        => encrypt_password($_POST['txt_Password']),
                     'remember_token'=> '',

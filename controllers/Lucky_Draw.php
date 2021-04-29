@@ -966,7 +966,11 @@ Class Lucky_Draw extends Z_Controller
         // CHECK user login status
         if(!check_auth())
         {
-            // REDIRECT to dashboard
+            $_SESSION['ss_Msgbox']['title']		= '';
+            $_SESSION['ss_Msgbox']['message']	= 'Sign-Up or Login to participate in the lucky draw!';
+            $_SESSION['ss_Msgbox']['type']		= 'error';
+
+            // REDIRECT to login page
             $location   = base_url().'auth/login';
             $_SESSION['ss_LoginRedirect']   = base_url().'lucky-draw';
             redirect($location);
@@ -1024,7 +1028,7 @@ Class Lucky_Draw extends Z_Controller
                 $this->formErrorMsg .= 'Please enter Serial No.';
             }
 
-            if(!isset($_FILES['file_Receipt']['name']) || $_FILES['file_Receipt']['name'] == '')
+            if(!isset($_FILES['file_Receipt']['name'][0]) || $_FILES['file_Receipt']['name'][0] == '')
             {
                 $this->formError    = TRUE;
                 $this->formErrorMsg .= ($this->formErrorMsg != '')?'<br />':'';
@@ -1032,21 +1036,37 @@ Class Lucky_Draw extends Z_Controller
             }
             else
             {
-                $name   = get_file_name($_FILES['file_Receipt']['name']);
-                $ext    = get_file_ext($_FILES['file_Receipt']['name']);
-
-                if(!in_array($ext, $a_allowed_invoice_ext))
+                $ctr    = 0;
+                foreach($_FILES['file_Receipt']['name'] as $filename)
                 {
-                    $this->formError    = TRUE;
-                    $this->formErrorMsg .= ($this->formErrorMsg != '')?'<br />':'';
-                    $this->formErrorMsg .= 'Invalid Invoice/Receipt file.';
-                }
+                    $name   = get_file_name($filename);
+                    $ext    = get_file_ext($filename);
 
-                if(filesize($_FILES['file_Receipt']['tmp_name']) > 10485760) // Larger than 10mb
-                {
-                    $this->formError    = TRUE;
-                    $this->formErrorMsg .= ($this->formErrorMsg != '')?'<br />':'';
-                    $this->formErrorMsg .= 'Invoice/Receipt filesize cannot be larger than 10MB.';
+                    $err    = '';
+                    if(!in_array($ext, $a_allowed_invoice_ext))
+                    {
+                        // $this->formError    = TRUE;
+                        // $this->formErrorMsg .= ($this->formErrorMsg != '')?'<br />':'';
+                        // $this->formErrorMsg .= 'Invalid Invoice/Receipt file.';
+
+                        $err    = 'Invalid Receipt file type.';
+                    }
+
+                    if(filesize($_FILES['file_Receipt']['tmp_name'][$ctr]) > 10485760) // Larger than 10mb
+                    {
+                        $err    .= ($err != '')?' ':'';
+                        $err    = 'Filesize cannot be larger than 10MB.';
+                    }
+
+                    if($err != '')
+                    {
+                        $err    = $filename.' - '.$err;
+                        $this->formError    = TRUE;
+                        $this->formErrorMsg .= ($this->formErrorMsg != '')?'<br />':'';
+                        $this->formErrorMsg .= $err;
+                    }
+
+                    $ctr++;
                 }
             }
 
@@ -1071,15 +1091,27 @@ Class Lucky_Draw extends Z_Controller
 
             if(!$this->formError)
             {
-                $newFilename    = $_POST['txt_InvoiceNo'].'-'.uniqid().'.'.$ext;
-                $target         = $this->config['storage_path'].'lucky_draw/'.$newFilename;
                 
                 if(!file_exists($this->config['storage_path'].'lucky_draw/'))
                 {
                     mkdir($this->config['storage_path'].'lucky_draw', 0777);
                 }
                 
-                if(move_uploaded_file($_FILES['file_Receipt']['tmp_name'], $target))
+                $a_uploaded_receipt = array();
+                foreach($_FILES['file_Receipt']['tmp_name'] as $file)
+                {
+                    $new_filename   = $_POST['txt_InvoiceNo'].'-'.uniqid().'.'.$ext;
+                    $target         = $this->config['storage_path'].'lucky_draw/'.$new_filename;
+echo $target.'<br />';
+                    if(move_uploaded_file($file, $target))
+                    {
+                        array_push($a_uploaded_receipt, $new_filename);
+                    }
+
+                }
+                $receipt    = (count($a_uploaded_receipt) > 0)?json_encode($a_uploaded_receipt):'';
+
+                if($receipt != '')
                 {
                     $cdate  = date('Y-m-d H:i:s');
                     $a_insert   = array(
@@ -1093,7 +1125,7 @@ Class Lucky_Draw extends Z_Controller
                         'invoice_no'        => $_POST['txt_InvoiceNo'],
                         'invoice_amount'    => $_POST['txt_InvoiceAmount'],
                         'serial_no'         => $_POST['txt_SerialNo'],
-                        'receipt'           => $newFilename,
+                        'receipt'           => $receipt,
                         'created_at'        => $cdate,
                         'updated_at'        => $cdate
                     );
