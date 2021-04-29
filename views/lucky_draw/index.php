@@ -1,5 +1,5 @@
 <section class="sc-1 ">
-  <div class="container sign-up"> <img class="mh centered" src="<?php echo base_url();?>media/images/masthead.png" alt="">
+  <div class="container sign-up"> <a href="<?php echo base_url();?>" target="_self"><img class="mh centered" src="<?php echo base_url();?>media/images/masthead.png" alt=""></a>
     <form id="form" class="form centered" method="post" action="<?php echo base_url();?>lucky-draw" enctype="multipart/form-data">
       <input type="hidden" name="hdd_Action" value="lucky_draw" />
 	  <h1 style="margin-top: 0; margin-bottom: 2em;">Submit your proof of purchase to qualify for the SHARP Re-Raya Lucky Draw</h1>
@@ -41,7 +41,7 @@
       </div>
       <div class="form-control table fullwidth">
         <div>
-          <label for="receive-number">Receive No.</label>
+          <label for="receive-number">Receipt No.</label>
         </div>
         <div>
           <input type="text" id="receive-number" name="txt_InvoiceNo" value="<?php echo set_value('txt_InvoiceNo');?>">
@@ -57,7 +57,7 @@
       </div>
       <div class="form-control table fullwidth">
         <div>
-          <label for="warranty">Warranty Card Serial Number</label>
+          <label for="warranty">Serial Number</label>
         </div>
         <div>
           <input type="text" id="receive-number" name="txt_SerialNo" value="<?php echo set_value('txt_SerialNo');?>">
@@ -65,7 +65,7 @@
       </div>
       <div class="form-control table fullwidth file-upload">
         <div>
-		  Upload your Invoice
+		  Upload Invoice &amp; Warranty Card
         </div>
         <div><label id="lbl_Receipt" class="custom-file-upload">
             <input type="file" id="file_Receipt" name="file_Receipt[]" multiple="multiple" />
