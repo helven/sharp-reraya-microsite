@@ -1102,7 +1102,7 @@ Class Lucky_Draw extends Z_Controller
                 {
                     $new_filename   = $_POST['txt_InvoiceNo'].'-'.uniqid().'.'.$ext;
                     $target         = $this->config['storage_path'].'lucky_draw/'.$new_filename;
-echo $target.'<br />';
+
                     if(move_uploaded_file($file, $target))
                     {
                         array_push($a_uploaded_receipt, $new_filename);
@@ -1118,13 +1118,13 @@ echo $target.'<br />';
                         'player_id'         => (check_auth()?$_SESSION['ss_Public']['id']:0),
                         'status'            => 15,
                         'is_winner'         => 0,
-                        'name'              => $_POST['txt_FullName'],
-                        'phone'             => $_POST['txt_Phone'],
-                        'purchase_date'     => $_POST['txt_PuchaseDate'],
-                        'dealer'            => $_POST['opt_Dealer'],
-                        'invoice_no'        => $_POST['txt_InvoiceNo'],
-                        'invoice_amount'    => $_POST['txt_InvoiceAmount'],
-                        'serial_no'         => $_POST['txt_SerialNo'],
+                        'name'              => strip_tags($_POST['txt_FullName']),
+                        'phone'             => strip_tags($_POST['txt_Phone']),
+                        'purchase_date'     => strip_tags($_POST['txt_PuchaseDate']),
+                        'dealer'            => strip_tags($_POST['opt_Dealer']),
+                        'invoice_no'        => strip_tags($_POST['txt_InvoiceNo']),
+                        'invoice_amount'    => strip_tags($_POST['txt_InvoiceAmount']),
+                        'serial_no'         => strip_tags($_POST['txt_SerialNo']),
                         'receipt'           => $receipt,
                         'created_at'        => $cdate,
                         'updated_at'        => $cdate

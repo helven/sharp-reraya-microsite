@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="en">
 <html>
     <head>
         <meta http-equiv="keywords" content=""/>
@@ -67,7 +66,7 @@
     <body id="body_<?php echo ucfirst($this->platform);?>" class="page_fadein page_fadeout">
         <header class="main-header">
             <div>
-                <a href="/" class="main-header-brand" target="_blank">
+                <a href="https://my.sharp" class="main-header-brand" target="_blank">
                     <img src="<?php echo base_url();?>media/images/sharp-logo.png" alt="">
                 </a>
             </div>
@@ -87,7 +86,7 @@
                     </li>
                     <div class="divider-item"></div>
                     <li class="main-nav-item">
-                        <a href="">Promo</a>
+                        <a href="<?php echo base_url();?>/media/pdfs/SHARP-Raya-2021-Promo-E-Brochure.pdf" target="_blank">Promo</a>
                     </li>
                     <div class="divider-item"></div>
                     <li class="main-nav-item">
@@ -136,7 +135,7 @@
                     </li>
                     <div class="divider-item"></div>
                     <li class="main-nav-item">
-                        <a href="">Promo</a>
+                        <a href="<?php echo base_url();?>/media/pdfs/SHARP-Raya-2021-Promo-E-Brochure.pdf" target="_blank">Promo</a>
                     </li>
                     <div class="divider-item"></div>
                     <li class="main-nav-item">
@@ -193,26 +192,28 @@
                 <a href="javascript:void(0);" class="button"><button >CLOSE</button></a>
             </div>
         </div>
-
+		
+		<div class="fullheight">
         <?php echo $this->pageContent;?>
 
         <footer class="main-footer">
             <nav>
                 <ul class="main-footer-links">
                     <li class="main-footer-link">
-                        <a href="#">Privacy Policies</a>
+                        <a target="_blank" href="<?php echo base_url();?>/media/pdfs/SHARP-Re-Raya-Privacy-Policy.pdf">Privacy Policies</a>
                     </li>
                     <div class="divider-footer"></div>
                     <li class="main-footer-link">
-                        <a href="#">Terms And Conditions</a>
+                        <a target="_blank" href="<?php echo base_url();?>/media/pdfs/SHARP-Re-Raya-Terms-and-Conditions.pdf">Terms And Conditions</a>
                     </li>
                     <div class="divider-footer r"></div>
                     <li class="main-footer-link">
-                        <a href="#">Copyright © 2021 SHARP All Rights Reserved</a>
+                        <span>Copyright © 2021 SHARP All Rights Reserved</span>
                     </li>
                 </ul>
             </nav>
         </footer>
+		</div>
         <script><!--
         jQuery(document).ready(function(){
             jQuery('#burger-menu').on('click', function() {

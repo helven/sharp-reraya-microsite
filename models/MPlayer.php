@@ -121,6 +121,7 @@ class MPlayer extends Model
                         name            = '{$a_insert['name']}',
                         email           = '{$a_insert['email']}',
                         phone           = '{$a_insert['phone']}',
+                        address         = '{$a_insert['address']}',
                         password        = '{$a_insert['password']}',
                         secret          = '{$a_insert['secret']}',
                         remember_token  = '{$a_insert['remember_token']}',

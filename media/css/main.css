@@ -1,3 +1,15 @@
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 .icons small {
 	font-size: 0.75em;
 }
@@ -8,16 +20,9 @@
   height: 100vh;
 }
 .sc-1 {
-  margin-top: 5.2em;
-  background: url("../images/shared-bg.jpg");
   width: 100%;
-  background-size: cover;
-  background-position: center;
-  padding: 3em 1em 5em;
+  padding: 8.2em 1em;
   position: relative;
-}
-#body_Mobile .sc-1 {
-  margin-top: 4.2em;
 }
 form {
   background: #fff;
@@ -41,7 +46,6 @@ form {
 .leaderboard > h2 {
   background: #fff;
   padding-top: 3em;
-  padding-bottom: 0.5em;
   margin-top: 2em;
 }
 .form-lucky {
@@ -95,7 +99,7 @@ label[for=checkbox] {
   width: 100%;
 }
 label[for=upload] {}
-input[type=text], input[type=password], input[type=email], input[type=date], input[type=number], select, .custom-file-upload {
+input[type=text], input[type=password], input[type=email], input[type=date], input[type=number], select, .custom-file-upload, textarea {
   display: inline-block;
   width: 100%;
   border: none;
@@ -114,9 +118,9 @@ button, input[type=submit] {
   padding: 0.5em 2em;
   border-radius: 2em;
   border: 1px solid #d2000c;
-  box-shadow: -10px 15px 20px 0px rgb(210 0 13 / 24%);
+  /*box-shadow: -10px 15px 20px 0px rgb(210 0 13 / 24%);
   -webkit-box-shadow: -10px 15px 20px 0px rgb(210 0 13 / 24%);
-  -moz-box-shadow: -10px 15px 20px 0px rgba(210, 0, 13, 0.24);
+  -moz-box-shadow: -10px 15px 20px 0px rgba(210, 0, 13, 0.24);*/
   display: inline-block;
   width: initial !important;
 }
@@ -223,7 +227,7 @@ input[type="file"] {
 #body_Mobile #burger-menu {
   display: inline-block;
   position: fixed;
-  left: 0.5em;
+  right: 0.5em;
   top: 1em;
   padding: 0.3em;
   z-index: 52;
@@ -244,9 +248,6 @@ input[type="file"] {
   }
 }
 @media (max-width: 540px) {
-  #body_Mobile .sc-1 {
-    margin-top: 3.6em;
-  }
   form, .mini-game {
     padding: 6em 1em 4em;
     margin-top: -4.1em;
@@ -255,7 +256,7 @@ input[type="file"] {
     max-width: 19em;
   }
   .sc-1 {
-    padding-top: 2em;
+    padding-top: 6.2em;
   }
   .b.ta-l {
     text-align: center;
@@ -269,4 +270,12 @@ input[type="file"] {
   .mh {
     max-width: 16em;
   }
+}
+.fullheight {
+	min-height: 100vh;
+	background: url("../images/shared-bg.jpg");
+	width: 100%;
+	background-size: cover;
+	background-position: center;
+	position: relative;
 }

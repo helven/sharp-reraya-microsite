@@ -178,10 +178,10 @@ class Auth extends Z_Controller
                 $cdate  = date('Y-m-d H:i:s');
                 $a_insert   = array(
                     'status'        => 2,
-                    'name'          => $_POST['txt_Name'],
-                    'email'         => $_POST['txt_Email'],
-                    'phone'         => $_POST['txt_Phone'],
-                    'address'       => nl2br($_POST['txt_Address']),
+                    'name'          => strip_tags($_POST['txt_Name']),
+                    'email'         => strip_tags($_POST['txt_Email']),
+                    'phone'         => strip_tags($_POST['txt_Phone']),
+                    'address'       => nl2br(strip_tags($_POST['txt_Address'])),
                     'password'      => password_hash($_POST['txt_Password'], PASSWORD_DEFAULT), // Laravel password hashing
                     'secret'        => encrypt_password($_POST['txt_Password']),
                     'remember_token'=> '',
