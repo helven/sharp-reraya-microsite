@@ -48,8 +48,6 @@ Class Game extends Z_Controller
                 file_put_contents($logfile, '');
             }
 
-            ;
-
             $str    = file_get_contents($logfile).date('Y-m-d H:i:s').'|'.$_SESSION['ss_Geo']['ip'].'|'.$_SESSION['ss_Public']['id']."\n";
             file_put_contents($logfile, $str);
 
@@ -137,10 +135,12 @@ Class Game extends Z_Controller
         $round  = 0;
         foreach($a_leaderboard_round as $a_date)
         {
-            list($start, $end) = $a_date;
+            list($sdate, $edate) = $a_date;
+            $sdate  .= ' 00:00:00';
+            $edate  .= ' 23:59:59';
 
             $date   = date('Y-m-d');
-            if(strtotime($start) <= strtotime($date) && strtotime($end) >= strtotime($date))
+            if(strtotime($sdate) <= strtotime($date) && strtotime($edate) >= strtotime($date))
             {
                 break;
             }
@@ -153,7 +153,7 @@ Class Game extends Z_Controller
         $a_cond     = array(
             'table'     => 'submissions',
             'field'     => 'created_at',
-            'value'     => "'{$start} 00:00:00' AND '{$end} 23:59:59'",
+            'value'     => "'{$sdate}' AND '{$edate}'",
             'compare'   => 'between'
         );
         #$group_by   = " GROUP BY submissions.player_id";
