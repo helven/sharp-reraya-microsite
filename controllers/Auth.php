@@ -470,7 +470,7 @@ class Auth extends Z_Controller
 
                 $a_login    = $a_login['a_data'];
 
-                if($a_login['password'] != encrypt_password($_POST['txt_Password']))
+                if($a_login['secret'] != encrypt_password($_POST['txt_Password']))
                 {
                     // wrong password
                     $_SESSION['ss_Msgbox']['title']     = 'Oops!';
