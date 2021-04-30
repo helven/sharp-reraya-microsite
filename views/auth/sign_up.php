@@ -32,7 +32,7 @@
           <label for="address">Address</label>
         </div>
         <div>
-		  <textarea rows="4" name="txt_Address"></textarea>
+		  <textarea rows="4" name="txt_Address"><?php echo set_value('txt_Address');?></textarea>
         </div>
       </div>
       <div class="form-control table fullwidth">

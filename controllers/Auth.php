@@ -289,7 +289,7 @@ class Auth extends Z_Controller
             || (!isset($_GET['login']) || $_GET['login'] == '')
         )
         {
-            $_SESSION['ss_Msgbox']['title']		= 'Opps!';
+            $_SESSION['ss_Msgbox']['title']		= 'Oops!';
             $_SESSION['ss_Msgbox']['message']	= 'Invalid email verification.';
             $_SESSION['ss_Msgbox']['type']		= 'error';
 
@@ -305,7 +305,7 @@ class Auth extends Z_Controller
 
         if($email != $login)
         {
-            $_SESSION['ss_Msgbox']['title']		= 'Opps!';
+            $_SESSION['ss_Msgbox']['title']		= 'Oops!';
             $_SESSION['ss_Msgbox']['message']	= 'Invalid email verification.';
             $_SESSION['ss_Msgbox']['type']		= 'error';
 
@@ -386,6 +386,7 @@ class Auth extends Z_Controller
                         )
                     )
                 );
+
                 $a_user = $this->MPlayer->get_player($a_cond);
 
                 if($a_user['status'])
@@ -458,12 +459,6 @@ class Auth extends Z_Controller
                             'field'     => 'email',
                             'value'     => $_POST['txt_Email'],
                             'compare'   => '='
-                        ),
-                        array(
-                            'table'     => 'players',
-                            'field'     => 'secret',
-                            'value'     => encrypt_password($_POST['txt_Password']),
-                            'compare'   => '='
                         )
                     )
                 );
@@ -471,16 +466,25 @@ class Auth extends Z_Controller
 
                 if(!$a_login['status'])
                 {
-                    // FAILED
-                    $_SESSION['ss_Msgbox']['title']     = 'Opps!';
-                    $_SESSION['ss_Msgbox']['message']   = $a_login['msg'];
+                    // email not found
+                    $_SESSION['ss_Msgbox']['title']     = 'Oops!';
+                    $_SESSION['ss_Msgbox']['message']   = 'We\'re sorry. The User ID is not found.';
                     $_SESSION['ss_Msgbox']['type']      = 'error';
 
                     redirect(base_url().'auth/login');
                 }
 
                 $a_login    = $a_login['a_data'];
-                $_SESSION['ss_Public']  = $a_login;
+
+                if($a_login['password'] != encrypt_password($_POST['txt_Password']))
+                {
+                    // wrong password
+                    $_SESSION['ss_Msgbox']['title']     = 'Oops!';
+                    $_SESSION['ss_Msgbox']['message']   = 'The User ID/Password entered is invalid. Please try again.';
+                    $_SESSION['ss_Msgbox']['type']      = 'error';
+
+                    redirect(base_url().'auth/login');
+                }
 
                 // STORE game
                 if($_COOKIE['store_game'] == 1)
@@ -499,8 +503,7 @@ class Auth extends Z_Controller
                 // CHECK if account is verified
                 if($a_login['status'] == 2)
                 {
-                    unset($_SESSION['ss_Public']);
-                    $_SESSION['ss_Msgbox']['title']     = 'Opps!';
+                    $_SESSION['ss_Msgbox']['title']     = 'Oops!';
                     $_SESSION['ss_Msgbox']['message']   = ($game_stored)?'Your game score is recorded!<br />':'';
                     $_SESSION['ss_Msgbox']['message']   .= 'Account is not verified<br />Please check your email and verify to proceed.';
                     $_SESSION['ss_Msgbox']['type']      = 'error';
@@ -600,7 +603,7 @@ class Auth extends Z_Controller
 
                 if(!$player_exist)
                 {
-                    $_SESSION['ss_Msgbox']['title']		= 'Opps!';
+                    $_SESSION['ss_Msgbox']['title']		= 'Oops!';
                     $_SESSION['ss_Msgbox']['message']	= 'Invalid Reset Password link.';
                     $_SESSION['ss_Msgbox']['type']		= 'error';
 
@@ -653,7 +656,7 @@ class Auth extends Z_Controller
 
             if(!isset($_SESSION['ss_ResetPwd']) || $_SESSION['ss_ResetPwd'] == '')
             {
-                $_SESSION['ss_Msgbox']['title']		= 'Opps!';
+                $_SESSION['ss_Msgbox']['title']		= 'Oops!';
                 $_SESSION['ss_Msgbox']['message']	= 'Unidentified error occured.';
                 $_SESSION['ss_Msgbox']['type']		= 'error';
 
@@ -715,7 +718,7 @@ class Auth extends Z_Controller
                 || (!isset($_GET['login']) || $_GET['login'] == '')
             )
             {
-                $_SESSION['ss_Msgbox']['title']		= 'Opps!';
+                $_SESSION['ss_Msgbox']['title']		= 'Oops!';
                 $_SESSION['ss_Msgbox']['message']	= 'Invalid Reset Password link.';
                 $_SESSION['ss_Msgbox']['type']		= 'error';
 
@@ -731,7 +734,7 @@ class Auth extends Z_Controller
 
             if($email != $login)
             {
-                $_SESSION['ss_Msgbox']['title']		= 'Opps!';
+                $_SESSION['ss_Msgbox']['title']		= 'Oops!';
                 $_SESSION['ss_Msgbox']['message']	= 'Invalid Reset Password link.';
                 $_SESSION['ss_Msgbox']['type']		= 'error';
 
@@ -744,7 +747,7 @@ class Auth extends Z_Controller
 
             if($day_difference < 0)
             {
-                $_SESSION['ss_Msgbox']['title']		= 'Opps!';
+                $_SESSION['ss_Msgbox']['title']		= 'Oops!';
                 $_SESSION['ss_Msgbox']['message']	= 'Reset Password link has expired.';
                 $_SESSION['ss_Msgbox']['type']		= 'error';
 
@@ -762,7 +765,7 @@ class Auth extends Z_Controller
             
             if(!$a_user['status'])
             {
-                $_SESSION['ss_Msgbox']['title']		= 'Opps!';
+                $_SESSION['ss_Msgbox']['title']		= 'Oops!';
                 $_SESSION['ss_Msgbox']['message']	= 'Account does not exists.';
                 $_SESSION['ss_Msgbox']['type']		= 'error';
 

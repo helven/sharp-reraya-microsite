@@ -76,6 +76,10 @@ This file will have been minified and obfuscated if you enabled "Minify script" 
     if (navigator.serviceWorker && navigator.serviceWorker.register)
     {
         // Register an empty service worker to trigger web app install banners.
-        navigator.serviceWorker.register("<?php echo base_url();?>media/game/sw.js", { scope: "./" });
+        try
+        {
+            //navigator.serviceWorker.register("<?php echo base_url();?>media/game/sw.js", { scope: "./" });
+        }
+        catch (e){}
     }
 </script>

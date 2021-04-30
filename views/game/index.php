@@ -1,28 +1,39 @@
-<div class="pop-up ta-c va-m">
-  <p class="title">Nice Shot!</p>
-  <p class="message">Please <a style="color: #fff; text-decoration: underline!important" href="<?php echo base_url(); ?>auth/login">login</a> to save your score. If you do not have an account please <a style="color: #fff; text-decoration: underline!important" href="<?php echo base_url(); ?>auth/sign-up">sign-up</a>.</p>
-  	<div class="centered"> <a href="javascript:void(0);" class="button"><button>CLOSE</button></a></div>
-</div>
 <section class="sc-1 ">
-  <div class="container"> <img class="mh centered" src="<?php echo base_url();?>media/images/masthead.png" alt="">
+  <div class="container"> <a href="<?php echo base_url();?>" target="_self"><img class="mh centered" src="<?php echo base_url();?>media/images/masthead.png" alt=""></a>
     <div class="mini-game centered">
       <h1 style="margin-top: 0; margin-bottom: 2em;">Play this easy minigame to win more amazing prizes this Raya with SHARP!</h1>
-      <iframe id="iframe_Game" src="" style="border:0;width:100%;margin:1em 0;"></iframe>
+      <iframe id="iframe_Game" src="" style="border:0;width:100%;margin:1em 0;" allow="fullscreen"></iframe>
       <div class="htp table fullwidth ta-l">
-        <div class="minigame-img"> <img class="fullwidth" src="images/how-to-play.png" alt=""> </div>
+        <div class="minigame-img"> <img class="fullwidth" src="<?php echo base_url();?>media/images/how-to-play.png" alt=""> </div>
         <div>
           <ol style="padding: 0">
-            <li>Shoot a ketupat to gain points</li>
-            <li>Points are lost if products or red pelitas are shot</li>
-            <li>Take too long to shoot the next ketupat and it's game over</li>
-            <li>On mobile devices, rotate your screen for the
-              best experience</li>
+            <li>Shoot a ketupat to gain points.</li>
+            <li>Points are lost if kuih raya, duit raya and pelita are shot.</li>
+            <li>Take too long to shoot the next ketupat and it's game over.</li>
+            <li>On mobile devices, rotate your screen for the best experience.</li>
           </ol>
         </div>
       </div>
     </div>
   </div>
 </section>
+<style>
+	#div_Msgbox.pop-up > div.centered {
+		width: 100%!important;
+	}
+	@media (orientation:landscape) {
+		#body_Mobile iframe#iframe_Game {
+			border: 0px!important;
+			width: 100%!important;
+			margin: 0 0!important;
+			height: 100%!important;
+			position: fixed!important;
+			z-index: 1000!important;
+			top: 0!important;
+			left: 0!important;
+		}
+	}
+</style>
 <script>
 jQuery(document).ready(function(){
     set_game_size();
@@ -56,14 +67,7 @@ jQuery(document).ready(function(){
             // show Sign Up / login popup
             document.cookie = 'store_game=1;' + expires + path;
 
-            msgbox('Nice shot !', 'To check if you stand a chance to win awesome prizes,<br>create a Cocoro Life account', function(){
-                jQuery('#div_Msgbox')[0].style.width = '40%';
-                jQuery('#div_Msgbox .button button').text('SIGN UP');
-                jQuery('#div_Msgbox .button').unbind('click').click(function(){
-                    window.location = '<?php echo base_url();?>auth/sign-up';
-                    jQuery('#div_Msgbox')[0].style.width = '';
-                });
-            });
+            msgbox('Nice Shot!', 'Please <a style="color: #fff; text-decoration: underline!important" href="<?php echo base_url(); ?>auth/login">login</a> to save your score. If you do not have an account please <a style="color: #fff; text-decoration: underline!important" href="<?php echo base_url(); ?>auth/sign-up">sign-up</a>.');
         <?php }else{ ?>
             jQuery.ajax({
                 type        : 'POST',
@@ -77,9 +81,7 @@ jQuery(document).ready(function(){
 
                 },
                 success     : function(o_rtn){
-                    setTimeout(function(){
-                        window.location = '<?php echo base_url();?>game/leaderboard';
-                    }, 2000);
+                    window.location = '<?php echo base_url();?>game/leaderboard';
                 }
             });
         <?php } ?>

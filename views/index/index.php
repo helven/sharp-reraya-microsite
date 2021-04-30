@@ -1,13 +1,18 @@
 <style>
-	.shop-icons {
-		text-align: center;
-	}
-	.shop-icons > a {
-		display: inline-block;
-		margin: 1em;
-	}
-	.shop-icons > a img {
-		width: 6em;
+.shop-icons {
+    text-align: center;
+}
+.shop-icons > a {
+    display: inline-block;
+    margin: 1em;
+}
+.shop-icons > a img {
+    width: 6em;
+}
+	.owl-carousel .owl-item img {
+		max-width: 432px;
+		margin-left: auto;
+		margin-right: auto;
 	}
 .owl-carousel .item {
     text-align: center;
@@ -39,6 +44,26 @@
 .owl-theme .owl-dots .owl-dot span {
     background: #fff;
 }
+.owl-carousel .item .free {
+    display: table;
+    margin: 0 auto;
+}
+.owl-carousel .item .free > div {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: left;
+}
+	.owl-carousel .item .free > div:last-child {
+		padding-left: 1em;
+	}
+.owl-carousel .item .free > div img {
+    display: inline-block;
+    width: initial;
+}
+	.owl-carousel .item .free strong {
+		font-family: 'gilroybold';
+		font-size: 1.1em;
+	}
 h1 {
     font-family: 'gilroybold';
     font-size: 2.9em;
@@ -126,7 +151,7 @@ h2 {
 }
 #s2 .fb {
     margin-left: 8%;
-    width: 45.4%;
+    width: 39.56%;
 }
 #s3 {
     background: rgb(255, 188, 47);
@@ -148,7 +173,8 @@ h2 {
 }
 #s3 .ss {
     max-width: 756px;
-    display: inline-block
+    display: inline-block;
+	width: 98%;
 }
 #s4 {
     background: url("<?php echo base_url();?>media/images/landing/s4-bg.jpg") top right no-repeat #67e2a9;
@@ -172,13 +198,12 @@ h2 {
     padding-left: 8%;
 }
 #s4 .fb {
-    width: 47%;
+    width: 43%;
 }
 #s5 {
     background: url("<?php echo base_url();?>media/images/landing/s5-bg.jpg") top right no-repeat #67e2a9;
     background-size: 100%;
     min-height: 100vh;
-    font-size: 1.3em;
 }
 #s5>div {
     background: url("<?php echo base_url();?>media/images/landing/s5-bg-left.png") no-repeat left top;
@@ -197,7 +222,7 @@ h2 {
     padding-left: 8%;
 }
 #s5 .fb {
-/*width: 39.05%;*/
+	width: 43%;
 }
 #s6 {
     background: url("<?php echo base_url();?>media/images/landing/s6-bg.jpg") top left no-repeat #f1a729;
@@ -219,12 +244,11 @@ h2 {
     padding-left: 52%;
 }
 #s6 .fb {
-    width: 65%;
+    width: 82.5%;
 }
 #s7 {
     background: #ffbd4c;
-    font-size: 1.3em;
-    padding: 2em;
+    padding: 2em 2em 6em;
 }
 #s7 p {
     margin-top: 0;
@@ -242,6 +266,9 @@ h2 {
     width: 10em;
     padding: 0.5em;
 }
+#s7 .states>div a:hover {
+    color: #ff0000;
+}
 #s7 p strong {
     font-family: 'gilroybold';
     font-size: 1.3em;
@@ -258,9 +285,9 @@ background: #background: rgb(253, 0, 7);
     padding: 0.5em 2em;
     border-radius: 2em;
     border: 1px solid #d2000c;
-    box-shadow: -10px 15px 20px 0px rgba(210, 0, 13, 0.24);
+    /*box-shadow: -10px 15px 20px 0px rgba(210, 0, 13, 0.24);
     -webkit-box-shadow: -10px 15px 20px 0px rgba(210, 0, 13, 0.24);
-    -moz-box-shadow: -10px 15px 20px 0px rgba(210, 0, 13, 0.24);
+    -moz-box-shadow: -10px 15px 20px 0px rgba(210, 0, 13, 0.24);*/
     margin-top: 3em;
     display: inline-block;
 }
@@ -477,7 +504,7 @@ background: url(<?php echo base_url();
     margin-bottom: 1em;
 }
 #s1 .bar .icons img {
-    max-width: 18em;
+    max-width: 16em;
     margin-left: auto;
     margin-right: auto;
 }
@@ -510,8 +537,19 @@ background: url(<?php echo base_url();
     max-width: 12em;
 }
 }
-
-@media (max-width: 480px) {
+	@media (max-width: 510px) {
+		#s7 {
+    padding: 2em 1em 6em;
+}
+		#s7 .states>div {
+			padding: 0.2em;
+			width: 7.3em;
+		}
+		#s7 .states>div a {
+			font-size: 0.9em;
+		}
+	}
+@media (max-width: 490px) {
 #s5>div>div>div {
     background-size: 20em;
 }
@@ -522,23 +560,62 @@ background: url(<?php echo base_url();
 background: url(<?php echo base_url();
 ?>media/images/landing/s1-bar.png) repeat-x 100em 8em;
 }
+#s4>div>div>div {
+    background-size: 24em;
+    height: 477px;
+    background-position-x: 60%;
+    background-position-y: 2em;
+    padding-top: 18em;
+}
+#s5 h1 {
+    font-size: 1.4em;
+}
+#s5 h3 {
+    font-size: 0.9em;
+}
+#s5 h4 {
+    font-size: 1em;
+}
+#s5 ol>li {
+    font-size: initial;
+}
+#s5 small {
+    font-size: initial;
+}
 }
 
+@media (max-width:390px) {
+#s4>div>div>div {
+    background-size: 20em;
+    height: 400px;
+    padding-top: 16em;
+}
+}
+@media (max-width:352px) {
+	#s7 .states>div a {
+		font-size: 0.71em;
+	}
+	#s7 .states>div {
+		width: 6em;
+	}
+}
 @media (max-height: 1024px) {
 #body_Desktop #s1 .kv {
     padding-top: 27em;
     background-size: 68em;
 }
 }
+
 @media (max-height: 1023px) and (orientation: landscape) {
 #body_Mobile #s1 .kv {
-	padding-top: 27em;
+    padding-top: 27em;
     background-size: 57em;
 }
 }
 </style>
 <main>
 <section id="s1" class="table fullwidth">
+
 <div class="kv va-b">
   <div class="bar"> <img class="date" src="<?php echo base_url();?>media/images/landing/s1-date.png" alt="" />
     <div class="table fullwidth">
@@ -567,29 +644,72 @@ background: url(<?php echo base_url();
   </div>
 </div>
 </section>
-<section id="s2"> <img class="fb" src="<?php echo base_url();?>media/images/landing/s2-header.png" alt="" />
-  <div class="owl-carousel owl-theme">
-    <div class="item"><img src="<?php echo base_url();?>media/images/landing/s2-01.png" alt=""/>
-      <h2>OVEN</h2>
-      <p>RM1800</p>
-    </div>
-    <div class="item"><img src="<?php echo base_url();?>media/images/landing/s2-02.png" alt=""/>
-      <h2>AIR PURIFIER</h2>
-      <p>RM700</p>
-    </div>
-    <div class="item"><img src="<?php echo base_url();?>media/images/landing/s2-03.png" alt=""/>
-      <h2>AQUOS 70" 4K UHD TV</h2>
-      <p>RM5700</p>
-    </div>
-    <div class="item"><img src="<?php echo base_url();?>media/images/landing/s2-04.png" alt=""/>
-      <h2>FRIDGE</h2>
-      <p>RM9700</p>
-    </div>
-    <div class="item"><img src="<?php echo base_url();?>media/images/landing/s2-05.png" alt=""/>
-      <h2>WASHING MACHINE</h2>
-      <p>RM9700</p>
-    </div>
+<section id="s2">
+<img class="fb" src="<?php echo base_url();?>media/images/landing/s2-header.png" alt="" />
+<div class="owl-carousel owl-theme">
+<div class="item"><img src="<?php echo base_url();?>media/images/landing/s2-01.png" alt=""/>
+  <h2>4TC70BK1X</h2>
+  <div class="free"><div><img src="<?php echo base_url();?>media/images/landing/s2-g-1.png" alt=""/></div>
+    <div><strong>FREE</strong><br>
+      Wireless Earbuds<br>
+      worth RM299</div>
   </div>
+</div>
+<div class="item"><img src="<?php echo base_url();?>media/images/landing/s2-02.png" alt=""/>
+  <h2>FPJ80LH</h2>
+  <div class="free"><div><img src="<?php echo base_url();?>media/images/landing/s2-g-2.png" alt=""/></div>
+    <div><strong>FREE</strong><br>
+      1.0HP Air Conditioner<br>
+      worth RM1,420</div>
+  </div>
+</div>
+<div class="item"><img src="<?php echo base_url();?>media/images/landing/s2-03.png" alt=""/>
+  <h2>4TC70CK3X</h2>
+  <div class="free"><div><img src="<?php echo base_url();?>media/images/landing/s2-g-1.png" alt=""/></div>
+    <div><strong>FREE</strong><br>
+      Wireless Earbuds<br>
+      worth RM299</div>
+  </div>
+</div>
+<div class="item"><img src="<?php echo base_url();?>media/images/landing/s2-04.png" alt=""/>
+  <h2>AHXP18YHD</h2>
+  <div class="free"><div><img src="<?php echo base_url();?>media/images/landing/s2-g-3.png" alt=""/></div>
+    <div><strong>FREE</strong><br>
+      Ceramic Bowl Set<br>
+      worth RM119</div>
+  </div>
+</div>
+<div class="item"><img src="<?php echo base_url();?>media/images/landing/s2-05.png" alt=""/>
+  <h2>AX1700VMR</h2>
+  <div class="free"><div><img src="<?php echo base_url();?>media/images/landing/s2-g-3.png" alt=""/></div>
+    <div><strong>FREE</strong><br>
+      Ceramic Bowl Set<br>
+      worth RM119</div>
+  </div>
+</div>
+<div class="item"><img src="<?php echo base_url();?>media/images/landing/s2-06.png" alt=""/>
+  <h2>ESY1619</h2>
+  <div class="free"><div><img src="<?php echo base_url();?>media/images/landing/s2-g-4.png" alt=""/></div>
+    <div><strong>FREE</strong><br>
+      Laundry Bag</div>
+  </div>
+</div>
+<div class="item"><img src="<?php echo base_url();?>media/images/landing/s2-07.png" alt=""/>
+  <h2>SJP88MFGK/GM</h2>
+  <div class="free"><div><img src="<?php echo base_url();?>media/images/landing/s2-g-3.png" alt=""/></div>
+    <div><strong>FREE</strong><br>
+      Ceramic Bowl Set<br>
+      worth RM119</div>
+  </div>
+</div>
+<div class="item"><img src="<?php echo base_url();?>media/images/landing/s2-08.png" alt=""/>
+  <h2>SJF879GK</h2>
+  <div class="free"><div><img src="<?php echo base_url();?>media/images/landing/s2-g-5.png" alt=""/></div>
+    <div><strong>FREE</strong><br>
+      Microwave Oven<br>
+      worth RM419</div>
+  </div>
+</div>
 </section>
 <section id="s3" class="table fullwidth">
   <div><img style="max-width: 994px; display: inline-block" src="<?php echo base_url();?>media/images/landing/s3-screenshot.jpg" alt="" /></div>
@@ -603,7 +723,7 @@ background: url(<?php echo base_url();
   <div>
     <div>
       <div><img class="fb" src="<?php echo base_url();?>media/images/landing/s4-header.png" alt="" />
-        <div style="padding-left: 1.2%"><a class="cta" href="#" target="_blank">CHECK IT OUT!</a></div>
+        <div style="padding-left: 1.2%"><a class="cta" href="https://www.facebook.com/SharpMsia" target="_blank">CHECK IT OUT!</a></div>
       </div>
     </div>
   </div>
@@ -614,16 +734,15 @@ background: url(<?php echo base_url();
       <div><img class="fb" src="<?php echo base_url();?>media/images/landing/s5-header.png" alt="" />
         <div style="padding-left: 1%;">
           <div style="max-width:29em;">
-            <h1>Ready to celebrate?</h1>
-            <h3>Win back those festive Raya vibes with our Lucky Draw!!</h3>
+            <h4>Ready to celebrate?</h4>
+            <p>Win back those festive Raya vibes with our Lucky Draw!</p>
             <h4>How to win:</h4>
             <ol>
               <li>Purchase a minimum of RM350 worth of SHARP product(s) at the official online store or any SHARP authorised dealer.</li>
-              <li>Submit your proof of purchase on the SHARP website.</li>
+              <li>Submit your proof of purchase.</li>
               <li>Stand a chance to be one of 20 lucky winners every 2 weeks</li>
             </ol>
-            <div><a class="cta" href="lucky-draw" target="_self">REDEEM NOW</a></div>
-            <p><small>*Terms and conditions apply. For gift with purchase only.</small></p>
+            <div><a style="margin-top: 1.5em; margin-bottom: 1em;" class="cta" href="lucky-draw" target="_self">JOIN NOW</a></div>
           </div>
         </div>
       </div>
@@ -634,34 +753,31 @@ background: url(<?php echo base_url();
   <div>
     <div>
       <div><img class="fb" src="<?php echo base_url();?>media/images/landing/s6-header.png" alt="" />
-        <div style="padding-left: 1.3%"><a class="cta" href="#" target="_blank">CLICK HERE</a></div>
+        <div style="padding-left: 1.3%"><a class="cta" href="<?php echo base_url();?>/media/pdfs/SHARP-Raya-2021-Promo-E-Brochure.pdf" target="_blank">CLICK HERE</a></div>
       </div>
     </div>
   </div>
 </section>
-<section id="s7">
-  <a id="shop" /></a>
-  <p style="margin-bottom: 0.6em"><strong>SHOP NOW AT OUR SHARP'S AUTHORISED DEALERS</strong></p>
+<section id="s7"> <a id="shop" /></a>
+  <p style="margin-bottom: 0.6em"><strong>SHOP NOW AT OUR SHARP AUTHORISED DEALERS</strong></p>
   <div class="states">
-    <div>Perlis</div>
-    <div>Selangor</div>
-    <div>Negeri Sembilan</div>
-    <div>Sabah</div>
-    <div>Kedah</div>
-    <div>Kuala Lumpur</div>
-    <div>Pahang</div>
-    <div>Sarawak</div>
-    <div>Penang</div>
-    <div>Melaka</div>
-    <div>Kelantan</div>
-    <div>Perak</div>
-    <div>Johor</div>
-    <div>Terengganu</div>
+    <div><a href="https://esharp.com.my/dealer/contact/list/11" target="_blank">Perlis</a></div>
+    <div><a href="https://esharp.com.my/dealer/contact/list/15" target="_blank">Selangor</a></div>
+    <div><a href="https://esharp.com.my/dealer/contact/list/7" target="_blank">Negeri Sembilan</a></div>
+    <div><a href="https://esharp.com.my/dealer/contact/list/13" target="_blank">Sabah</a></div>
+    <div><a href="https://esharp.com.my/dealer/contact/list/2" target="_blank">Kedah</a></div>
+    <div><a href="https://esharp.com.my/dealer/contact/list/4" target="_blank">Kuala Lumpur</a></div>
+    <div><a href="https://esharp.com.my/dealer/contact/list/8" target="_blank">Pahang</a></div>
+    <div><a href="https://esharp.com.my/dealer/contact/list/14" target="_blank">Sarawak</a></div>
+    <div><a href="https://esharp.com.my/dealer/contact/list/9" target="_blank">Penang</a></div>
+    <div><a href="https://esharp.com.my/dealer/contact/list/6" target="_blank">Melaka</a></div>
+    <div><a href="https://esharp.com.my/dealer/contact/list/3" target="_blank">Kelantan</a></div>
+    <div><a href="https://esharp.com.my/dealer/contact/list/10" target="_blank">Perak</a></div>
+    <div><a href="https://esharp.com.my/dealer/contact/list/1" target="_blank">Johor</a></div>
+    <div><a href="https://esharp.com.my/dealer/contact/list/16" target="_blank">Terengganu</a></div>
   </div>
   <p style="color: #ff0000">OR VISIT OUR ONLINE OFFICIAL STORES</p>
-  <div class="shop-icons">
-	<a href="https://esharp.com.my"	target="_blank"><img class="fb" src="<?php echo base_url();?>media/images/landing/s7-logo-1.png" alt="" /></a><a href="https://prestomall.com" target="_blank"><img class="fb" src="<?php echo base_url();?>media/images/landing/s7-logo-2.png" alt="" /></a><a href="https://lazada.com.my" target="_blank"><img class="fb" src="<?php echo base_url();?>media/images/landing/s7-logo-3.png" alt="" /></a><a href="https://shopee.com.my" target="_blank"><img class="fb" src="<?php echo base_url();?>media/images/landing/s7-logo-4.png" alt="" /></a>
-  </div>
+  <div class="shop-icons"> <a href="https://esharp.com.my"	target="_blank"><img class="fb" src="<?php echo base_url();?>media/images/landing/s7-logo-1.png" alt="" /></a><a href="https://www.prestomall.com/store/sharpmalaysia" target="_blank"><img class="fb" src="<?php echo base_url();?>media/images/landing/s7-logo-2.png" alt="" /></a><a href="https://www.lazada.com.my/shop/sharp-electronics-officialstore" target="_blank"><img class="fb" src="<?php echo base_url();?>media/images/landing/s7-logo-3.png" alt="" /></a><a href="https://shopee.com.my/sharp.os" target="_blank"><img class="fb" src="<?php echo base_url();?>media/images/landing/s7-logo-4.png" alt="" /></a> </div>
 </section>
 </main>
 <script>
@@ -674,16 +790,22 @@ background: url(<?php echo base_url();
 					0:{
 						items:1
 					},
-					400: {
+					700: {
 						items:2
 					},
-					767: {
+					1000: {
 						items:3
 					},
-					1000:{
+					1240: {
+						items:4
+					},
+					1520:{
 						items:5
 					}
 				}
-			})
+			});
+			jQuery('.owl-item').click(function(){
+				window.open('<?php echo base_url();?>/media/pdfs/SHARP-Raya-2021-Promo-E-Brochure.pdf', '_blank'); 
+			});
         });
 </script>

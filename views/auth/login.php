@@ -1,5 +1,5 @@
 <section class="sc-1 ">
-  <div class="container sign-up"> <img class="mh centered" src="<?php echo base_url();?>media/images/masthead.png" alt="">
+  <div class="container sign-up"> <a href="<?php echo base_url();?>" target="_self"><img class="mh centered" src="<?php echo base_url();?>media/images/masthead.png" alt=""></a>
     <form id="form" class="form centered" method="post" action="<?php echo base_url();?>auth/login">
       <div class="form-control table fullwidth">
         <div class="ico">
@@ -31,8 +31,8 @@
       <div class="form-control table fullwidth" style="margin-top: 2em;">
         <div class="empty">&nbsp;</div>
         <div class="ta-l">
-          <p><a href="<?php echo base_url();?>auth/forgot-password">Forgot your password</a></p>
-          <p><a style="color: #000000" href="<?php echo base_url();?>auth/sign-up">Don't have an account? Sign up now.</a></p>
+          <p><a style="text-decoration: underline!important" href="<?php echo base_url();?>auth/forgot-password">Forgot your password</a></p>
+          <p>Don't have an account? <a style="color: #000000; text-decoration: underline!important" href="<?php echo base_url();?>auth/sign-up">Sign up now</a>.</p>
         </div>
       </div>
     </form>

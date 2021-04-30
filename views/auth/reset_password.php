@@ -1,6 +1,6 @@
 <section class="sc-1 ">
   <div class="container sign-up">
-  <img class="mh centered" src="<?php echo base_url();?>media/images/masthead.png" alt="">
+  <a href="<?php echo base_url();?>" target="_self"><img class="mh centered" src="<?php echo base_url();?>media/images/masthead.png" alt=""></a>
   <form id="form" class="form centered" method="post" action="<?php echo base_url();?>auth/reset-password">
     <input type="hidden" name="hdd_Action" value="reset_password" />
     <h1 style="margin-top: 0; margin-bottom: 2em;">Key in a new password for your account.</h1>

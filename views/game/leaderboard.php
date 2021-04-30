@@ -1,7 +1,8 @@
 <section class="sc-1 ">
-    <img class="mh centered" src="<?php echo base_url();?>media/images/masthead.png" alt="">
+    <a href="<?php echo base_url();?>" target="_self"><img class="mh centered" src="<?php echo base_url();?>media/images/masthead.png" alt=""></a>
     <div class="leaderboard ">
         <h2>Leaderboard</h2>
+		<p style="padding: 0 2em 2em; text-align: center; background: #fff; font-size: 1.4em">Top 10 Scores</p>
         <div class="table fullwidth">
             <div style="width: 3.5em; padding: 1em 0; background-color: #cd8522; color: #fff" class="va-m ta-c">RANK</div>
             <div style="width: auto; padding: 1em 0; background-color: #f8d56f; color: #000000; padding-left: 0.70001em;" class="va-m ta-l">NAME</div>

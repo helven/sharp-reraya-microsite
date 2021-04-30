@@ -252,6 +252,10 @@
                     callback();
                 }
             }
+            else
+            {
+                msgbox_callback();
+            }
         }
         msgbox_callback = function(){
             jQuery('#div_Msgbox .button button').text('CLOSE');
@@ -263,12 +267,12 @@
         }
 
         <?php if(isset($_SESSION['ss_Msgbox']) && $_SESSION['ss_Msgbox'] != ''){ ?>
-            msgbox('<?php echo $_SESSION['ss_Msgbox']['title'];?>', '<?php echo addslashes($_SESSION['ss_Msgbox']['message']);?>', msgbox_callback);
+            msgbox('<?php echo $_SESSION['ss_Msgbox']['title'];?>', '<?php echo addslashes($_SESSION['ss_Msgbox']['message']);?>');
             <?php $_SESSION['ss_Msgbox'] = '';unset($_SESSION['ss_Msgbox']);?>
         <?php } ?>
 
         <?php if($this->formError){ ?>
-            msgbox('Opps!', '<?php echo addslashes($this->formErrorMsg);?>', msgbox_callback);
+            msgbox('Oops!', '<?php echo addslashes($this->formErrorMsg);?>');
         <?php } ?>
         //-->
         </script>

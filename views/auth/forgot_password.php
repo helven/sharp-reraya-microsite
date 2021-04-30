@@ -1,5 +1,5 @@
 <section class="sc-1 ">
-  <div class="container sign-up"> <img class="mh centered" src="<?php echo base_url();?>media/images/masthead.png" alt="">
+  <div class="container sign-up"> <a href="<?php echo base_url();?>" target="_self"><img class="mh centered" src="<?php echo base_url();?>media/images/masthead.png" alt=""></a>
     <form id="form" class="form centered" method="post" action="<?php echo base_url();?>auth/forgot-password">
       <h1 style="margin-top: 0; margin-bottom: 2em;">Forgot Password? Please enter your email address here to reset your password.</h1>
       <div class="form-control table fullwidth">
