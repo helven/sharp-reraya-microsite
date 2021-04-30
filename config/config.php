@@ -3,13 +3,13 @@ global $config;
 $config = array();
 $config['protocol'] = stripos($_SERVER['SERVER_PROTOCOL'],'https') === true ? 'https://' : 'http://';
 $config['base_url'] = $_SERVER['SERVER_NAME'].dirname($_SERVER['SCRIPT_NAME']);
-$config['base_url'] = $config['protocol'].((isset($config['base_url']))?$config['base_url']:'www.cocorolife.my/SharpReRaya');
+$config['base_url'] = $config['protocol'].((isset($config['base_url']))?$config['base_url']:'www.cocorolife.my/sharpreraya');
 
 if(strpos($config['base_url'], 'cocorolife.my/SharpReRaya_stage'))
 {
     $config['active_group'] = 'client_staging';
 }
-elseif(strpos($config['base_url'], 'cocorolife.my/SharpReRaya'))
+elseif(strpos($config['base_url'], 'cocorolife.my/sharpreraya'))
 {
     $config['active_group'] = 'live';
 }
@@ -22,11 +22,11 @@ else
     $config['active_group'] = 'dev';
 }
 $config['live']['environment']      = 'live';
-$config['live']['dir_base_url']     = 'https://'.((isset($config['live']['base_url']))?$config['live']['base_url']:'www.cocorolife.my/SharpReRaya'); 
-$config['live']['base_url']         = 'https://'.((isset($config['live']['base_url']))?$config['live']['base_url']:'www.cocorolife.my/SharpReRaya');
+$config['live']['dir_base_url']     = 'https://'.((isset($config['live']['base_url']))?$config['live']['base_url']:'www.cocorolife.my/sharpreraya'); 
+$config['live']['base_url']         = 'https://'.((isset($config['live']['base_url']))?$config['live']['base_url']:'www.cocorolife.my/sharpreraya');
 $config['live']['media_url']        = $config['live']['base_url'].'/media';
-$config['live']['site_url']         = 'https://www.cocorolife.my/SharpReRaya';
-$config['live']['storage_url']      = 'https://www.cocorolife.my/SharpReRaya/storage';
+$config['live']['site_url']         = 'https://www.cocorolife.my/sharpreraya';
+$config['live']['storage_url']      = 'https://www.cocorolife.my/sharpreraya/storage';
 $config['live']['storage_path']     = getcwd().'/storage/';
 $config['live']['mail_admin_email'] = 'no-reply@sharp.com.my';
 $config['live']['mail_admin_name']  = 'Sharp Re-Raya';

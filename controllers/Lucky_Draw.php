@@ -1139,8 +1139,13 @@ Class Lucky_Draw extends Z_Controller
                 }
 
                 $a_uploaded_warranty = array();
-                foreach($_FILES['file_WarrantyCard']['tmp_name'] as $file)
+                $ctr    = 0;
+                foreach($_FILES['file_WarrantyCard']['name'] as $filename)
                 {
+                    $name   = get_file_name($filename);
+                    $ext    = get_file_ext($filename);
+                    
+                    $file           = $_FILES['file_WarrantyCard']['tmp_name'][$ctr];
                     $new_filename   = $_POST['txt_InvoiceNo'].'_warranty-'.uniqid().'.'.$ext;
                     $target         = $this->config['storage_path'].'lucky_draw/'.$new_filename;
 
@@ -1149,12 +1154,18 @@ Class Lucky_Draw extends Z_Controller
                         array_push($a_uploaded_warranty, $new_filename);
                     }
 
+                    $ctr++;
                 }
                 $warranty_card  = (count($a_uploaded_warranty) > 0)?json_encode($a_uploaded_warranty):'';
                 
                 $a_uploaded_receipt = array();
-                foreach($_FILES['file_Receipt']['tmp_name'] as $file)
+                $ctr    = 0;
+                foreach($_FILES['file_Receipt']['name'] as $filename)
                 {
+                    $name   = get_file_name($filename);
+                    $ext    = get_file_ext($filename);
+
+                    $file           = $_FILES['file_Receipt']['tmp_name'][$ctr];
                     $new_filename   = $_POST['txt_InvoiceNo'].'_invoice-'.uniqid().'.'.$ext;
                     $target         = $this->config['storage_path'].'lucky_draw/'.$new_filename;
 
@@ -1163,6 +1174,7 @@ Class Lucky_Draw extends Z_Controller
                         array_push($a_uploaded_receipt, $new_filename);
                     }
 
+                    $ctr++;
                 }
                 $receipt    = (count($a_uploaded_receipt) > 0)?json_encode($a_uploaded_receipt):'';
 

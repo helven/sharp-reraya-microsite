@@ -222,7 +222,7 @@ class Auth extends Z_Controller
                     // STORE game
                     if($_COOKIE['store_game'] == 1)
                     {
-                        $game_stored    = $this->_store_game();
+                        $game_stored    = $this->_store_game($insert['player_id']);
                         if($game_stored)
                         {
                             $location   = base_url().'game';
@@ -399,7 +399,7 @@ class Auth extends Z_Controller
                     // STORE game
                     if($_COOKIE['store_game'] == 1)
                     {
-                        if($this->_store_game())
+                        if($this->_store_game($_SESSION['ss_Public']['id']))
                         {
                             $location   = base_url().'game/leaderboard';
                         }
@@ -483,7 +483,7 @@ class Auth extends Z_Controller
                 // STORE game
                 if($_COOKIE['store_game'] == 1)
                 {
-                    $game_stored    = $this->_store_game();
+                    $game_stored    = $this->_store_game($a_login['id']);
                     if($game_stored)
                     {
                         $_SESSION['ss_Msgbox']['title']     = 'Yay!';
@@ -780,23 +780,26 @@ class Auth extends Z_Controller
 | PRIVATE FUNCTIONS
 | ------------------------------------------------------------------------------------------------------------------------------------------
 */
-    private function _store_game()
+    private function _store_game($player_id = '')
     {
         $this->p_load_model('MSubmission');
         $this->MSubmission  = new MSubmission();
 
+        $player_id  = ($player_id != '')?$player_id:$_SESSION['ss_Public']['id'];
+
         $score   = str_replace(array('_','x','F','B','E','#'), '', $_COOKIE['_leksxia_x2']);
-        if($score != '')
+        if($player_id != '' && $score != '')
         {
             $cdate  = date('Y-m-d H:i:s');
             $a_insert   = array(
-                'player_id'   => $_SESSION['ss_Public']['id'],
-                'status'      => 1,
-                'ip'          => $_SESSION['ss_Geo']['ip'],
-                'score'       => $score,
-                'is_hacking'  => 0,
-                'created_at'  => $cdate,
-                'updated_at'  => $cdate
+                'player_id'     => $player_id,
+                'status'        => 1,
+                'is_winner'     => 0,
+                'ip'            => $_SESSION['ss_Geo']['ip'],
+                'score'         => $score,
+                'is_hacking'    => 0,
+                'created_at'    => $cdate,
+                'updated_at'    => $cdate
             );
 
             $insert = $this->MSubmission->insert_submission($a_insert);
