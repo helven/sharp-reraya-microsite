@@ -65,7 +65,7 @@
       </div>
       <div class="form-control table fullwidth file-upload">
         <div>
-		  Upload Invoice &amp; Warranty Card
+            Upload BOTH Invoice &amp; Warranty Card
         </div>
         <div><label id="lbl_Receipt" class="custom-file-upload">
             <input type="file" id="file_Receipt" name="file_Receipt[]" multiple="multiple" />
