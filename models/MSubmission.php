@@ -27,7 +27,7 @@ class MSubmission extends Model
         if($order == '')
         {
             $order	= "	ORDER BY
-                            z_submission.submission_id ASC";
+                            submissions.id ASC";
         }
         $limit      = set_limit($a_limit);
         if(!isset($a_limit) || $a_limit == 'ALL')

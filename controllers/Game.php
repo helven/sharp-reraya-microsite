@@ -153,7 +153,7 @@ Class Game extends Z_Controller
         $a_cond     = array(
             'table'     => 'submissions',
             'field'     => 'created_at',
-            'value'     => "'{$start}' AND '{$end}'",
+            'value'     => "'{$start} 00:00:00' AND '{$end} 23:59:59'",
             'compare'   => 'between'
         );
         #$group_by   = " GROUP BY submissions.player_id";
