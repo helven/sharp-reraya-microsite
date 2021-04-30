@@ -961,7 +961,7 @@ Class Lucky_Draw extends Z_Controller
     {
         $this->page_title   = 'Lucky Draw';
         
-        $a_allowed_invoice_ext  = array('jpg', 'jpeg', 'bmp', 'png', 'gif', 'pdf');
+        $a_allowed_ext  = array('jpg', 'jpeg', 'bmp', 'png', 'gif', 'pdf');
 
         // CHECK user login status
         if(!check_auth())
@@ -1028,6 +1028,48 @@ Class Lucky_Draw extends Z_Controller
                 $this->formErrorMsg .= 'Please enter Serial No.';
             }
 
+            if(!isset($_FILES['file_WarrantyCard']['name'][0]) || $_FILES['file_WarrantyCard']['name'][0] == '')
+            {
+                $this->formError    = TRUE;
+                $this->formErrorMsg .= ($this->formErrorMsg != '')?'<br />':'';
+                $this->formErrorMsg .= 'Please upload Warranty Card.';
+            }
+            else
+            {
+                $ctr    = 0;
+                foreach($_FILES['file_WarrantyCard']['name'] as $filename)
+                {
+                    $name   = get_file_name($filename);
+                    $ext    = get_file_ext($filename);
+
+                    $err    = '';
+                    if(!in_array($ext, $a_allowed_ext))
+                    {
+                        // $this->formError    = TRUE;
+                        // $this->formErrorMsg .= ($this->formErrorMsg != '')?'<br />':'';
+                        // $this->formErrorMsg .= 'Invalid Invoice/Receipt file.';
+
+                        $err    = 'Invalid Warranty Card file type.';
+                    }
+
+                    if(filesize($_FILES['file_WarrantyCard']['tmp_name'][$ctr]) > 10485760) // Larger than 10mb
+                    {
+                        $err    .= ($err != '')?' ':'';
+                        $err    = 'Filesize cannot be larger than 10MB.';
+                    }
+
+                    if($err != '')
+                    {
+                        $err    = $filename.' - '.$err;
+                        $this->formError    = TRUE;
+                        $this->formErrorMsg .= ($this->formErrorMsg != '')?'<br />':'';
+                        $this->formErrorMsg .= $err;
+                    }
+
+                    $ctr++;
+                }
+            }
+
             if(!isset($_FILES['file_Receipt']['name'][0]) || $_FILES['file_Receipt']['name'][0] == '')
             {
                 $this->formError    = TRUE;
@@ -1043,7 +1085,7 @@ Class Lucky_Draw extends Z_Controller
                     $ext    = get_file_ext($filename);
 
                     $err    = '';
-                    if(!in_array($ext, $a_allowed_invoice_ext))
+                    if(!in_array($ext, $a_allowed_ext))
                     {
                         // $this->formError    = TRUE;
                         // $this->formErrorMsg .= ($this->formErrorMsg != '')?'<br />':'';
@@ -1091,16 +1133,29 @@ Class Lucky_Draw extends Z_Controller
 
             if(!$this->formError)
             {
-                
                 if(!file_exists($this->config['storage_path'].'lucky_draw/'))
                 {
                     mkdir($this->config['storage_path'].'lucky_draw', 0777);
                 }
+
+                $a_uploaded_warranty = array();
+                foreach($_FILES['file_WarrantyCard']['tmp_name'] as $file)
+                {
+                    $new_filename   = $_POST['txt_InvoiceNo'].'_warranty-'.uniqid().'.'.$ext;
+                    $target         = $this->config['storage_path'].'lucky_draw/'.$new_filename;
+
+                    if(move_uploaded_file($file, $target))
+                    {
+                        array_push($a_uploaded_warranty, $new_filename);
+                    }
+
+                }
+                $warranty_card  = (count($a_uploaded_warranty) > 0)?json_encode($a_uploaded_warranty):'';
                 
                 $a_uploaded_receipt = array();
                 foreach($_FILES['file_Receipt']['tmp_name'] as $file)
                 {
-                    $new_filename   = $_POST['txt_InvoiceNo'].'-'.uniqid().'.'.$ext;
+                    $new_filename   = $_POST['txt_InvoiceNo'].'_invoice-'.uniqid().'.'.$ext;
                     $target         = $this->config['storage_path'].'lucky_draw/'.$new_filename;
 
                     if(move_uploaded_file($file, $target))
@@ -1111,13 +1166,15 @@ Class Lucky_Draw extends Z_Controller
                 }
                 $receipt    = (count($a_uploaded_receipt) > 0)?json_encode($a_uploaded_receipt):'';
 
-                if($receipt != '')
+                if($warranty_card != '' && $receipt != '')
                 {
                     $cdate  = date('Y-m-d H:i:s');
                     $a_insert   = array(
                         'player_id'         => (check_auth()?$_SESSION['ss_Public']['id']:0),
                         'status'            => 15,
                         'is_winner'         => 0,
+                        'is_winner_status'  => 15,
+                        'is_winner_remark'  => '',
                         'name'              => strip_tags($_POST['txt_FullName']),
                         'phone'             => strip_tags($_POST['txt_Phone']),
                         'purchase_date'     => strip_tags($_POST['txt_PuchaseDate']),
@@ -1125,6 +1182,7 @@ Class Lucky_Draw extends Z_Controller
                         'invoice_no'        => strip_tags($_POST['txt_InvoiceNo']),
                         'invoice_amount'    => strip_tags($_POST['txt_InvoiceAmount']),
                         'serial_no'         => strip_tags($_POST['txt_SerialNo']),
+                        'warranty_card'     => $warranty_card,
                         'receipt'           => $receipt,
                         'created_at'        => $cdate,
                         'updated_at'        => $cdate

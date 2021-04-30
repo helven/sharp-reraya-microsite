@@ -613,6 +613,7 @@ class Auth extends Z_Controller
                     $subject            = 'Sharp Re-Raya Reset Password';
                     $key                = urlencode(encrypt_str($_POST['txt_Email'].'|'.date('Y-m-d', strtotime('+3 days'))));
                     $login              = urlencode(encrypt_str($_POST['txt_Email']));
+                    $this->email        = $_POST['txt_Email'];
                     $this->reset_link   = base_url().'auth/reset-password?action=rp&key='.$key.'&login='.$login;
 
                     $message = $this->p_load_view('email_template/reset_password');

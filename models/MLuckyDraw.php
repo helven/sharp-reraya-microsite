@@ -54,6 +54,8 @@ class MLuckyDraw extends Model
                         player_id       = {$a_insert['player_id']},
                         status          = {$a_insert['status']},
                         is_winner       = {$a_insert['is_winner']},
+                        is_winner_status    = {$a_insert['is_winner_status']},
+                        is_winner_remark    = '{$a_insert['is_winner_remark']}',
                         name            = '{$a_insert['name']}',
                         phone           = '{$a_insert['phone']}',
                         purchase_date   = '{$a_insert['purchase_date']}',
@@ -61,6 +63,7 @@ class MLuckyDraw extends Model
                         invoice_no      = '{$a_insert['invoice_no']}',
                         invoice_amount  = {$a_insert['invoice_amount']},
                         serial_no       = '{$a_insert['serial_no']}',
+                        warranty_card   = '{$a_insert['warranty_card']}',
                         receipt         = '{$a_insert['receipt']}',
                         created_at      = '{$a_insert['created_at']}',
                         updated_at      = '{$a_insert['updated_at']}'";

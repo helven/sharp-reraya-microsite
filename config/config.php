@@ -28,7 +28,7 @@ $config['live']['media_url']        = $config['live']['base_url'].'/media';
 $config['live']['site_url']         = 'https://www.cocorolife.my/SharpReRaya';
 $config['live']['storage_url']      = 'https://www.cocorolife.my/SharpReRaya/storage';
 $config['live']['storage_path']     = getcwd().'/storage/';
-$config['live']['mail_admin_email'] = 'marketing@sharp.com.my';
+$config['live']['mail_admin_email'] = 'no-reply@sharp.com.my';
 $config['live']['mail_admin_name']  = 'Sharp Re-Raya';
 $config['live']['mail_mailtype']    = 'html';
 
@@ -39,7 +39,7 @@ $config['client_staging']['media_url']        = $config['client_staging']['base_
 $config['client_staging']['site_url']         = 'https://www.cocorolife.my/SharpReRaya_stage';
 $config['client_staging']['storage_url']      = 'https://www.cocorolife.my/SharpReRaya_stage/storage';
 $config['client_staging']['storage_path']     = getcwd().'/storage/';
-$config['client_staging']['mail_admin_email'] = 'marketing@sharp.com.my';
+$config['client_staging']['mail_admin_email'] = 'no-reply@sharp.com.my';
 $config['client_staging']['mail_admin_name']  = 'Sharp Re-Raya';
 $config['client_staging']['mail_mailtype']    = 'html';
 
@@ -50,7 +50,7 @@ $config['staging']['media_url']         = $config['staging']['base_url'].'/media
 $config['staging']['site_url']          = $config['protocol'].'sharpmicro.senjitsu.com';
 $config['staging']['storage_url']       = $config['protocol'].'www.senjitsu.com/sharpstorage';
 $config['staging']['storage_path']      = '../sharpstorage/';
-$config['staging']['mail_admin_email']  = 'marketing@sharp.com.my';
+$config['staging']['mail_admin_email']  = 'no-reply@sharp.com.my';
 $config['staging']['mail_admin_name']   = 'Sharp Re-Raya';
 $config['staging']['mail_mailtype']     = 'html';
 
@@ -61,7 +61,7 @@ $config['dev']['media_url']         = $config['dev']['base_url'].'/media';
 $config['dev']['site_url']          = 'http://sharp-reraya-microsite.test';
 $config['dev']['storage_url']       = 'http://sharp-reraya-storage.test';
 $config['dev']['storage_path']      = '../sharp-reraya-storage/';
-$config['dev']['mail_admin_email']  = 'admin@sharp.com.my';
+$config['dev']['mail_admin_email']  = 'no-reply@sharp.com.my';
 $config['dev']['mail_admin_name']   = 'Sharp';
 $config['dev']['mail_mailtype']     = 'html';
 $config = $config[$config['active_group']];
