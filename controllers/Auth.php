@@ -254,7 +254,7 @@ class Auth extends Z_Controller
                     $_SESSION['ss_Msgbox']['message']	= 'Thank you for signing up!<br /><br />';
                     $_SESSION['ss_Msgbox']['message']   .= ($game_stored)?'Your game score is recorded!<br />':'';
                     $_SESSION['ss_Msgbox']['message']   .= 'You will receive a verification email shortly. Please check your email and verify to proceed.';
-                    $_SESSION['ss_Msgbox']['type']		= 'Success';
+                    $_SESSION['ss_Msgbox']['type']		= 'success_sign_up';
 
                     redirect($location);
                 }
@@ -699,7 +699,7 @@ class Auth extends Z_Controller
 
                 $_SESSION['ss_Msgbox']['title']		= 'Success!';
                 $_SESSION['ss_Msgbox']['message']	= 'Password Successfully reset.';
-                $_SESSION['ss_Msgbox']['type']		= 'Success';
+                $_SESSION['ss_Msgbox']['type']		= 'success';
 
                 redirect(base_url().'auth/login');
                 exit;

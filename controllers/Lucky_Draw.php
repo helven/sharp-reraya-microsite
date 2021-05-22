@@ -1139,14 +1139,10 @@ Class Lucky_Draw extends Z_Controller
                 }
 
                 $a_uploaded_warranty = array();
-                $ctr    = 0;
-                foreach($_FILES['file_WarrantyCard']['name'] as $filename)
+                $temp   = preg_replace('/[^a-zA-Z0-9]/i', '', $_POST['txt_InvoiceNo']);
+                foreach($_FILES['file_WarrantyCard']['tmp_name'] as $file)
                 {
-                    $name   = get_file_name($filename);
-                    $ext    = get_file_ext($filename);
-                    
-                    $file           = $_FILES['file_WarrantyCard']['tmp_name'][$ctr];
-                    $new_filename   = $_POST['txt_InvoiceNo'].'_warranty-'.uniqid().'.'.$ext;
+                    $new_filename   = $temp.'_warranty-'.uniqid().'.'.$ext;
                     $target         = $this->config['storage_path'].'lucky_draw/'.$new_filename;
 
                     if(move_uploaded_file($file, $target))
@@ -1154,19 +1150,13 @@ Class Lucky_Draw extends Z_Controller
                         array_push($a_uploaded_warranty, $new_filename);
                     }
 
-                    $ctr++;
                 }
                 $warranty_card  = (count($a_uploaded_warranty) > 0)?json_encode($a_uploaded_warranty):'';
                 
                 $a_uploaded_receipt = array();
-                $ctr    = 0;
-                foreach($_FILES['file_Receipt']['name'] as $filename)
+                foreach($_FILES['file_Receipt']['tmp_name'] as $file)
                 {
-                    $name   = get_file_name($filename);
-                    $ext    = get_file_ext($filename);
-
-                    $file           = $_FILES['file_Receipt']['tmp_name'][$ctr];
-                    $new_filename   = $_POST['txt_InvoiceNo'].'_invoice-'.uniqid().'.'.$ext;
+                    $new_filename   = $temp.'_invoice-'.uniqid().'.'.$ext;
                     $target         = $this->config['storage_path'].'lucky_draw/'.$new_filename;
 
                     if(move_uploaded_file($file, $target))
@@ -1174,7 +1164,6 @@ Class Lucky_Draw extends Z_Controller
                         array_push($a_uploaded_receipt, $new_filename);
                     }
 
-                    $ctr++;
                 }
                 $receipt    = (count($a_uploaded_receipt) > 0)?json_encode($a_uploaded_receipt):'';
 
