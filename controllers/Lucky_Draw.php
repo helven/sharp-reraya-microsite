@@ -19,6 +19,28 @@ Class Lucky_Draw extends Z_Controller
         $this->MLuckyDraw   = new MLuckyDraw();
 
         $this->a_dealer     = array(
+            'PRESTO MALL SDN BHD',
+            
+            'CT INTELLIGENT ELECTRICAL TRADING',
+            'HEANG HUAT TRADING',
+            'HOE SUPPORT SERVICE',
+            'K STORE ELECTRONIC',
+            'LSS HYPER ELECTRICAL SDN BHD',
+            'MENG SHEIN TRADING',
+            'MY BRAND MARKETING SDN BHD',
+            'MY HOMELIFE SDN BHD',
+            'NYAN RADIO &amp; ELECTRICAL SDN BHD',
+            'ORION ELECTRONIC SDN BHD',
+            'PIN ELECTRICAL SDN BHD',
+            'QUAYLE (MALAYSIA) SDN.BHD.',
+            'SEVEN STAR ELECTRICARE SDN BHD',
+            'SIN GUAN HIN TRADING PLT',
+            'SPECIALISED ELECTRONICS SALES &amp; SEVICES SDN. BHD.',
+            'SURIA JERAI ELECTRICAL SDN BHD',
+            'WAH LEE CHAIN-STORE SDN BHD',
+            'WIN MAH SDN BHD',
+            'WNB ELECTRICAL (TAIPING) SDN BHD',
+            
             '2L BERSATU SDN BHD',
             '8 STARS ELECTRICAL (M) SDN BHD',
             'A&L AUDIO STATION',
@@ -951,6 +973,8 @@ Class Lucky_Draw extends Z_Controller
             'ZAMUCOM RESOURCES',
             'ZEE ENTERPRISE',
         );
+
+        sort($this->a_dealer);
     }
 /*
 | ------------------------------------------------------------------------------------------------------------------------------------------
