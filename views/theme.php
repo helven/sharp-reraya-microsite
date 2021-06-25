@@ -65,6 +65,8 @@
 
         -->
     </script>
+	
+	<!--Facebook Pixel Code --><script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init', '1034703813690166');fbq('track', 'PageView');</script><noscript><imgheight="1" width="1" style="display:none"src="https://www.facebook.com/tr?id=1034703813690166&ev=PageView&noscript=1"/></noscript><!--End Facebook Pixel Code -->
 </head>
 
 <body id="body_<?php echo ucfirst($this->platform);?>" class="page_fadein page_fadeout">
@@ -274,12 +276,15 @@
         }
 
         <?php if(isset($_SESSION['ss_Msgbox']) && $_SESSION['ss_Msgbox'] != ''){ ?>
-        msgbox('<?php echo $_SESSION['ss_Msgbox']['title'];?>', '<?php echo addslashes($_SESSION['ss_Msgbox']['message']);?>');
-        <?php $_SESSION['ss_Msgbox'] = '';unset($_SESSION['ss_Msgbox']);?>
+            msgbox('<?php echo $_SESSION['ss_Msgbox']['title'];?>', '<?php echo addslashes($_SESSION['ss_Msgbox']['message']);?>');
+            <?php $_SESSION['ss_Msgbox'] = '';unset($_SESSION['ss_Msgbox']);?>
+            <?php if($_SESSION['ss_Msgbox']['type'] == 'success_sign_up'){ ?>
+                fbq('track', 'COMPLETE_REGISTRATION');
+            <?php } ?>
         <?php } ?>
 
         <?php if($this->formError){ ?>
-        msgbox('Oops!', '<?php echo addslashes($this->formErrorMsg);?>');
+            msgbox('Oops!', '<?php echo addslashes($this->formErrorMsg);?>');
         <?php } ?>
         //
 

@@ -1,4 +1,5 @@
 <?php
+ini_set('session.gc_maxlifetime', 2592000);
 session_start();
 $basePath   = @realpath(dirname(__FILE__).'/../../');
 

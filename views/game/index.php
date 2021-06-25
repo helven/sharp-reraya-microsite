@@ -1,3 +1,4 @@
+<script>fbq('track', 'AddToWishlist’);</script>
 <section class="sc-1 ">
   <div class="container"> <a href="<?php echo base_url();?>" target="_self"><img class="mh centered" src="<?php echo base_url();?>media/images/masthead.png" alt=""></a>
     <div class="mini-game centered">

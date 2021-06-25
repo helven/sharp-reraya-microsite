@@ -756,7 +756,7 @@
                     <div class="masthead"><img src="<?php echo base_url();?>media/images/landing/s1-masthead.png" alt="" /></div>
                     <div>
                         <div class="icons table fullwidth">
-                            <div><img src="<?php echo base_url();?>media/images/landing/s1-icon-1.png" alt="" />
+                            <div><a href="#s2"><img src="<?php echo base_url();?>media/images/landing/s1-icon-1.png" alt="" /></a>
                                 <h2>FREE GIFTS</h2>
                                 <p>Win free merchandise with every purchase!</p>
                             </div>
