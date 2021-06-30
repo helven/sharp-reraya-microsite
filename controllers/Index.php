@@ -23,9 +23,9 @@ Class Index extends Z_Controller
 */
     function index()
     {
-        if($this->config['environment'] == 'live' && date('Y-m-d H:i:s') >= '2021-06-26 00:00:00')
+        if($this->config['environment'] == 'live' && date('Y-m-d H:i:s') >= '2021-07-20 00:00:00')
         {
-            redirect(base_url().'index/campaign-end/');
+            //redirect(base_url().'index/campaign-end/');
         }
         // ----------------------------------------------------------------------- //
         // INIT

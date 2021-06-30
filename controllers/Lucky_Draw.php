@@ -972,6 +972,8 @@ Class Lucky_Draw extends Z_Controller
             'YUN KWANG ELECTRICAL & LIGHTING',
             'ZAMUCOM RESOURCES',
             'ZEE ENTERPRISE',
+
+            'KING ELECTRONIC',
         );
 
         sort($this->a_dealer);
